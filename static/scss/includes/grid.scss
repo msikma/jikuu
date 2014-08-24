@@ -1,0 +1,22 @@
+// Jikuu Tumblr Theme
+// ---------------------------------------------------------------------
+// Copyright (C) 2009-2014, Michiel Sikma <mike@letsdeliver.com>
+// All Rights Reserved
+
+
+// Initialize the Jikuu grid system.
+@include construct-grid((
+  's': (
+    'viewport-width': $viewport-width-s,
+    'grid-width': $grid-width-s,
+    'col-amount': $col-amount-s,
+    'col-gutter': $col-gutter-s,
+  ),
+  'm': (
+    'viewport-width': $viewport-width-m,
+    'grid-width': $grid-width-m,
+    'col-amount': $col-amount-m,
+    'col-gutter': $col-gutter-m,
+    'semantic-cols': ('col-main-content': ('w': 10)),
+  ),
+));
