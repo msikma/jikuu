@@ -1,0 +1,88 @@
+OK, so I'm working on this tumblr theme. At its most basic it's a simple,
+standard layout with one column for main content:
+
++-------------+ +-------------------------+
+| title       | |                         |
+|             | | 1 POST                  |
+| description | |                         |
+|             | +-------------------------+
+| - menu item | +-------------------------+
+| - menu item | |                         |
+| - menu item | | 2 LONGER POST           |
+| - menu item | |                         |
++-------------+ |                         |
+                |                         |
+                |                         |
+                |                         |
+                |                         |
+                +-------------------------+
+                +-------------------------+
+                |                         |
+                | 3 POST                  |
+                |                         |
+                +-------------------------+
+                
+                etc.
+
+So this is simple enough.
+But, I'm also adding some responsive modifications. So when a user has a
+significantly wide browser viewport, the content area will have two columns
+instead:
+
++-------------+ +-------------------------+ +-------------------------+
+| title       | |                         | |                         |
+|             | | 1 POST                  | | 2 LONGER POST           |
+| description | |                         | |                         |
+|             | +-------------------------+ |                         |
+| - menu item | +-------------------------+ |                         |
+| - menu item | |                         | |                         |
+| - menu item | | 3 POST                  | |                         |
+| - menu item | |                         | +-------------------------+
++-------------+ +-------------------------+ +-------------------------+
+                +-------------------------+ |                         |
+                |                         | | 4 POST                  |
+                | 5 LONGER POST           | |                         |
+                |                         | +-------------------------+
+                |                         |
+                |                         |
+                +-------------------------+
+
+So, here's the problem:
+
+How do I make sure the posts stay nicely "masoned" into the layout you see
+above? Normally, when you float posts to the left, you get ugly gaps in the
+layout, such as this:
+
++-------------+ +-------------------------+ +-------------------------+
+| title       | |                         | |                         |
+|             | | 1 POST                  | | 2 LONGER POST           |
+| description | |                         | |                         |
+|             | +-------------------------+ |                         |
+| - menu item |                             |                         |
+| - menu item |                             |                         |
+| - menu item |                             |                         |
+| - menu item |                             +-------------------------+
++-------------+ +-------------------------+ +-------------------------+
+                |                         | |                         |
+                |                         | | 4 POST                  |
+                | 3 LONGER POST           | |                         |
+                |                         | +-------------------------+
+                |                         | +-------------------------+
+                |                         | |                         |
+                +-------------------------+ | 5 POST                  |
+                                            |                         |
+                                            +-------------------------+
+
+It doesn't seem to me like I can solve this problem and get the nicely masoned
+layout as above with pure CSS. Using display-block doesn't solve the problem.
+Using column-count gets you two nicely masoned columns, BUT the order is wrong
+(from top to bottom, first the entire left column, then the right column; it
+should be left, right, left, right, from top to bottom, etc.)
+
+So one solution I envisioned is detecting the height of posts (costly operation,
+requires JS) and then either giving them a float: left, or a float: right.
+
+Does anyone know a better solution? Perhaps even a CSS-only solution (I think
+it's impossible)?
+So just to be sure, what I want to achieve is the SECOND layout I posted,
+without the gaps.

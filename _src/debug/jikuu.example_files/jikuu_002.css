@@ -1,0 +1,666 @@
+/*
+ * Jikuu Tumblr Theme - CSS Code
+ * Copyright (C) 2012, Michiel Sikma <mike@letsdeliver.com>
+ * All Rights Reserved
+ * Date: 2012/10/21
+ *
+ * @author Michiel Sikma
+ *
+ * Default colors:
+ *    Primary:      #006AFF
+ *    Visited:      #5E0FFF
+ *    Hover:        #FF086B
+ *    Light Gray:   #CDCACA
+ *    Dark Gray:    #696161
+ *    Meta Links:   #000000
+ *    Outer Color:  #FFFFFF
+ *    Shadow Color: #696161
+ *
+ * Default fonts:
+ *    Body:         'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode',
+ *                     sans-serif
+ *    Header:       Futura, 'Century Gothic', AppleGothic, sans-serif
+ *
+ * Index:
+ *    00.           Basic settings
+ *    01.           Wrappers
+ *    02.           Sidebar
+ *    03.           Posts container
+ *    04.           Post meta
+ *    05.           Post types
+ *    05.0.         Text post
+ *    05.1.         Photo post
+ *    05.2.         Photoset post
+ *    05.3.         Quote post
+ *    05.4.         Link post
+ *    05.5.         Chat post
+ *    05.6.         Audio post
+ *    05.7.         Video post
+ *    05.8.         Answer post
+ *    06.           Navigation
+ *    07.           Footer
+ *    08.           Dynamic elements
+ */
+
+/* 00. Basic settings */
+/* Remove margins to be sure. */
+html, body {
+    margin: 0;
+}
+/* Set the overflow-y to scroll to avoid a horizontal jump when the page fully loads. */
+html {
+    overflow-y: scroll;
+}
+
+a {
+    color: #006AFF;
+    text-decoration: underline;
+}
+a:visited {
+    color: #5E0FFF;
+    border-color: #5E0FFF;
+}
+a:hover {
+    color: #FF086B;
+    border-color: #FF086B;
+}
+strong {
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+}
+
+/* Avoid borders around image links in some older browsers. */
+img {
+    border: none;
+}
+
+/* As text posts get reblogged and added to, they get more layers of blockquotes. */
+blockquote {
+    margin-left: 14px;
+}
+
+/* Hide elements that should be hidden by default (like the "jump to content" link for text browsers). */
+.hid {
+    display: none;
+}
+
+/* #root is the main node and contains every wrapper. input has the font attribute set as well to override OS defaults. */
+#root, input {
+    font: normal normal normal 12px/18px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+/* The #root is always white. The section outside of the #root (body) can be colorized. */
+#root {
+    background: white;
+    padding: 0 50px;
+    margin: auto;
+    width: 730px;
+    overflow: hidden;
+}
+/* In case the user wants a shadow, set some defaults. */
+#root.has-shadow {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 6px #696161;
+}
+
+/* 01. Wrappers */
+/* The theme has three wrappers: title, content and footer. */
+.wrapper {
+    margin: 25px auto;
+    text-align: left;
+    width: 730px;
+}
+.wrapper hr {
+    margin: 25px 0 0;
+    padding: 0;
+    height: 5px;
+    background: url('http://static.tumblr.com/lpftwlt/oz4mj7i7y/jikuu.dots.png') fixed #CDCACA;
+    border: none;
+}
+.wrapper hr.small {
+    height: 2px;
+    margin-top: 14px;
+}
+.wrapper.header {
+    margin-top: 0;
+    border-bottom: 5px solid #066AFF;
+}
+.wrapper.header.thin {
+    border-bottom-width: 2px;
+}
+.wrapper.header .title {
+    font-size: 31px;
+    line-height: 31px;
+    padding: 28px 0 14px;
+    color: #066AFF;
+    text-align: center;
+    text-decoration: none;
+}
+.wrapper.header .title a {
+    text-decoration: none;
+}
+.wrapper.header .title a:visited {
+    color: inherit;
+}
+
+/* The content wrapper contains the sidebar and the main content. */
+.wrapper.content {
+}
+.wrapper.content .subwrapper {
+    float: left;
+}
+#root.sidebar-right .wrapper.content .subwrapper {
+    float: right;
+}
+/* 02. Sidebar */
+.wrapper.content .sidebar {
+    width: 190px;
+    margin-right: 40px;
+}
+#root.sidebar-right .wrapper.content .sidebar {
+    margin-right: 0;
+    margin-left: 40px;
+}
+.wrapper.content .sidebar .title {
+    display: none;
+}
+.wrapper.content .sidebar h3 {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.wrapper.content .sidebar h3.copyright {
+    font-weight: normal;
+}
+.wrapper.content .sidebar .section {
+    margin: 14px 0 0;
+}
+.wrapper.content .sidebar .section:first-child {
+    border: none;
+    margin-top: 0;
+}
+.wrapper.content .sidebar .section hr {
+    width: 190px;
+}
+.wrapper.content .sidebar .section:last-child hr {
+    display: none;
+}
+.wrapper.content .sidebar .section.nav {
+}
+.wrapper.content .sidebar .section.nav .menu {
+    margin: 5px 0;
+}
+.wrapper.content .sidebar .section.me .subsection {
+    margin: 0 0 5px 0;
+}
+.wrapper.content .sidebar .section.me .profile-pic a img {
+    display: block;
+}
+.wrapper.content .sidebar .section.contributors {
+    
+}
+.wrapper.content .sidebar .section.contributors .blogs {
+}
+.wrapper.content .sidebar .section.contributors .blogs .member a {
+    line-height: 18px;
+    margin-bottom: 1px;
+    text-decoration: none;
+    vertical-align: baseline;
+    display: block;
+    overflow: hidden;
+}
+.wrapper.content .sidebar .section.contributors .blogs .member .member-icon {
+    background-position: 0 50%;
+    width: 16px;
+    line-height: 16px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+.wrapper.content .sidebar .section.contributors .blogs .member .member-name {
+    text-decoration: underline;
+    display: inline-block;
+    max-width: 160px;
+}
+/* The RSS icon and "Subscribe" text: */
+.wrapper.content .blog-feed {
+}
+.wrapper.content .blog-feed a {
+    line-height: 18px;
+    vertical-align: baseline;
+    text-decoration: none;
+    display: block;
+}
+.wrapper.content .blog-feed .icon-feed {
+    background: url('http://static.tumblr.com/lpftwlt/GaAmj7i91/jikuu.rss.png') no-repeat 0 50%;
+    width: 13px;
+    line-height: 13px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+.wrapper.content .blog-feed .subscr {
+    display: inline-block;
+    text-decoration: underline;
+}
+/* The search form: */
+.wrapper.content .sidebar .search form {
+    position: relative;
+}
+.wrapper.content .sidebar .search form .str {
+    width: 176px;
+    border: 1px solid #cdcaca;
+    height: 15px;
+    padding: 4px 6px 4px;
+    color: #696161;
+}
+.wrapper.content .sidebar .search form:hover .str {
+    color: #006AFF;
+    border-color: #006AFF;
+}
+.wrapper.content .sidebar .search form .sub {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    text-indent: -9999px;
+    border: none;
+    cursor: pointer;
+    background: url('http://static.tumblr.com/lpftwlt/5Dpmj7i99/jikuu.search.png') #696161;
+}
+.wrapper.content .sidebar .search form:hover .sub {
+    background-color: #006AFF;
+}
+.wrapper.content .sidebar .search.loading form .sub {
+    background-image: url('http://static.tumblr.com/lpftwlt/3S9mj7i89/jikuu.loader.png');
+    background-position: 0 0;
+}
+
+/* 03. Posts container */
+/* The main subwrapper contains the posts. */
+.wrapper.content .main {
+    width: 500px;
+}
+.wrapper.content .main .nav hr {
+    margin-top: 6px;
+}
+.wrapper.content .main .nav .search_query:before {
+    content: '“';
+}
+.wrapper.content .main .nav .search_query:after {
+    content: '”';
+}
+.wrapper.content .main .nav .tag:before {
+    content: '#';
+}
+/* Common CSS rules for all post types: */
+.wrapper.content .main .post {
+    padding: 25px 0 0;
+}
+.wrapper.content .main .post:first-child {
+    padding-top: 0;
+}
+.wrapper.content .main .post:last-child hr {
+    display: none;
+}
+.wrapper.content .main .post .title {
+    font-size: 21px;
+    line-height: 27px;
+    margin-bottom: 10px;
+}
+.wrapper.content .main .post .content {
+    
+}
+.wrapper.content .main .post .content p {
+    margin: 10px 0;
+}
+.wrapper.content .main .post .content p:first-child {
+    margin-top: 0;
+}
+.wrapper.content .main .post .content a {
+    text-decoration: none;
+}
+.wrapper.content .main .post .info {
+    margin: 10px 0;
+    overflow: hidden;
+}
+.wrapper.content .main .post .info.with-avatar .avatar {
+    float: left;
+    margin: 2px 6px 0 0;
+}
+.wrapper.content .main .post .info.with-avatar .meta {
+    margin-left: 36px;
+}
+.wrapper.content .main .post .postnotes {
+}
+.wrapper.content .main .post .postnotes .notes {
+}
+.wrapper.content .main .post .postnotes .notes .note {
+    line-height: 18px;
+    margin-bottom: 1px;
+    display: block;
+}
+.wrapper.content .main .post .postnotes .notes .note * {
+    line-height: 16px;
+    display: inline-block;
+    vertical-align: top;
+}
+.wrapper.content .main .post .postnotes .notes .note a {
+}
+.wrapper.content .main .post .postnotes .notes .note img {
+    width: 16px;
+    height: 16px;
+}
+.wrapper.content .main .post .postnotes .notes .note.more_notes_link_container {
+    text-align: left;
+    display: inline-block;
+}
+.wrapper.content .main .post .postnotes .notes .note blockquote {
+    margin-top: 2px;
+    margin-bottom: 3px;
+    margin-left: 15px;
+    padding-left: 15px;
+}
+.wrapper.content .main .post blockquote {
+    /* Blockquotes are used for quoted content from other users. */
+    margin-left: 14px;
+    padding-left: 14px;
+    border-left: 1px solid #CDCACA;
+}
+/* 04. Post meta */
+.wrapper .meta {
+    font-size: 11px;
+    color: #666;
+    line-height: 17px;
+}
+.wrapper .meta p {
+    position: relative;
+}
+.wrapper .meta a {
+    color: #696161;
+    text-decoration: none;
+}
+.wrapper .meta a:hover {
+    color: #FF086B;
+}
+.wrapper .meta .time {
+    text-transform: uppercase;
+}
+.wrapper .meta .tag {
+    text-decoration: none;
+    margin-right: 4px;
+}
+.wrapper .meta .tag .name {
+}
+.wrapper .meta .shorturl a {
+    position: absolute;
+    right: 0;
+    color: #9B9B9B;
+    text-decoration: none;
+    display: none;
+}
+
+/* 05. Post types */
+/* 05.0. Text post */
+.wrapper.content .main .post.type-text {
+}
+/* Some support for the theme readme page. */
+.wrapper.content .main .post.type-text .term {
+    margin-bottom: 10px;
+}
+.wrapper.content .main .post.type-text .term .option {
+    display: block;
+    font-weight: bold;
+}
+.wrapper.content .main .post.type-text .term .definition {
+    display: block;
+    text-indent: 25px;
+}
+/* 05.1. Photo post */
+.wrapper.content .main .post.type-photo {
+}
+.wrapper.content .main .post.type-photo .media img {
+    display: block;
+}
+.wrapper.content .main .post.type-photo .content .caption {
+    margin-top: 10px;
+}
+/* 05.2. Photoset post */
+.wrapper.content .main .post.type-photo.photoset {
+}
+.wrapper.content .main .post.type-photo.photoset iframe {
+    display: block;
+}
+/* 05.3. Quote post */
+.wrapper.content .main .post.type-quote {
+}
+.wrapper.content .main .post.type-quote .quote {
+    font-size: 18px;
+    line-height: 24px;
+}
+.wrapper.content .main .post.type-quote .quote:before {
+    content: '“';
+}
+.wrapper.content .main .post.type-quote .quote:after {
+    content: '”';
+}
+.wrapper.content .main .post.type-quote .source {
+    margin-top: 6px;
+}
+.wrapper.content .main .post.type-quote .source:before {
+    content: '— ';
+}
+/* 05.4. Link post */
+.wrapper.content .main .post.type-link {
+}
+.wrapper.content .main .post.type-link h3 .name {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 6px 10px;
+    border: 1px solid #006AFF;
+    display: block;
+    text-decoration: none;
+}
+.wrapper.content .main .post.type-link h3 .name:hover {
+    border-color: #FF086B;
+}
+.wrapper.content .main .post.type-link .description {
+    margin-top: 10px;
+}
+/* 05.5. Chat post */
+.wrapper.content .main .post.type-chat {
+}
+.wrapper.content .main .post.type-chat .chat {
+    border-bottom: 1px solid #CDCACA;
+    font-family: "Menlo", "Consolas", "Monaco", monospace;
+}
+.wrapper.content .main .post.type-chat .chat li {
+    border: 1px solid #CDCACA;
+    border-bottom: none;
+    padding: 3px 6px;
+}
+.wrapper.content .main .post.type-chat .chat li .label {
+    display: inline-block;
+}
+.wrapper.content .main .post.type-chat .chat li .line {
+}
+/* 05.6. Audio post */
+.wrapper.content .main .post.type-audio {
+}
+.wrapper.content .main .post.type-audio .embed.native embed {
+    border: 1px solid #CDCACA;
+}
+/* 05.7. Video post */
+.wrapper.content .main .post.type-video {
+}
+.wrapper.content .main .post.type-video .embed {
+    display: block;
+    margin-bottom: 10px;
+}
+.wrapper.content .main .post.type-video .embed iframe {
+    display: block;
+    
+}
+/* 05.8. Answer post */
+.wrapper.content .main .post.type-answer {
+}
+.wrapper.content .main .post.type-answer .submitter {
+    float: left;
+    width: 71px;
+}
+.wrapper.content .main .post.type-answer .submitter img {
+    display: block;
+}
+.wrapper.content .main .post.type-answer .content {
+    
+}
+.wrapper.content .main .post.type-answer .content .q .qcontent {
+    position: relative;
+    overflow: hidden;
+}
+.wrapper.content .main .post.type-answer .content .q .qcontent .content {
+    font-size: 18px;
+    line-height: 24px;
+}
+.wrapper.content .main .post.type-answer .content .q .arr-outer,
+.wrapper.content .main .post.type-answer .content .q .arr-inner {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+.wrapper.content .main .post.type-answer .content .q .arr-outer {
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 8px 8px 8px 0;
+    border-color: transparent #D7D3D3 transparent transparent;
+}
+.wrapper.content .main .post.type-answer .content .q .arr-inner {
+    width: 0px;
+    height: 0px;
+    margin: 1px 0 0 1px;
+    border-style: solid;
+    border-width: 7px 7px 7px 0;
+    border-color: transparent #ffffff transparent transparent;
+}
+.wrapper.content .main .post.type-answer .content .q .inner {
+    display: block;
+    border: 1px solid #D7D3D3;
+    margin-left: 7px;
+    padding: 6px 10px;
+    min-height: 50px;
+}
+.wrapper.content .main .post.type-answer .content .q .asker {
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-size: 11px;
+    text-decoration: none;
+}
+.wrapper.content .main .post.type-answer .content .a {
+    margin: 14px 0 0;
+}
+/* 06. Navigation */
+.wrapper.content .subwrapper.nav {
+    margin: 10px 0 10px 230px;
+}
+#root.sidebar-right .wrapper.content .subwrapper.nav {
+    float: left;
+    margin-left: 0;
+}
+.wrapper.content .nav .jumppag {
+    overflow: hidden;
+}
+.wrapper.content .nav .jumppag .page {
+    display: block;
+    border: 1px solid #CDCACA;
+    float: right;
+    color: #696161;
+    width: 23px;
+    line-height: 23px;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 6px;
+}
+.wrapper.content .nav .jumppag .curr {
+    /* To prevent the type cursor from showing up. */
+    cursor: default;
+}
+.wrapper.content .nav .jumppag .other {
+}
+.wrapper.content .nav .jumppag .last {
+}
+
+/* 07. Footer */
+/* The footer has to be cleared (rather than using overflow:hidden on the content wrapper). Since the content wrapper has no height, we replace the margin with a padding. */
+.wrapper.footer {
+    clear: both;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.wrapper.footer hr {
+    width: 730px;
+    margin-top: 25px;
+}
+.wrapper.footer p {
+    margin: 10px 0;
+}
+
+/* 08. Dynamic elements */
+/* The loading image, hidden by default. */
+.loader {
+    margin: 14px 0;
+    text-align: center;
+    display: block;
+    position: relative;
+    visibility: hidden;
+    display: none;
+}
+#root.endless .loader {
+    display: block;
+}
+.loader .inner {
+    display: block;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url('http://static.tumblr.com/lpftwlt/3S9mj7i89/jikuu.loader.png') 0 0 no-repeat #696161;
+    width: 16px;
+    height: 16px;
+}
+.loader .msg {
+    display: none;
+    font-size: 10px;
+    position: absolute;
+    font-weight: bold;
+    top: 0;
+    left: 20px;
+    line-height: 18px;
+    margin: 0;
+    text-align: left;
+    width: 500px;
+}
+.loader .done {
+    color: #696161;
+    display: none;
+}
+/* In case something goes wrong. */
+.loader.error .msg.error {
+    display: block;
+    color: red;
+}
+.loader.error .msg.done {
+    display: none;
+}
+
+/* A temporary container for new posts. */
+#tmp_container {
+    /* Can't be completely invisible, otherwise images won't auto-load. */
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+}

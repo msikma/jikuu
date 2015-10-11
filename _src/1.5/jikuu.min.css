@@ -1,0 +1,1168 @@
+/*
+ * Jikuu Tumblr Theme - CSS Code
+ * Copyright (C) 2013, Michiel Sikma <mike@letsdeliver.com>
+ * All Rights Reserved
+ * Date: 2013/05/10
+ *
+ * @author Michiel Sikma
+ *
+ * The grid system is designed to be optimal for the regular
+ * Tumblr picture size (500px) while still retaining enough
+ * space for a sidebar or a double main column.
+ *
+ * The CSS reset was taken from Eric Meyer's website with minor adjustments:
+ * http://meyerweb.com/eric/tools/css/reset/
+ *
+ * Grid system:
+ *	  Column width		64px
+ *	  Gutter width		45px
+ *	  Sidebar width		173px (2 columns)
+ *	  Content width		500px (5 columns)
+ *    Wrapper width 	718px (7 columns)
+ *
+ * Responsive features:
+ *    [large desktop]	>= 1263px (12 columns)
+ *    [DEFAULT]			>=  718px ( 7 columns)
+ *    [tablet portrait] >=  609px ( 6 columns)
+ *    [phone portrait]  >=  500px ( 5 columns)
+ *    
+ * Default colors:
+ *    Text:				#0B0A0A
+ *	  Primary:			#006AFF
+ *	  Visited:			#5E0FFF
+ *	  Hover:			#FF086B
+ *	  Background:		#FFFFFF
+ *	  Light Borders:	#CDCACA
+ *    Dark Borders:		#9B9595
+ *    Menu Text: 	    #0A0A0B
+ *    Menu Border: 	    #020000
+ *	  Meta Text:		#585151
+ *	  Meta Links:		#585251
+ *
+ * Default fonts:
+ *	  Body:				'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif
+ *	  Header:	fixme	'Futura', 'Century Gothic', 'AppleGothic', sans-serif
+ *
+ * Index:
+ *	  00.				CSS reset and initialization
+ *	  01.				Grid system
+ *    02.				Basic and recurring styles
+ *	  03.				Sidebar
+ *	  04.				Posts container
+ *	  05.				Post meta
+ *	  06.				Post types
+ *	  06.0.				  Text post
+ *	  06.1.				  Photo post
+ *	  06.2.				  Photoset post
+ *	  06.3.				  Quote post
+ *	  06.4.				  Link post
+ *	  06.5.				  Chat post
+ *	  06.6.				  Audio post
+ *	  06.7.				  Video post
+ *	  06.8.				  Answer post
+ *	  06.9.				  Post content
+ *	  07.				Footer
+ *	  08.				Dynamic elements
+ *    09.				Variations
+ *    10. 				Responsive features
+ */
+
+
+/* ------------------------------------------------------------------------- */
+/* 00. CSS reset and initialization                                          */
+/* ------------------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+html {
+	/* Set the overflow-y to scroll to avoid a horizontal jump when the page fully loads. */
+	overflow-y: scroll;
+}
+a,
+a:link,
+a:visited {
+	/* Basic link styling. */
+	color: #006AFF;
+	text-decoration: none;
+}
+a:hover,
+a:focus {
+	color: #FF086B;
+	border-color: #FF086B;
+	text-decoration: underline;
+}
+b, strong {
+	font-weight: bold;
+}
+i, em {
+	font-style: italic;
+}
+img {
+	/* Avoid borders around image links in some older browsers. */
+	border: none;
+	display: inline;
+}
+/* Hide elements that should be hidden by default (like the "jump to content" link for text browsers). */
+.hid {
+	display: none;
+}
+
+/* #root is the main node and contains every wrapper. <input> has the font attribute set as well to override OS defaults. */
+#root,
+input {
+	font: normal normal normal 12px/18px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+#root {
+	color: #0b0a0a;
+	/* The #root is always white. The section outside of the #root (body) can be colorized. */
+	background: #ffffff;
+}
+/* A few debugging styles so that we can see the grid clearly. */
+#root.debug .col,
+#root.debug .row {
+	outline: 1px solid rgba(250, 30, 0, 0.7);
+}
+#root.debug .grid-container {
+	background: rgba(135, 206, 250, 0.3);
+}
+#root.debug .grid-container .row {
+	background: rgba(255, 229, 0, 0.3);
+}
+#root.debug .grid-container .row .col {
+	background: rgba(135, 206, 250, 0.3);
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 01. Grid system                                                           */
+/* ------------------------------------------------------------------------- */
+
+#root .grid-container {
+	/* Width is 7 columns. */
+	width: 718px;
+	margin: auto;
+}
+#root .grid-container .row {
+	margin: 0 0 0 -45px;
+}
+#root .grid-container:before,
+#root .grid-container:after,
+#root .grid-container .row:before,
+#root .grid-container .row:after,
+#root .grid-container .col:before,
+#root .grid-container .col:after {
+	line-height: 0;
+	clear: both;
+	content: "";
+	display: table;
+}
+#root .grid-container .col {
+	display: block;
+	float: left;
+	min-height: 1px;
+}
+#root .pull-left {
+	float: left !important;
+}
+#root .pull-right {
+	float: right !important;
+}
+#root .w-full,
+#root .col-nofloat {
+	float: none !important;
+}
+#root .col {
+	margin-left: 45px;
+}
+#root .w-1		{	width:			64px;		}
+#root .w-2		{	width:			173px;		}
+#root .w-3		{	width:			282px;		}
+#root .w-4		{	width:			391px;		}
+#root .w-5		{	width:			500px;		}
+#root .w-6		{	width:			609px;		}
+#root .w-7		{	width:			718px;		}
+#root .w-8		{	width:			827px;		}
+#root .w-9		{	width:			936px;		}
+#root .w-10		{	width:			1045px;		}
+#root .w-11		{	width:			1154px; 	}
+#root .w-12		{	width:			1263px; 	}
+#root .i-0		{	margin-left:	45px;		}
+#root .i-1		{	margin-left:	154px;		}
+#root .i-2		{	margin-left:	263px;		}
+#root .i-3		{	margin-left:	372px;		}
+#root .i-4		{	margin-left:	590px;		}
+#root .i-5		{	margin-left:	699px;		}
+#root .i-6		{	margin-left:	808px;		}
+#root .i-7		{	margin-left:	917px;		}
+#root .i-8		{	margin-left:	1024px;		}
+#root .i-9		{	margin-left:	1135px;		}
+#root .i-10		{	margin-left:	1244px;		}
+
+
+/* ------------------------------------------------------------------------- */
+/* 02. Basic and recurring styles                                            */
+/* ------------------------------------------------------------------------- */
+
+/* Information header about the posts we're currently viewing. */
+#root .post-info {
+}
+#root .post-info .simple-nav {
+	text-transform: lowercase;
+}
+
+/* The standard content styling. */
+#root .post-content p {
+	margin: 8px 0;
+}
+#root .post-content p:first-child {
+	margin-top: 0;
+}
+#root .post-content img {
+	/* To remove the descender gap underneath images. */
+	vertical-align: bottom;
+}
+
+/* Simple Base64 encoded image for the dots pattern (to avoid a request). */
+#root hr,
+#root .nav.menu li.active a,
+#root .row.content .sidebar .section.navigation .bg {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAEklEQVQIW2NkAIL/QMAIJoAAAEfvB/9vn9xIAAAAAElFTkSuQmCC');
+}
+#root hr {
+	/* Standard horizontal ruler. */
+	margin: 14px 0;
+	padding: 0;
+	height: 3px;
+	background-attachment: scroll;
+	background-color: #cdcaca;
+	border: none;
+}
+#root hr.post-sep {
+	/* Larger horizontal ruler used to separate the posts. */
+	margin-top: 25px;
+	margin-bottom: 25px;
+	height: 5px;
+}
+#root .row.header .col {
+	/* The top header containing the logo. */
+	margin-top: 0;
+	border-bottom: 5px solid #066AFF;
+}
+#root .row.header.thin-border .col {
+	/* Thin top border variant. */
+	border-bottom-width: 2px;
+}
+#root .row.header .title {
+	font-size: 31px;
+	line-height: 31px;
+	padding: 28px 0 14px;
+	color: #066AFF;
+	text-align: center;
+	text-decoration: none;
+}
+/* The content wrapper contains the sidebar and the main content. */
+#root .row.content {
+}
+/* A standard primary navigation. */
+#root .nav.menu {
+	margin: 8px 0;
+	padding-bottom: 1px;
+}
+#root .nav.menu li,
+#root .nav.menu li a,
+#root .nav.menu li a span {
+	display: block;
+}
+#root .nav.menu li {
+}
+#root .nav.menu li a {
+	background: #ffffff;
+	line-height: 15px;
+	margin-bottom: -1px;
+	position: relative;
+	border: 1px solid #020000;
+}
+#root .nav.menu li a span {
+	border: none;
+	padding: 4px 9px;
+	color: #0A0A0B;
+	margin: -1px;
+}
+#root .nav.menu li.active a {
+	border: none;
+	padding: 1px;
+	background-color: #cdcaca;
+	background-attachment: scroll;
+	margin-bottom: 5px;
+	top: 1px;
+	position: relative;
+	z-index: 10;
+}
+#root .nav.menu li.active a span {
+	border: 1px solid #020000;
+	padding: 3px 8px;
+	background: #ffffff;
+	position: relative;
+	top: -3px;
+	left: -3px;
+}
+#root .nav.menu li.active a span:after {
+	content: " >";
+}
+#root .nav.menu li a:hover {
+	border-color: #006aff;
+	z-index: 5;
+	text-decoration: none;
+}
+#root .nav.menu li a:hover span {
+	color: #006aff;
+}
+#root .nav.menu li.active a:hover {
+	background: #006aff;
+}
+#root .nav.menu li.active a:hover span {
+	color: #006aff;
+	border-color: #006aff;
+}
+#root .nav.page {
+}
+#root .nav.page li {
+	display: inline-block;
+}
+#root .nav.page li a {
+}
+#root .nav.page li a span {
+}
+#root .nav.page li.active a {
+}
+#root .nav.page li.active a span {
+}
+#root .nav.page li.active a span:after {
+	content: "";
+}
+/* When in fluid mode, some content is automatically hidden (unless clicked on). */
+#root .fluid-collapse {
+}
+#root .fluid-collapse .fluid-collapse-link {
+	position: relative;
+}
+#root .fluid-collapse .fluid-collapse-link .arr {
+	/* fixme */
+	background: url("./jikuu.img.arrow.png") 100% 50% no-repeat;
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	position: relative;
+	background-position: 0 0;
+	background-color: #0B0A0A;
+	left: 2px;
+	top: 1px;
+}
+#root .fluid-collapse.collapsed .fluid-collapse-link .arr {
+	background-position: 0 -12px;
+}
+
+/* The search form. */
+#root .form-search {
+	position: relative;
+}
+#root .form-search .search-input {
+	display: block;
+	border-left: 1px solid #9b9595;
+	border-right:  1px solid #9b9595;
+}
+#root .form-search .search-input input {
+	width: 100%;
+	border: 1px solid #9b9595;
+	border-left: none;
+	border-right: none;
+	font-size: 12px;
+	height: 21px;
+	padding: 0;
+	text-indent: 7px;
+	color: #585151;
+}
+#root .form-search:hover .search-input input {
+	color: #006AFF;
+	border-color: #006AFF;
+}
+#root .form-search .search-submit input {
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	width: 16px;
+	height: 16px;
+	text-indent: -9999px;
+	border: none;
+	cursor: pointer;
+	/* fixme */
+	background: url('./jikuu.search.png') #585151;
+}
+#root .form-search:hover .search-submit input {
+	background-color: #006AFF;
+}
+#root .form-search.loading .search-submit input {
+	/* fixme */
+	background-image: url('./jikuu.loader.png');
+	background-position: 0 0;
+}
+
+/* Add some margins for the basic columns. */
+#root .grid-container > .row {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+#root .grid-container .row.header {
+	margin-top: 0;
+}
+
+/* RSS/Atom feed icons. */
+#root .icon-link {
+	line-height: 19px;
+	padding-left: 0;
+	margin: 0;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	position: relative;
+}
+#root .icon-link .icon {
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: text-top;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
+	margin-top: -1px;
+	position: relative;
+}
+#root .icon-link.icon-negative .icon {
+	background-color: #006aff;
+}
+#root .icon-link.icon-negative:hover .icon {
+	background-color: #ff086b;
+}
+/* Button icons. */
+#root .icon-link.icon-button {
+	left: -2px;
+}
+#root .icon-link.icon-button .icon {
+	/* fixme */
+	background-image: url('jikuu.img.icons.sprite.png');
+	top: 1px;
+	left: 1px;
+}
+#root .icon-link.icon-button.rss .icon {
+	background-position: 0 -64px;
+}
+#root .icon-link.icon-button.twitter .icon {
+	background-position: 0 -48px;
+}
+#root .icon-link.icon-button.facebook .icon {
+	background-position: 0 -16px;
+}
+#root .icon-link.icon-button.vimeo .icon {
+	background-position: 0 -32px;
+}
+#root .icon-link.icon-button.flickr .icon {
+	background-position: 0 -80px;
+}
+#root .icon-link.icon-button.youtube .icon {
+	background-position: 0 0;
+}
+#root .icon-link.icon-button.website .icon {
+	background-position: 0 -96px;
+}
+#root .icon-link.icon-button.email .icon {
+	background-position: 0 -112px;
+}
+#root .icon-link.icon-button.bandcamp .icon {
+	background-position: 0 -128px;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 03. Sidebar                                                               */
+/* ------------------------------------------------------------------------- */
+
+#root .row.content .sidebar {
+	margin-bottom: 45px;
+}
+#root .row.content .sidebar .title {
+	font-weight: bold;
+	margin: 0 0 8px;
+}
+#root .row.content .sidebar .copyright-statement {
+}
+#root .row.content .sidebar .section-container {
+}
+#root .row.content .sidebar .section {
+	margin: 14px 0 0;
+}
+#root .row.content .sidebar .section:first-child {
+	margin-top: 0;
+}
+#root .row.content .sidebar hr:last-child {
+	/* Hide the last hr. */
+	display: none;
+}
+#root .row.content .sidebar .section.navigation {
+}
+#root .row.content .sidebar .section.navigation .bg {
+	position: absolute;
+	bottom: -5px;
+	height: 5px;
+	width: 100%;
+}
+/* The fix-toggle-item elements dynamically get a fixed or static position based on viewport scroll. */
+#root .fix-toggle-item {
+}
+#root .fix-toggle-item .fix-padding {
+	/* This padding will be given to the fixed element. */
+	position: fixed;
+	width: 5px;
+	height: 5px;
+	padding: 8px 0 8px;
+}
+#root .fix-toggle-item .fix-content {
+	position: relative;
+	background: #ffffff;
+	z-index: 5;
+}
+#root .fix-toggle-item .fix-gap {
+	position: fixed;
+	width: 5px;
+}
+#root .fix-toggle-item.pmode .fix-content {
+	position: fixed;
+	top: 0;
+}
+#root .fix-toggle-item.pmode .fix-gap {
+	position: relative;
+}
+
+#root .row.content .sidebar .section.twitter {
+}
+#root .row.content .sidebar .section.twitter .twitter-container {
+}
+#root .row.content .sidebar .section.twitter .twitter-container li {
+	list-style: none;
+	margin-top: 8px;
+	font-size: 11px;
+	line-height: 16px;
+}
+#root .row.content .sidebar .section.twitter .twitter-container li > span {
+}
+#root .row.content .sidebar .section.twitter .twitter-container li > span a {
+	color: #585251;
+	max-width: 30px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+#root .row.content .sidebar .section.twitter .twitter-container li > a {
+	/* The time ("8 minutes ago") container. */
+	display: block;
+	font-size: 11px !important;
+	line-height: 16px;
+}
+#root .row.content .sidebar .section.me .subsection {
+	margin: 0 0 5px 0;
+}
+#root .row.content .sidebar .section.me .profile-pic a img {
+	display: block;
+	margin-bottom: 14px;
+	width: 100%;
+	height: auto;
+}
+#root .row.content .sidebar .section .blog-list {
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 04. Posts container                                                       */
+/* ------------------------------------------------------------------------- */
+
+/* The main subwrapper contains the posts. */
+#root .row.content .main {
+}
+#root .row.content .main .nav hr {
+	margin-top: 6px;
+	margin-bottom: 25px;
+}
+#root .row.content .main .nav .search_query:before {
+	content: '“';
+}
+#root .row.content .main .nav .search_query:after {
+	content: '”';
+}
+#root .row.content .main .nav .tag:before {
+	content: '#';
+}
+/* Common CSS rules for all post types: */
+#root .row.content .main .post {
+	padding: 8px 0 0;
+}
+#root .row.content .main .post:first-child {
+	padding-top: 0;
+}
+#root .row.content .main .post:last-child hr {
+	display: none;
+}
+#root .row.content .main .post .title {
+	font-size: 21px;
+	line-height: 27px;
+	margin-bottom: 10px;
+}
+#root .row.content .main .post .body .title {
+	/* Title tags within the post content. */
+	margin-top: 18px;
+}
+#root .row.content .main .post .post-content {
+}
+#root .row.content .main .post .info {
+	margin: 8px 0;
+	overflow: hidden;
+}
+#root .row.content .main .post:last-child .info {
+	margin-bottom: 0;
+}
+#root .row.content .main .post .info.with-avatar .avatar {
+	float: left;
+	margin: 2px 6px 0 0;
+}
+#root .row.content .main .post .info.with-avatar .meta {
+	margin-left: 36px;
+}
+#root .row.content .main .post .postnotes {
+}
+#root .row.content .main .post .postnotes .notes {
+}
+#root .row.content .main .post .postnotes .notes .note {
+	line-height: 18px;
+	margin-bottom: 1px;
+	display: block;
+}
+#root .row.content .main .post .postnotes .notes .note * {
+	line-height: 16px;
+	display: inline-block;
+	vertical-align: top;
+}
+#root .row.content .main .post .postnotes .notes .note a {
+}
+#root .row.content .main .post .postnotes .notes .note img {
+	width: 16px;
+	height: 16px;
+}
+#root .row.content .main .post .postnotes .notes .note.more_notes_link_container {
+	text-align: left;
+	display: inline-block;
+}
+#root .row.content .main .post .postnotes .notes .note blockquote {
+	margin-top: 2px;
+	margin-bottom: 3px;
+	margin-left: 15px;
+	padding-left: 15px;
+}
+#root .row.content .main .post blockquote {
+	/* Blockquotes are used for quoted content from other users. */
+	margin-left: 14px;
+	padding-left: 14px;
+	border-left: 1px solid #CDCACA;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 05. Post meta                                                             */
+/* ------------------------------------------------------------------------- */
+
+#root .meta {
+	font-size: 11px;
+	color: #585151;
+	line-height: 17px;
+}
+#root .meta p {
+	position: relative;
+}
+#root .meta a {
+	color: #585251;
+	/* Use an inline-block to trim off internal whitespace. */
+	display: inline-block;
+}
+#root .post .info .meta .date a:first-child {
+}
+#root .post .info .meta .date a:first-child:after {
+	/* Trimming off the whitespace caused two adjecent links to be "glued" together. Fixing it here. */
+	content: " ";
+}
+#root .meta.meta-clean a {
+	text-decoration: none;
+}
+#root .meta a:hover {
+	color: #FF086B;
+}
+#root .meta .time {
+	text-transform: uppercase;
+}
+#root .meta .tag {
+	margin-right: 4px;
+}
+#root .meta .tag .name {
+}
+#root .meta .shorturl a {
+	position: absolute;
+	right: 0;
+	color: #9B9B9B;
+	text-decoration: none;
+	display: none;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 06. Post types                                                            */
+/* ------------------------------------------------------------------------- */
+
+/* 06.0. Text post */
+#root .row.content .main .post.type-text {
+}
+/* Some support for the theme readme page. */
+#root .row.content .main .post.type-text .term {
+	margin-bottom: 10px;
+}
+#root .row.content .main .post.type-text .term .option {
+	display: block;
+	font-weight: bold;
+}
+#root .row.content .main .post.type-text .term .definition {
+	display: block;
+	text-indent: 25px;
+}
+#root .row.content .main .post.type-text .body img {
+	max-width: 100%;
+	height: auto;
+	margin: 4px 0;
+}
+/* 06.1. Photo post */
+#root .row.content .main .post.type-photo {
+}
+#root .row.content .main .post.type-photo .media img {
+	display: block;
+}
+#root .row.content .main .post.type-photo .media img {
+	/* Proportionally resize photos to 500px. */
+	width: 100%;
+	height: auto;
+}
+#root .row.content .main .post.type-photo .post-content .caption {
+	margin-top: 10px;
+}
+/* 06.2. Photoset post */
+#root .row.content .main .post.type-photo.photoset {
+}
+#root .row.content .main .post.type-photo.photoset iframe {
+	display: block;
+}
+/* 06.3. Quote post */
+#root .row.content .main .post.type-quote {
+}
+#root .row.content .main .post.type-quote .quote {
+	font-size: 18px;
+	line-height: 24px;
+}
+#root .row.content .main .post.type-quote .quote:before {
+	content: '“';
+}
+#root .row.content .main .post.type-quote .quote:after {
+	content: '”';
+}
+#root .row.content .main .post.type-quote .source {
+	margin-top: 6px;
+}
+#root .row.content .main .post.type-quote .source:before {
+	content: '— ';
+}
+/* 06.4. Link post */
+#root .row.content .main .post.type-link {
+}
+#root .row.content .main .post.type-link .link .name {
+	font-size: 18px;
+	line-height: 24px;
+	padding: 6px 10px;
+	color: #006AFF;
+	border: 1px solid #006AFF;
+	display: block;
+	text-decoration: none;
+}
+#root .row.content .main .post.type-link .link .name:hover {
+	border-color: #FF086B;
+	color: #FF086B;
+}
+#root .row.content .main .post.type-link .description {
+	margin-top: 10px;
+}
+/* 06.5. Chat post */
+#root .row.content .main .post.type-chat {
+}
+#root .row.content .main .post.type-chat .chat {
+	border-bottom: 1px solid #CDCACA;
+	font-family: "Menlo", "Consolas", "Monaco", monospace;
+}
+#root .row.content .main .post.type-chat .chat li {
+	border: 1px solid #CDCACA;
+	border-bottom: none;
+	padding: 3px 6px;
+}
+#root .row.content .main .post.type-chat .chat li .label {
+	display: inline-block;
+}
+#root .row.content .main .post.type-chat .chat li .line {
+}
+/* 06.6. Audio post */
+#root .row.content .main .post.type-audio {
+}
+#root .row.content .main .post.type-audio .embed.native embed {
+	border: 1px solid #CDCACA;
+}
+/* 06.7. Video post */
+#root .row.content .main .post.type-video {
+}
+#root .row.content .main .post.type-video .embed {
+	display: block;
+	margin-bottom: 10px;
+}
+#root .row.content .main .post.type-video .embed iframe {
+	display: block;
+	width: 100%;
+	
+}
+/* 06.8. Answer post */
+#root .row.content .main .post.type-answer {
+}
+#root .row.content .main .post.type-answer .post-content .question .avatar {
+	float: left;
+	width: 71px;
+}
+#root .row.content .main .post.type-answer .post-content .question .avatar img {
+	display: block;
+}
+#root .row.content .main .post.type-answer .post-content {
+	
+}
+#root .row.content .main .post.type-answer .post-content .question .question-content {
+	position: relative;
+	overflow: hidden;
+}
+#root .row.content .main .post.type-answer .post-content .question .question-content .content {
+	font-size: 18px;
+	line-height: 24px;
+}
+#root .row.content .main .post.type-answer .post-content .question .arr-outer,
+#root .row.content .main .post.type-answer .post-content .question .arr-inner {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 5px;
+}
+#root .row.content .main .post.type-answer .post-content .question .arr-outer {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #D7D3D3 transparent transparent;
+}
+#root .row.content .main .post.type-answer .post-content .question .arr-inner {
+	width: 0px;
+	height: 0px;
+	margin: 1px 0 0 1px;
+	border-style: solid;
+	border-width: 7px 7px 7px 0;
+	border-color: transparent #ffffff transparent transparent;
+}
+#root .row.content .main .post.type-answer .post-content .question .inner {
+	display: block;
+	border: 1px solid #D7D3D3;
+	margin-left: 7px;
+	padding: 6px 10px;
+	min-height: 50px;
+}
+#root .row.content .main .post.type-answer .post-content .question .asker {
+	margin-top: 0;
+	margin-bottom: 4px;
+	font-size: 11px;
+	text-decoration: none;
+}
+#root .row.content .main .post.type-answer .post-content .answer {
+	margin: 14px 0 0;
+}
+
+
+/* 06.9. Post content */
+/* Basic styling for the HTML contents of the posts. */
+.post > .post-content a:visited {
+	/* Links directly inside post content get colored when they've been visited. */
+	color: #5E0FFF;
+	border-color: #5E0FFF;
+}
+.post > .post-content blockquote {
+	margin-left: 14px;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 07. Footer                                                                */
+/* ------------------------------------------------------------------------- */
+
+/* The footer has to be cleared (rather than using overflow:hidden on the content wrapper). Since the content wrapper has no height, we replace the margin with a padding. */
+#root .row.footer {
+	clear: both;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 25px;
+}
+#root .row.footer hr {
+	width: 730px;
+	margin-top: 25px;
+}
+#root .row.footer p {
+	margin: 10px 0;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 08. Dynamic elements                                                      */
+/* ------------------------------------------------------------------------- */
+
+/* The loading image, hidden by default. */
+.loader {
+	margin: 14px 0;
+	text-align: center;
+	display: block;
+	position: relative;
+	visibility: hidden;
+	display: none;
+}
+.loader .inner {
+	display: block;
+	text-indent: -9999px;
+	overflow: hidden;
+	/* fixme */
+	background: url('./jikuu.loader.png') 0 0 no-repeat #585151;
+	width: 16px;
+	height: 16px;
+}
+.loader .msg {
+	display: none;
+	font-size: 10px;
+	position: absolute;
+	font-weight: bold;
+	top: 0;
+	left: 20px;
+	line-height: 18px;
+	margin: 0;
+	text-align: left;
+	width: 500px;
+}
+.loader .done {
+	color: #585151;
+	display: none;
+}
+/* In case something goes wrong. */
+.loader.error .msg.error {
+	display: block;
+	color: red;
+}
+.loader.error .msg.done {
+	display: none;
+}
+
+/* A temporary container for new posts. */
+#tmp_container {
+	/* Can't be completely invisible, otherwise images won't auto-load. */
+	width: 1px;
+	height: 1px;
+	visibility: hidden;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 09. Variations                                                            */
+/* ------------------------------------------------------------------------- */
+
+/* Sidebar on the right side. */
+#root.sidebar-right .row.content .col {
+	/* Right sidebar variation. */
+	float: right;
+}
+#root.sidebar-right .row.content .sidebar {
+	margin-right: 0;
+	margin-left: 45px;
+}
+/* Display the JS loader and hide the regular page navigation when doing endless scrolling. */
+#root.endless-scrolling .loader {
+	display: block;
+}
+#root.endless-scrolling #container_nav .menu.nav {
+	display: none;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 10. Responsive features                                                   */
+/* ------------------------------------------------------------------------- */
+
+/* [Fluid] */
+@media (max-width: 609px) {
+	/* This is for very small devices, including portrait smartphones. */
+	#root {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+	#root .grid-container,
+	#root .row,
+	#root .col {
+		width: 100%;
+		margin-left: 0 !important;
+		float: none !important;
+	}
+	
+	/* Make floating items regular again. */
+	#root .fix-toggle-item.pmode .fix-content {
+		position: relative !important;
+		padding: 0 !important;
+	}
+	#root .fix-toggle-item.pmode .fix-gap {
+		position: fixed !important;
+	}
+	/* Limit the profile picture size and center it. */
+	#root .row.content .sidebar .section.me .profile-pic a img {
+		max-width: 350px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* [Main w-4] */
+@media (min-width: 610px)
+   and (max-width: 740px) {
+	#root .w-s-full {
+		float: none !important;
+	}
+	#root .w-s-1	{	width:			64px;		}
+	#root .w-s-2	{	width:			173px;		}
+	#root .w-s-3	{	width:			282px;		}
+	#root .w-s-4	{	width:			391px;		}
+	#root .w-s-5	{	width:			500px;		}
+	#root .w-s-6	{	width:			609px;		}
+	#root .w-s-7	{	width:			718px;		}
+	#root .w-s-8	{	width:			827px;		}
+	#root .w-s-9	{	width:			936px;		}
+	#root .w-s-10	{	width:			1045px;		}
+	#root .w-s-11	{	width:			1154px; 	}
+	#root .w-s-12	{	width:			1263px; 	}
+	#root .i-s-0	{	margin-left:	45px;		}
+	#root .i-s-1	{	margin-left:	154px;		}
+	#root .i-s-2	{	margin-left:	263px;		}
+	#root .i-s-3	{	margin-left:	372px;		}
+	#root .i-s-4	{	margin-left:	590px;		}
+	#root .i-s-5	{	margin-left:	699px;		}
+	#root .i-s-6	{	margin-left:	808px;		}
+	#root .i-s-7	{	margin-left:	917px;		}
+	#root .i-s-8	{	margin-left:	1024px;		}
+	#root .i-s-9	{	margin-left:	1135px;		}
+	#root .i-s-10	{	margin-left:	1244px;		}
+}
+
+/* [Main w-5] (Regular) */
+@media (min-width: 741px)
+and (max-width: 1300px) {
+	/* The standard rules apply. */
+}
+
+/* [Main w-10] (Large desktop). */
+@media (min-width: 1301px) {
+	#root .w-l-full {
+		float: none !important;
+	}
+	#root .w-l-1	{	width:			64px;		}
+	#root .w-l-2	{	width:			173px;		}
+	#root .w-l-3	{	width:			282px;		}
+	#root .w-l-4	{	width:			391px;		}
+	#root .w-l-5	{	width:			500px;		}
+	#root .w-l-6	{	width:			609px;		}
+	#root .w-l-7	{	width:			718px;		}
+	#root .w-l-8	{	width:			827px;		}
+	#root .w-l-9	{	width:			936px;		}
+	#root .w-l-10	{	width:			1045px;		}
+	#root .w-l-11	{	width:			1154px; 	}
+	#root .w-l-12	{	width:			1263px; 	}
+	#root .i-l-0	{	margin-left:	45px;		}
+	#root .i-l-1	{	margin-left:	154px;		}
+	#root .i-l-2	{	margin-left:	263px;		}
+	#root .i-l-3	{	margin-left:	372px;		}
+	#root .i-l-4	{	margin-left:	590px;		}
+	#root .i-l-5	{	margin-left:	699px;		}
+	#root .i-l-6	{	margin-left:	808px;		}
+	#root .i-l-7	{	margin-left:	917px;		}
+	#root .i-l-8	{	margin-left:	1024px;		}
+	#root .i-l-9	{	margin-left:	1135px;		}
+	#root .i-l-10	{	margin-left:	1244px;		}
+	
+	#root .row.content .main .post:nth-child(2) {
+		/* Hide the top padding for the second post in the container as well. */
+		padding-top: 0;
+	}
+	#root .row.content .main .post:nth-last-child(2) hr {
+		/* Hide the penultimate horizontal ruler. */
+		display: none;
+	}
+	#root .row.content .main .post:nth-last-child(2) .info {
+		/* Hide the bottom margin for the penultimate post. */
+		margin-bottom: 0;
+	}
+}

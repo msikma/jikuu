@@ -1,0 +1,37 @@
+- add photoset js
+
+------------------------------------------------------------------
+
+#	- modify the fixed item class, make it an id
+#	- add decorators
+	- add support for single-line tags
+#	- set tags to inline
+#	- quote post css
+#	- fix arrow in fluid-collapse container
+	- add support for special tags $large
+	- clean up the JS code
+	- check the CSS comments
+	- make a new logo (????)
+	- "show on left side" option
+	- fix the "originally from" text in the meta
+	- add the "stuff I like" section
+	- test the exif data display
+		- should it appear on overview?
+			- no
+	- test and fix the audio player
+	- fix test twitter callback
+		- http://butthug.com/tweets.js
+	- test Google Analytics in infinite scrolling (check api)
+	- check all source code indentation and superfluous spaces
+	- check if all non-html is properly put inside <p> tags
+	- test sidebar on the right
+	- add big cartel integration
+	- add google+ integration
+	- add mailchimp integration
+	- add support for typekit custom fonts
+	- add instagram support
+	- check for TODOs / FIXMEs
+
+
+	
+'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;

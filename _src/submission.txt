@@ -1,0 +1,20 @@
+Title:
+
+Jikuu
+
+----
+
+Summary:
+
+A simple, light, white background theme with plenty of customization options. Uses two columns (sidebar can be placed on either side). For those whose tumblog has words in it.
+
+----
+
+Description, FAQ, Links:
+
+<p>Jikuu Tumblr Theme 1.0<br />Copyright (C) Michiel Sikma &lt;mike@letsdeliver.com&gt;</p>
+<p>A simple, light, white background theme with plenty of customization options. Uses two columns (sidebar can be placed on either side). For those whose tumblog has words in it. The default body font is Lucida Sans, the header font is Futura.</p>
+<p>View <a href="http://jikuu.tumblr.com/" title="Jikuu Theme Example">http://jikuu.tumblr.com/</a> for an example. The theme readme/FAQ can be found <a href="http://jikuu.tumblr.com/readme" title="Jikuu Theme Readme">here</a>. If you have questions, please <a href="mailto:mike@letsdeliver.com" title="Mail the author">email me</a>.</p>
+
+----
+
