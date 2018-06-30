@@ -1,6 +1,7 @@
 # Development files.
 _test
 _todo
+todo.md
 
 # Development CSS builds
 static/css
