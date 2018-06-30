@@ -2,12 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}">
 <!--
 
-Jikuu Tumblr Theme r{{REV}}
-Copyright (C) {{COPYRIGHT_YEAR}}, Michiel Sikma <mike@letsdeliver.com>
-Build date: {{BUILD_DATE}}
-
-You can see this theme in action at <http://jikuu.tumblr.com/>.
-Visit <http://michielsikma.tumblr.com/> for more themes.
+Jikuu Tumblr Theme (<%= htmlWebpackPlugin.options.rev %>)
+Copyright © 2009-<%= htmlWebpackPlugin.options.year %>, Michiel Sikma. MIT license.
+Build date: <%= htmlWebpackPlugin.options.buildDate %>
 
 (；ﾟ～ﾟ)ゝ”
 
@@ -82,7 +79,6 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 	<!-- ↓ base layout type -->
   <meta name="select:Layout" content="regular" title="Regular">
   <meta name="select:Layout" content="narrow" title="Narrow">
-  <meta name="select:Layout" content="fullwidth" title="Full width">
 	
 	<!-- External links and social media -->
 	<meta name="if:External RSS feed link" content="1" />
@@ -117,14 +113,8 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 	<!-- External connections -->
 	<!-- ↓ Google Analytics ID (e.g. UA-1234567-89) -->
 	<meta name="text:Google Analytics ID" content="" />
-	<!-- ↓ if available, shows the latest tweets -->
-	<meta name="text:Twitter username" content="" />
-	<!-- ↓ amount of tweets shown (default: 5) -->
-	<meta name="text:Twitter message amount" content="5" />
 	<!-- ↓ if available, shown after the copyright symbol and years string -->
 	<meta name="text:Additional copyright info" content="" />
-	<!-- ↓ enables Disqus discussions on permalink pages -->
-	<meta name="text:Disqus post comments shortname" content="" />
 	
 	<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=2.0, width=480" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,86 +122,70 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 	<link rel="icon" type="image/png" href="{Favicon}" />
 	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
-	<!-- {xblock:Test} -->
-	<link rel="stylesheet" href="http://michiel/tumblr_themes/jikuu/trunk/css/jikuu.css" type="text/css" media="screen" />
-	<!-- {/xblock:Test} -->
-	<!-- {xblock:Live}
-	<link rel="stylesheet" href="http://michiel/tumblr_themes/jikuu/trunk/build/jikuu.min.css" type="text/css" media="screen" />
-	{/xblock:Live} -->
+
+	<!-- ↓ theme CSS -->
+	<% for (const css in htmlWebpackPlugin.files.css) { %>
+	<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+	<% } %>
 	
+	<!-- ↓ user CSS overrides -->
 	<style type="text/css" media="screen">
-	/* Overrides based on user preferences. */
-	/* TODO */
-	
-	/* Custom CSS, if defined. */
 	{CustomCSS}
 	</style>
 	
-	<!-- {xblock:Test} -->
-	<script type="text/javascript" src="http://michiel/tumblr_themes/jikuu/trunk/js/jquery.min.js"></script>
-	<script type="text/javascript" src="http://michiel/tumblr_themes/jikuu/trunk/js/jquery.photoset-grid.js"></script>
-	<script type="text/javascript" src="http://michiel/tumblr_themes/jikuu/trunk/js/moment.min.js"></script>
-	<script type="text/javascript" src="http://michiel/tumblr_themes/jikuu/trunk/js/jikuu.js"></script>
-	<!-- {/xblock:Test} -->
-	<!-- {xblock:Live}
-	<script type="text/javascript" src="http://michiel/tumblr_themes/jikuu/trunk/build/jikuu.min.js"></script>
-	{/xblock:Live} -->
+	<!-- ↓ theme interface code -->
+	<% for (const chunk in htmlWebpackPlugin.files.chunks) { %>
+	<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+	<% } %>
+	<!-- ↓ settings to pass on to the interface code -->
 	<script type="text/javascript" data-jikuu="settings">
-	var settings = {
-		rev: "{{REV}}",
+	Jikuu.configure({
+		rev: { count: '<%= htmlWebpackPlugin.options.count %>', hash: '<%= htmlWebpackPlugin.options.hash %>', branch: '<%= htmlWebpackPlugin.options.branch %>' },
 		i18n: {
-			lang: "{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}",
+			lang: '{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}',
 			str: {
-				loading: "{lang:Loading}",
-				no_more_posts: "{lang:No more posts}"
+				loading: '{lang:Loading}',
+				noMorePosts: '{lang:No more posts}'
 			}
 		},
 		layout: {
-			use_endless_scrolling: {block:IfUseEndlessScrolling}true{/block:IfUseEndlessScrolling}{block:IfNotUseEndlessScrolling}false{/block:IfNotUseEndlessScrolling},
-			photoset_gutter_size: "{text:Photoset gutter size}",
-			show_tags_as_single_line: {block:IfShowTagsAsSingleLine}true{/block:IfShowTagsAsSingleLine}{block:IfNotShowTagsAsSingleLine}false{/block:IfNotShowTagsAsSingleLine}
+			useEndlessScrolling: {block:IfUseEndlessScrolling}true{/block:IfUseEndlessScrolling}{block:IfNotUseEndlessScrolling}false{/block:IfNotUseEndlessScrolling},
+			photosetGutterSize: "{text:Photoset gutter size}"
 		}
-	};
-	Jikuu.configure(settings);
+	})
 	</script>
 	{block:IfGoogleAnalyticsID}
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', '{text:Google Analytics ID}', 'auto');
-  ga('send', 'pageview');
+	<!-- ↓ Google Analytics code -->
+  <script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', '{text:Google Analytics ID}', 'auto');
+	ga('send', 'pageview');
   </script>
 	{/block:IfGoogleAnalyticsID}
-	{block:IfDisqusPostCommentShortname}
-	<script type="text/javascript">
-	var disqus_shortname = "{text:Disqus Post Comment Shortname}";
-	(function() {
-	var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
-	dsq.src = "//"+disqus_shortname+".disqus.com/embed.js";
-	(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
-	})();
-	</script>
-	{/block:IfDisqusPostCommentShortname}
 </head>
 
 <body>
 	<p class="textnav aural-only"><a href="#content_main_hajime">Jump to content</a></p>
-	<div data-urlencoded-name="{URLEncodedName}" id="root" data-pagetype="{block:IndexPage}index{/block:IndexPage}{block:PermalinkPage}permalink{/block:PermalinkPage}" class="page{block:IfShowSidebarOnTheRightSide} sidebar-right{/block:IfShowSidebarOnTheRightSide}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}{block:IndexPage} index{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:IfUseEndlessScrolling} endless-scrolling{/block:IfUseEndlessScrolling}{block:DayPage} daypage archive{/block:DayPage}{block:TagPage} tagpage archive{/block:TagPage}" data-url="{block:PermalinkPage}{block:Posts}{Permalink}{/block:Posts}{/block:PermalinkPage}">
-		<div class="grid-container w-s-6 w-7 w-l-12">
-			<div id="header" class="row header">
-				<div class="col w-full">
+	<div data-urlencoded-name="{URLEncodedName}" id="root" data-page-type="{block:IndexPage}index{/block:IndexPage}{block:PermalinkPage}permalink{/block:PermalinkPage}" class="page{block:IfShowSidebarOnTheRightSide} sidebar-right{/block:IfShowSidebarOnTheRightSide}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}{block:IndexPage} index{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:IfUseEndlessScrolling} endless-scrolling{/block:IfUseEndlessScrolling}{block:DayPage} daypage archive{/block:DayPage}{block:TagPage} tagpage archive{/block:TagPage}" data-url="{block:PermalinkPage}{block:Posts}{Permalink}{/block:Posts}{/block:PermalinkPage}">
+		<div class="grid-container">
+			<!-- ↓ main header -->
+			<header id="header" class="row header{block:IfHeaderImage} header-image{/block:IfHeaderImage}{block:IfNotHeaderImage} no-header-image{/block:IfNotHeaderImage}">
+				<div class="col">
 				{block:IfHeaderImage}
-					<h1 class="title img" id="title"><a href="/"><img src="{image:Header}" alt="{PlaintextTitle}" /></a></h1>
+					<h1 class="title img" id="title"><a href="/"><span class="text">{Title}</span><img src="{image:Header}" alt="{PlaintextTitle}" /></a></h1>
 				{/block:IfHeaderImage}
 				{block:IfNotHeaderImage}
 					<h1 class="title txt" id="title"><a href="/">{Title}</a></h1>
 				{/block:IfNotHeaderImage}
 				</div>
-			</div>
-			<div class="row content" id="content">
-				<div class="col w-2 sidebar" id="content_sidebar">
+			</header>
+			<!-- ↓ main content -->
+			<section class="row content" id="content">
+				<!-- ↓ sidebar with navigation and blog information -->
+				<div class="col sidebar" id="content_sidebar">
 					<div class="section-container">
 						<div class="section me" id="section_me">
 						{block:IfShowProfilePhoto}
@@ -267,9 +241,9 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 						</script>
 						<hr />
 						{/block:IfShowSocialMediaLinks}
-						<div class="section navigation col w-2 col-nofloat{block:IfAlwaysKeepMainNavigationVisible} sticky{/block:IfAlwaysKeepMainNavigationVisible}" id="section_nav">
-							<div class="subsection{block:IfAlwaysKeepMainNavigationVisible} sticky-content{/block:IfAlwaysKeepMainNavigationVisible}">
-								<h3 class="title{block:IfNotShowNavigateHeader} hid{/block:IfNotShowNavigateHeader}">{lang:Navigate}</h3>
+						<div class="section navigation col{block:IfAlwaysKeepMainNavigationVisible} sticky{/block:IfAlwaysKeepMainNavigationVisible}" id="section_nav">
+							<nav class="subsection">
+								<h3 class="title{block:IfNotShowNavigateHeader} hidden{/block:IfNotShowNavigateHeader}">{lang:Navigate}</h3>
 								<ul class="menu nav">
 									<li{block:IndexPage} class="active"{/block:IndexPage}><a href="/"><span>{lang:Home}</span></a></li>
 									<li><a href="/archive"><span>{lang:Archive}</span></a></li>
@@ -293,30 +267,19 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 									<p class="search-submit"><input type="submit" value="{lang:Search}" /></p>
 								</form>
 								{/block:IfShowSearchField}
-							</div>
+							</nav>
 						</div>
 						<script>
 						Jikuu.decorate("#section_nav");
 						</script>
 						<hr />
-						{block:IfTwitterUsername}
-						<div class="section twitter fluid-collapse" id="section_twitter">
-							<h3 class="title fluid-collapse-link">{lang:Latest Tweets}<span class="arr"></span></h3>
-							<div class="twitter-container fluid-collapse-content" id="twitter_update_list"></div>
-						</div>
-						<hr />
-						<script>
-						Jikuu.decorate("#section_twitter");
-						</script>
-						<script type="text/javascript" src="http://api.twitter.com/1/statuses/user_timeline.json?screen_name={text:Twitter username}&amp;include_rts=true&amp;count={text:Twitter message amount}&amp;callback=Jikuu.add_tweets"></script>
-						{/block:IfTwitterUsername}
 						{block:IfShowListOfGroupBlogContributors}
 						{block:GroupMembers}
 						<div class="section blogs contributors fluid-collapse" id="section_contributors">
 							<h3 class="title fluid-collapse-link">{lang:Contributors}<span class="arr"></span></h3>
 							<ul class="blog-list fluid-collapse-content">
 							{block:GroupMember}
-								<li class="blog"><a href="{GroupMemberURL}" class="icon-link" title="{PlaintextGroupMemberTitle}"><span class="icon" style="background-image: url({GroupMemberPortraitURL-16});"></span>{GroupMemberName}</a></li>
+								<li class="blog"><a href="{GroupMemberURL}" class="icon-link" title="{PlaintextGroupMemberTitle}"><span class="icon" style="background-image: url({GroupMemberPortraitURL-32});"></span>{GroupMemberName}</a></li>
 							{/block:GroupMember}
 							</ul>
 							<hr />
@@ -332,7 +295,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 							<h3 class="title fluid-collapse-link">{lang:People I follow}<span class="arr"></span></h3>
 							<ul class="blog-list fluid-collapse-content">
 							{block:Followed}
-								<li class="blog"><a href="{FollowedURL}" class="icon-link" title="{PlaintextFollowedTitle}"><span class="icon" style="background-image: url({FollowedPortraitURL-16});"></span>{FollowedName}</a></li>
+								<li class="blog"><a href="{FollowedURL}" class="icon-link" title="{PlaintextFollowedTitle}"><span class="icon" style="background-image: url({FollowedPortraitURL-32});"></span>{FollowedName}</a></li>
 							{/block:Followed}
 							</ul>
 						</div>
@@ -350,7 +313,8 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 						{/block:IfShowCopyrightSection}
 					</div>
 				</div>
-				<div class="col main w-s-4 w-5 w-l-10" id="content_main">
+				<!-- ↓ post page header -->
+				<div class="col main" id="content_main">
 					<p class="textnav aural-only"><a id="content_main_hajime" class="jump"><!-- Main content start --></a></p>
 					{block:DayPage}
 					<div class="nav day meta">
@@ -379,12 +343,14 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 					Jikuu.decorate("#container_tmp");
 					</script>
 					{/block:IfUseEndlessScrolling}
+					<!-- ↓ post container -->
 					<div class="post-container row" id="container_posts">
 						<!-- jikuu_post_container_初め -->
 						{block:Posts}
-						<div class="post col w-s-4 w-5 id-{PostID}{block:PermalinkPage} w-l-8{/block:PermalinkPage} type-{PostType}{block:Panorama} panorama{/block:Panorama}{block:Photoset} photoset photoset-amount-{PhotoCount} photoset-layout-{PhotosetLayout}{/block:Photoset}{block:Quote} quote-length-{Length}{/block:Quote}{block:HasTags} {TagsAsClasses}{/block:HasTags}"{block:HasTags} data-tags="{TagsAsClasses}"{/block:HasTags} data-type="post" data-permalink="{Permalink}" data-shorturl="{ShortURL}" data-id="{PostID}" id="post_{PostID}">
+						<article class="post col id-{PostID} type-{PostType}{block:Panorama} panorama{/block:Panorama}{block:Photoset} photoset photoset-amount-{PhotoCount} photoset-layout-{PhotosetLayout}{/block:Photoset}{block:Quote} quote-length-{Length}{/block:Quote}{block:HasTags} {TagsAsClasses}{/block:HasTags}"{block:HasTags} data-tags="{TagsAsClasses}"{/block:HasTags} data-type="post" data-permalink="{Permalink}" data-shorturl="{ShortURL}" data-id="{PostID}" id="post_{PostID}">
 							<div class="post-content">
 							
+							<!-- ↓ text post -->
 							{block:Text}
 								{block:Title}
 								<p class="title">{Title}</p>
@@ -392,6 +358,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								<div class="body html-content">{Body}</div>
 							{/block:Text}
 							
+							<!-- ↓ photo post -->
 							{block:Photo}
 								<div class="media{block:HighRes} has-highres{/block:HighRes}">
 									<p class="photo">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" />{LinkCloseTag}</p>
@@ -411,6 +378,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								{/block:Caption}
 							{/block:Photo}
 							
+							<!-- ↓ panorama post -->
 							{block:Panorama}
 								<div class="media panorama">
 									<p class="photo">{LinkOpenTag}<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" width="{PhotoWidth-Panorama}" height="{PhotoHeight-Panorama}" />{LinkCloseTag}</p>
@@ -420,6 +388,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								{/block:Caption}
 							{/block:Panorama}
 							
+							<!-- ↓ photoset post -->
 							{block:Photoset}
 								<div class="media photoset-grid" data-layout="{PhotosetLayout}" data-amount="{PhotoCount}" data-id="photoset-{PostID}">
 									{block:Photos}
@@ -431,6 +400,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								{/block:Caption}
 							{/block:Photoset}
 							
+							<!-- ↓ quote post -->
 							{block:Quote}
 								<blockquote class="quote text">{Quote}</blockquote>
 								{block:Source}
@@ -438,6 +408,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								{/block:Source}
 							{/block:Quote}
 							
+							<!-- ↓ link post -->
 							{block:Link}
 								<p class="link"><a class="name" href="{URL}" {Target}>{Name}</a></p>
 								{block:Description}
@@ -445,6 +416,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								{/block:Description}
 							{/block:Link}
 							
+							<!-- ↓ chat post -->
 							{block:Chat}
 								{block:Title}
 								<p class="title">{Title}</p>
@@ -456,6 +428,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								</ul>
 							{/block:Chat}
 							
+							<!-- ↓ audio post -->
 							{block:Audio}
 								<div class="audio{block:AlbumArt} has-art{/block:AlbumArt}{block:Artist} has-artist{/block:Artist}{block:Album} has-album{/block:Album}{block:TrackName} has-trackname{/block:TrackName}"{block:Artist} data-artist="{PlaintextArtist}"{/block:Artist}{block:Album} data-album="{PlaintextAlbum}"{/block:Album}{block:TrackName} data-trackname="{PlaintextTrackname}"{/block:TrackName}>
 									{block:AlbumArt}
@@ -492,6 +465,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								</div>
 							{/block:Audio}
 							
+							<!-- ↓ video post -->
 							{block:Video}
 								<div class="embed">{Video-500}</div>
 								{block:Caption}
@@ -502,9 +476,10 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 								</div>
 							{/block:Video}
 							
+							<!-- ↓ answer post -->
 							{block:Answer}
 								<div class="question">
-									<div class="avatar"><img src="{AskerPortraitURL-64}" width="64" height="64" /></div>
+									<div class="avatar"><img src="{AskerPortraitURL-128}" width="64" height="64" /></div>
 									<div class="question-content">
 										<div class="arr-outer"></div>
 										<div class="arr-inner"></div>
@@ -521,6 +496,8 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 							{block:More}
 							<div class="readmore"><a href="{Permalink}">{lang:Read more}</a></div>
 							{/block:More}
+
+							<!-- ↓ post meta information -->
 							<div class="info{block:IfShowAuthorAvatar} with-avatar{/block:IfShowAuthorAvatar}{block:IfShowAuthorName} with-name{/block:IfShowAuthorName}{block:HasTags} has-tags{/block:HasTags}">
 								{block:IfShowAuthorAvatar}
 								<div class="avatar">
@@ -554,20 +531,15 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 							<hr class="post-sep" />
 							{/block:IndexPage}
 							{block:PermalinkPage}
-							{block:IfDisqusPostCommentShortname}
-							<div class="comments" id="disqus_thread"></div>
-							<noscript class="comments-noscript">Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-							<div class="comments-disqus-logo"><a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span>.</a></div>
-							{/block:IfDisqusPostCommentShortname}
 							{block:PostNotes}
 							<hr />
 							<div class="postnotes count-{NoteCount}">
-								{PostNotes-16}
+								{PostNotes-32}
 							</div>
 							<hr class="post-sep" />
 							{/block:PostNotes}
 							{/block:PermalinkPage}
-						</div>
+						</article>
 						<script>
 						Jikuu.decorate("#post_{PostID}");
 						</script>
@@ -607,7 +579,7 @@ Visit <http://michielsikma.tumblr.com/> for more themes.
 					</script>
 					{/block:IfUseEndlessScrolling}
 				</div>
-			</div>
+			</section>
 		</div>
 	</div>
 </body>
