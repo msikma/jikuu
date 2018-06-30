@@ -350,16 +350,16 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
             <article class="post col id-{PostID} type-{PostType}{block:Panorama} panorama{/block:Panorama}{block:Photoset} photoset photoset-amount-{PhotoCount} photoset-layout-{PhotosetLayout}{/block:Photoset}{block:Quote} quote-length-{Length}{/block:Quote}{block:HasTags} {TagsAsClasses}{/block:HasTags}"{block:HasTags} data-tags="{TagsAsClasses}"{/block:HasTags} data-type="post" data-permalink="{Permalink}" data-shorturl="{ShortURL}" data-id="{PostID}" id="post_{PostID}">
               <div class="post-content">
               
-              <!-- ↓ text post -->
               {block:Text}
+                <!-- ↓ text post -->
                 {block:Title}
                 <p class="title">{Title}</p>
                 {/block:Title}
                 <div class="body html-content">{Body}</div>
               {/block:Text}
               
-              <!-- ↓ photo post -->
               {block:Photo}
+                <!-- ↓ photo post -->
                 <div class="media{block:HighRes} has-highres{/block:HighRes}">
                   <p class="photo">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" />{LinkCloseTag}</p>
                 </div>
@@ -378,8 +378,8 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 {/block:Caption}
               {/block:Photo}
               
-              <!-- ↓ panorama post -->
               {block:Panorama}
+                <!-- ↓ panorama post -->
                 <div class="media panorama">
                   <p class="photo">{LinkOpenTag}<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" width="{PhotoWidth-Panorama}" height="{PhotoHeight-Panorama}" />{LinkCloseTag}</p>
                 </div>
@@ -388,8 +388,8 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 {/block:Caption}
               {/block:Panorama}
               
-              <!-- ↓ photoset post -->
               {block:Photoset}
+                <!-- ↓ photoset post -->
                 <div class="media photoset-grid" data-layout="{PhotosetLayout}" data-amount="{PhotoCount}" data-id="photoset-{PostID}">
                   {block:Photos}
                   <img src="{PhotoURL-500}"{block:HighRes} data-highres="{PhotoURL-HighRes}"{/block:HighRes}{block:Caption} alt="{PlaintextCaption}"{/block:Caption} />
@@ -400,24 +400,24 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 {/block:Caption}
               {/block:Photoset}
               
-              <!-- ↓ quote post -->
               {block:Quote}
+                <!-- ↓ quote post -->
                 <blockquote class="quote text">{Quote}</blockquote>
                 {block:Source}
                 <div class="source"><div class="dash">—</div><div class="content html-content">{Source}</div></div>
                 {/block:Source}
               {/block:Quote}
               
-              <!-- ↓ link post -->
               {block:Link}
+                <!-- ↓ link post -->
                 <p class="link"><a class="name" href="{URL}" {Target}>{Name}</a></p>
                 {block:Description}
                 <div class="description html-content">{Description}</div>
                 {/block:Description}
               {/block:Link}
               
-              <!-- ↓ chat post -->
               {block:Chat}
+                <!-- ↓ chat post -->
                 {block:Title}
                 <p class="title">{Title}</p>
                 {/block:Title}
@@ -428,8 +428,8 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 </ul>
               {/block:Chat}
               
-              <!-- ↓ audio post -->
               {block:Audio}
+                <!-- ↓ audio post -->
                 <div class="audio{block:AlbumArt} has-art{/block:AlbumArt}{block:Artist} has-artist{/block:Artist}{block:Album} has-album{/block:Album}{block:TrackName} has-trackname{/block:TrackName}"{block:Artist} data-artist="{PlaintextArtist}"{/block:Artist}{block:Album} data-album="{PlaintextAlbum}"{/block:Album}{block:TrackName} data-trackname="{PlaintextTrackname}"{/block:TrackName}>
                   {block:AlbumArt}
                   <div class="art">
@@ -465,8 +465,8 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 </div>
               {/block:Audio}
               
-              <!-- ↓ video post -->
               {block:Video}
+                <!-- ↓ video post -->
                 <div class="embed">{Video-500}</div>
                 {block:Caption}
                 <div class="caption">{Caption}</div>
@@ -476,8 +476,8 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 </div>
               {/block:Video}
               
-              <!-- ↓ answer post -->
               {block:Answer}
+                <!-- ↓ answer post -->
                 <div class="question">
                   <div class="avatar"><img src="{AskerPortraitURL-128}" width="64" height="64" /></div>
                   <div class="question-content">
