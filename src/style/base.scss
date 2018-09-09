@@ -1,0 +1,76 @@
+/** Jikuu Tumblr Theme - Basic settings */
+
+html, body {
+  margin: 0;
+}
+body {
+  line-height: 1;
+}
+a {
+  text-decoration: none;
+  color: $primary;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+  color: $hover;
+}
+#root {
+  padding: 0 25px;
+  font-family: $body-font;
+  font-size: 12px;
+  line-height: 19px;
+
+  .grid-container {
+    width: 718px;
+    margin: auto;
+
+    // On small sizes, revert to full width.
+    @media screen and (max-width: $break-small) {
+      width: 100%;
+    }
+
+    // Header section.
+    #header {
+      margin: 0 0 25px 0;
+      border-bottom: 5px solid $primary;
+
+      #title {
+        font-size: 31px;
+        line-height: 23px;
+        padding: 29px 0 14px;
+        color: $primary;
+        text-align: center;
+        text-decoration: none;
+        margin: 0;
+
+        &.img .text {
+          display: none;
+        }
+      }
+    }
+
+    // Content section.
+    #content {
+      margin: 25px 0;
+
+      .sidebar {
+        margin-bottom: 45px;
+        float: left;
+        min-height: 1px;
+        width: 173px;
+      }
+      .main {
+        float: left;
+        min-height: 1px;
+        width: 500px;
+        margin-left: 45px;
+      }
+    }
+  }
+}
+
+// Hide elements only for screen readers.
+.aural-only {
+  display: none;
+}

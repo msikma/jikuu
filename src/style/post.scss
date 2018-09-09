@@ -1,0 +1,66 @@
+/** Jikuu Tumblr Theme - Common post styles */
+
+#container_posts {
+  .post {
+    &:first-child {
+      h2.title {
+        margin-top: 0;
+      }
+    }
+
+    // Text quoted from other blogs.
+    .caption.html-content {
+      margin-top: 10px;
+
+      blockquote {
+        margin-left: 14px;
+        padding-left: 14px;
+        border-left: 1px solid $light-gray;
+      }
+    }
+
+    // Post info with metadata, possibly containing a user avatar.
+    .info {
+      overflow: hidden;
+      margin-top: 8px;
+
+      .avatar {
+        float: left;
+
+        p {
+          margin: 2px 8px 0 0;
+        }
+      }
+      .meta {
+        font-size: 11px;
+        color: $meta-text;
+        line-height: 17px;
+
+        p {
+          margin: 0;
+        }
+
+        a {
+          color: $meta-text;
+          &:hover {
+            color: $hover;
+          }
+        }
+        .shorturl a {
+          width: 11px;
+          height: 11px;
+          display: inline-block;
+          position: relative;
+          overflow: hidden;
+          top: 2px;
+          text-indent: -9999px;
+        }
+      }
+    }
+  }
+  // Extends the regular <hr /> styling.
+  .post-sep {
+    margin: 25px 0;
+    height: 5px;
+  }
+}

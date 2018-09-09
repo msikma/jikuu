@@ -1,3 +1,38 @@
-* {
-  outline: 1px solid red;
-}
+/**
+ * Jikuu Tumblr Theme - CSS Code
+ * Copyright (C) 2009-2018, Michiel Sikma. MIT license.
+ */
+
+$primary: #006AFF;
+$visited: #5E0FFF;
+$hover: #FF086B;
+$light-gray: #CDCACA;
+$dark-gray: #696161;
+$meta-text: #585151;
+$dark-lines: #0A0A0B;
+$meta-links: #0A0A0B;
+$outer-color: #FFFFFF;
+$shadow-color: #696161;
+
+$body-font: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+$header-font: Futura, 'Century Gothic', AppleGothic, sans-serif;
+
+$base-width: 718px;
+$break-small: 768px;
+
+@import "style/mixins.scss";
+@import "style/base.scss";
+@import "style/common.scss";
+@import "style/dynamic.scss";
+@import "style/footer.scss";
+@import "style/sidebar.scss";
+@import "style/post.scss";
+@import "style/posts/answer.scss";
+@import "style/posts/audio.scss";
+@import "style/posts/chat.scss";
+@import "style/posts/link.scss";
+@import "style/posts/photo.scss";
+@import "style/posts/photoset.scss";
+@import "style/posts/quote.scss";
+@import "style/posts/text.scss";
+@import "style/posts/video.scss";

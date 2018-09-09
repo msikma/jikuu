@@ -12,12 +12,12 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
 <head>
   {MobileAppHeaders}
   <meta charset="utf-8" />
-  
+
   <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:DayPage} ({lang:Viewing everything posted on Month DayOfMonth Year}){/block:DayPage}{block:TagPage} ({lang:Showing posts tagged Tag}){/block:TagPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
   {block:Description}
   <meta name="description" content="{MetaDescription}" />
   {/block:Description}
-  
+
   <!-- Colors -->
   <meta name="color:Text" content="#0B0A0A" />
   <meta name="color:Primary" content="#006AFF" />
@@ -30,18 +30,20 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <meta name="color:Menu Border" content="#020000" />
   <meta name="color:Meta Links" content="#585251" />
   <meta name="color:Meta Text" content="#585151" />
-  
+
   <!-- Fonts -->
   <meta name="font:Body Font" content="'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif" />
   <meta name="font:Header Font" content="Futura, 'Century Gothic', AppleGothic, sans-serif" />
-  
+
   <!-- Images -->
   <meta name="image:Header" content="" />
   <meta name="image:Profile photo" content="" />
-  
+
   <!-- Layout settings -->
   <!-- ↓ displays your icon or profile photo in the sidebar -->
   <meta name="if:Show profile photo" content="1" />
+  <!-- ↓ adds a link to the post's short URL in the meta section -->
+  <meta name="if:Show shortlink" content="1" />
   <!-- ↓ proportionally stretches the profile photo to the sidebar width -->
   <meta name="if:Use big profile photo" content="1" />
   <!-- ↓ shows your blog description at the top of the sidebar -->
@@ -79,46 +81,46 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <!-- ↓ base layout type -->
   <meta name="select:Layout" content="regular" title="Regular">
   <meta name="select:Layout" content="narrow" title="Narrow">
-  
+
   <!-- External links and social media -->
   <meta name="if:External RSS feed link" content="1" />
-  
+
   <meta name="text:External Twitter URL" content="" />
   <meta name="text:External Twitter text" content="" />
-  
+
   <meta name="text:External Facebook URL" content="" />
   <meta name="text:External Facebook text" content="" />
-  
+
   <meta name="text:External Bandcamp URL" content="" />
   <meta name="text:External Bandcamp text" content="" />
-  
+
   <meta name="text:External Youtube URL" content="" />
   <meta name="text:External Youtube text" content="" />
-  
+
   <meta name="text:External website URL" content="" />
   <meta name="text:External website text" content="" />
-  
+
   <meta name="text:External email address" content="" />
   <meta name="text:External email text" content="" />
-  
+
   <meta name="text:External Flickr URL" content="" />
   <meta name="text:External Flickr text" content="" />
-  
+
   <meta name="text:External Vimeo URL" content="" />
   <meta name="text:External Vimeo text" content="" />
-  
+
   <meta name="text:External Instagram URL" content="" />
   <meta name="text:External Instagram text" content="" />
-  
+
   <!-- External connections -->
   <!-- ↓ Google Analytics ID (e.g. UA-1234567-89) -->
   <meta name="text:Google Analytics ID" content="" />
   <!-- ↓ if available, shown after the copyright symbol and years string -->
   <meta name="text:Additional copyright info" content="" />
-  
+
   <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=2.0, width=480" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  
+
   <link rel="icon" type="image/png" href="{Favicon}" />
   <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
@@ -127,12 +129,12 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <% for (const css in htmlWebpackPlugin.files.css) { %>
   <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
   <% } %>
-  
+
   <!-- ↓ user CSS overrides -->
   <style type="text/css" media="screen">
   {CustomCSS}
   </style>
-  
+
   <!-- ↓ theme interface code -->
   <% for (const chunk in htmlWebpackPlugin.files.chunks) { %>
   <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
@@ -200,47 +202,47 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               </div>
               {/block:Description}
             {/block:IfShowBlogDescription}
+            {block:IfShowSocialMediaLinks}
+              <div class="subsection follow-links" id="section_socmed">
+                <ul>
+                {block:IfExternalRSSFeedLink}
+                  <li class="follow"><a class="icon-button icon-link rss" href="{RSS}"><span class="icon"></span>{lang:Subscribe via RSS}</a></li>
+                {/block:IfExternalRSSFeedLink}
+                {block:IfExternalTwitterURL}
+                  <li class="follow"><a class="icon-button icon-link twitter" href="{text:External Twitter URL}"></a><span class="icon"></span>{block:IfExternalTwitterText}{text:External Twitter text}{/block:IfExternalTwitterText}{block:IfNotExternalTwitterText}Twitter{/block:IfNotExternalTwitterText}</li>
+                {/block:IfExternalTwitterURL}
+                {block:IfExternalFacebookURL}
+                  <li class="follow"><a class="icon-button icon-link facebook" href="{text:External Facebook URL}"></a><span class="icon"></span>{block:IfExternalFacebookText}{text:External Facebook text}{/block:IfExternalFacebookText}{block:IfNotExternalFacebookText}Facebook{/block:IfNotExternalFacebookText}</li>
+                {/block:IfExternalFacebookURL}
+                {block:IfExternalBandcampURL}
+                  <li class="follow"><a class="icon-button icon-link bandcamp" href="{text:External Bandcamp URL}"></a><span class="icon"></span>{block:IfExternalBandcampText}{text:External Bandcamp text}{/block:IfExternalBandcampText}{block:IfNotExternalBandcampText}Bandcamp{/block:IfNotExternalBandcampText}</li>
+                {/block:IfExternalBandcampURL}
+                {block:IfExternalFlickrURL}
+                  <li class="follow"><a class="icon-button icon-link flickr" href="{text:External Youtube URL}"></a><span class="icon"></span>{block:IfExternalFlickrText}{text:External Flickr text}{/block:IfExternalFlickrText}{block:IfNotExternalFlickrText}Flickr{/block:IfNotExternalFlickrText}</li>
+                {/block:IfExternalFlickrURL}
+                {block:IfExternalYoutubeURL}
+                  <li class="follow"><a class="icon-button icon-link youtube" href="{text:External website URL}"></a><span class="icon"></span>{block:IfExternalYoutubeText}{text:External Youtube text}{/block:IfExternalYoutubeText}{block:IfNotExternalYoutubeText}Youtube{/block:IfNotExternalYoutubeText}</li>
+                {/block:IfExternalYoutubeURL}
+                {block:IfExternalVimeoURL}
+                  <li class="follow"><a class="icon-button icon-link vimeo" href="{text:External email address}"></a><span class="icon"></span>{block:IfExternalVimeoText}{text:External Vimeo text}{/block:IfExternalVimeoText}{block:IfNotExternalVimeoText}Vimeo{/block:IfNotExternalVimeoText}</li>
+                {/block:IfExternalVimeoURL}
+                {block:IfExternalWebsiteURL}
+                  <li class="follow"><a class="icon-button icon-link website" href="{text:External Flickr URL}"></a><span class="icon"></span>{block:IfExternalWebsiteText}{text:External website text}{/block:IfExternalWebsiteText}{block:IfNotExternalWebsiteText}Website{/block:IfNotExternalWebsiteText}</li>
+                {/block:IfExternalWebsiteURL}
+                {block:IfExternalEmailAddress}
+                  <li class="follow"><a class="icon-button icon-link email" href="{text:External Vimeo URL}"></a><span class="icon"></span>{block:IfExternalEmailText}{text:External email text}{/block:IfExternalEmailText}{block:IfNotExternalEmailText}Email{/block:IfNotExternalEmailText}</li>
+                {/block:IfExternalEmailAddress}
+                </ul>
+              </div>
+              <script>
+              Jikuu.decorate("#section_socmed");
+              </script>
+            {/block:IfShowSocialMediaLinks}
             </div>
             <script>
             Jikuu.decorate("#section_me");
             </script>
-            {block:IfShowSocialMediaLinks}
-            <div class="subsection follow-links" id="section_socmed">
-              <ul>
-              {block:IfExternalRSSFeedLink}
-                <li class="follow"><a class="icon-button icon-link rss" href="{RSS}"><span class="icon"></span>{lang:Subscribe via RSS}</a></li>
-              {/block:IfExternalRSSFeedLink}
-              {block:IfExternalTwitterURL}
-                <li class="follow"><a class="icon-button icon-link twitter" href="{text:External Twitter URL}"></a><span class="icon"></span>{block:IfExternalTwitterText}{text:External Twitter text}{/block:IfExternalTwitterText}{block:IfNotExternalTwitterText}Twitter{/block:IfNotExternalTwitterText}</li>
-              {/block:IfExternalTwitterURL}
-              {block:IfExternalFacebookURL}
-                <li class="follow"><a class="icon-button icon-link facebook" href="{text:External Facebook URL}"></a><span class="icon"></span>{block:IfExternalFacebookText}{text:External Facebook text}{/block:IfExternalFacebookText}{block:IfNotExternalFacebookText}Facebook{/block:IfNotExternalFacebookText}</li>
-              {/block:IfExternalFacebookURL}
-              {block:IfExternalBandcampURL}
-                <li class="follow"><a class="icon-button icon-link bandcamp" href="{text:External Bandcamp URL}"></a><span class="icon"></span>{block:IfExternalBandcampText}{text:External Bandcamp text}{/block:IfExternalBandcampText}{block:IfNotExternalBandcampText}Bandcamp{/block:IfNotExternalBandcampText}</li>
-              {/block:IfExternalBandcampURL}
-              {block:IfExternalFlickrURL}
-                <li class="follow"><a class="icon-button icon-link flickr" href="{text:External Youtube URL}"></a><span class="icon"></span>{block:IfExternalFlickrText}{text:External Flickr text}{/block:IfExternalFlickrText}{block:IfNotExternalFlickrText}Flickr{/block:IfNotExternalFlickrText}</li>
-              {/block:IfExternalFlickrURL}
-              {block:IfExternalYoutubeURL}
-                <li class="follow"><a class="icon-button icon-link youtube" href="{text:External website URL}"></a><span class="icon"></span>{block:IfExternalYoutubeText}{text:External Youtube text}{/block:IfExternalYoutubeText}{block:IfNotExternalYoutubeText}Youtube{/block:IfNotExternalYoutubeText}</li>
-              {/block:IfExternalYoutubeURL}
-              {block:IfExternalVimeoURL}
-                <li class="follow"><a class="icon-button icon-link vimeo" href="{text:External email address}"></a><span class="icon"></span>{block:IfExternalVimeoText}{text:External Vimeo text}{/block:IfExternalVimeoText}{block:IfNotExternalVimeoText}Vimeo{/block:IfNotExternalVimeoText}</li>
-              {/block:IfExternalVimeoURL}
-              {block:IfExternalWebsiteURL}
-                <li class="follow"><a class="icon-button icon-link website" href="{text:External Flickr URL}"></a><span class="icon"></span>{block:IfExternalWebsiteText}{text:External website text}{/block:IfExternalWebsiteText}{block:IfNotExternalWebsiteText}Website{/block:IfNotExternalWebsiteText}</li>
-              {/block:IfExternalWebsiteURL}
-              {block:IfExternalEmailAddress}
-                <li class="follow"><a class="icon-button icon-link email" href="{text:External Vimeo URL}"></a><span class="icon"></span>{block:IfExternalEmailText}{text:External email text}{/block:IfExternalEmailText}{block:IfNotExternalEmailText}Email{/block:IfNotExternalEmailText}</li>
-              {/block:IfExternalEmailAddress}
-              </ul>
-            </div>
-            <script>
-            Jikuu.decorate("#section_socmed");
-            </script>
             <hr />
-            {/block:IfShowSocialMediaLinks}
             <div class="section navigation col{block:IfAlwaysKeepMainNavigationVisible} sticky{/block:IfAlwaysKeepMainNavigationVisible}" id="section_nav">
               <nav class="subsection">
                 <h3 class="title{block:IfNotShowNavigateHeader} hidden{/block:IfNotShowNavigateHeader}">{lang:Navigate}</h3>
@@ -300,10 +302,10 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               </ul>
             </div>
             <hr />
-            {/block:Following}
             <script>
             Jikuu.decorate("#section_following");
             </script>
+            {/block:Following}
             {/block:IfShowListOfBlogsYouFollow}
             {block:IfShowCopyrightSection}
             <div class="section copyright">
@@ -349,15 +351,15 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
             {block:Posts}
             <article class="post col id-{PostID} type-{PostType}{block:Panorama} panorama{/block:Panorama}{block:Photoset} photoset photoset-amount-{PhotoCount} photoset-layout-{PhotosetLayout}{/block:Photoset}{block:Quote} quote-length-{Length}{/block:Quote}{block:HasTags} {TagsAsClasses}{/block:HasTags}"{block:HasTags} data-tags="{TagsAsClasses}"{/block:HasTags} data-type="post" data-permalink="{Permalink}" data-shorturl="{ShortURL}" data-id="{PostID}" id="post_{PostID}">
               <div class="post-content">
-              
+
               {block:Text}
                 <!-- ↓ text post -->
                 {block:Title}
-                <p class="title">{Title}</p>
+                <h2 class="title">{Title}</h2>
                 {/block:Title}
                 <div class="body html-content">{Body}</div>
               {/block:Text}
-              
+
               {block:Photo}
                 <!-- ↓ photo post -->
                 <div class="media{block:HighRes} has-highres{/block:HighRes}">
@@ -377,7 +379,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <div class="caption html-content">{Caption}</div>
                 {/block:Caption}
               {/block:Photo}
-              
+
               {block:Panorama}
                 <!-- ↓ panorama post -->
                 <div class="media panorama">
@@ -387,7 +389,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <div class="caption html-content">{Caption}</div>
                 {/block:Caption}
               {/block:Panorama}
-              
+
               {block:Photoset}
                 <!-- ↓ photoset post -->
                 <div class="media photoset-grid" data-layout="{PhotosetLayout}" data-amount="{PhotoCount}" data-id="photoset-{PostID}">
@@ -399,7 +401,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <div class="caption html-content">{Caption}</div>
                 {/block:Caption}
               {/block:Photoset}
-              
+
               {block:Quote}
                 <!-- ↓ quote post -->
                 <blockquote class="quote text">{Quote}</blockquote>
@@ -407,7 +409,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <div class="source"><div class="dash">—</div><div class="content html-content">{Source}</div></div>
                 {/block:Source}
               {/block:Quote}
-              
+
               {block:Link}
                 <!-- ↓ link post -->
                 <p class="link"><a class="name" href="{URL}" {Target}>{Name}</a></p>
@@ -415,11 +417,11 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <div class="description html-content">{Description}</div>
                 {/block:Description}
               {/block:Link}
-              
+
               {block:Chat}
                 <!-- ↓ chat post -->
                 {block:Title}
-                <p class="title">{Title}</p>
+                <h2 class="title">{Title}</h2>
                 {/block:Title}
                 <ul class="chat">
                 {block:Lines}
@@ -427,7 +429,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 {/block:Lines}
                 </ul>
               {/block:Chat}
-              
+
               {block:Audio}
                 <!-- ↓ audio post -->
                 <div class="audio{block:AlbumArt} has-art{/block:AlbumArt}{block:Artist} has-artist{/block:Artist}{block:Album} has-album{/block:Album}{block:TrackName} has-trackname{/block:TrackName}"{block:Artist} data-artist="{PlaintextArtist}"{/block:Artist}{block:Album} data-album="{PlaintextAlbum}"{/block:Album}{block:TrackName} data-trackname="{PlaintextTrackname}"{/block:TrackName}>
@@ -464,7 +466,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                   <div class="playcount download"><p>{PlayCountWithLabel}{block:ExternalAudio} (<a href="{ExternalAudioURL}">{lang:Download this track}</a>){/block:ExternalAudio}</p></div>
                 </div>
               {/block:Audio}
-              
+
               {block:Video}
                 <!-- ↓ video post -->
                 <div class="embed">{Video-500}</div>
@@ -475,12 +477,12 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                   <div class="playcount"><p>{PlayCountWithLabel}</p></div>
                 </div>
               {/block:Video}
-              
+
               {block:Answer}
                 <!-- ↓ answer post -->
                 <div class="question">
                   <div class="avatar"><img src="{AskerPortraitURL-128}" width="64" height="64" /></div>
-                  <div class="question-content">
+                  <div class="bevel-container">
                     <div class="arr-outer"></div>
                     <div class="arr-inner"></div>
                     <div class="inner">
@@ -491,7 +493,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 </div>
                 <div class="answer html-content">{Answer}</div>
               {/block:Answer}
-              
+
               </div>
               {block:More}
               <div class="readmore"><a href="{Permalink}">{lang:Read more}</a></div>
@@ -501,7 +503,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               <div class="info{block:IfShowAuthorAvatar} with-avatar{/block:IfShowAuthorAvatar}{block:IfShowAuthorName} with-name{/block:IfShowAuthorName}{block:HasTags} has-tags{/block:HasTags}">
                 {block:IfShowAuthorAvatar}
                 <div class="avatar">
-                  <p><a href="{PostAuthorURL}"><img src="{PostAuthorPortraitURL-30}" width="30" height="30" alt="{PlaintextPostAuthorName}" /></a></p>
+                  <p><a href="{PostAuthorURL}"><img src="{PostAuthorPortraitURL-64}" width="32" height="32" alt="{PlaintextPostAuthorName}" /></a></p>
                 </div>
                 {/block:IfShowAuthorAvatar}
                 <div class="meta">
@@ -515,7 +517,22 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                     {block:ContentSource}
                     <span class="source">({lang:Source}: <a href="{SourceURL}">{SourceTitle}</a>)</span>
                     {/block:ContentSource}
-                    <span class="shorturl"><a href="{ShortURL}">{ShortURL}</a></span>
+                    {block:IfShowShortlink}
+                    <span class="shorturl">
+                      <a href="{ShortURL}">
+                        <svg version="1.1" aria-label="Link" role="img" width="11" height="13" viewBox="0 0 482.136 482.135">
+                          <path d="M455.482,198.184L326.829,326.832c-35.535,35.54-93.108,35.54-128.646,0l-42.881-42.886l42.881-42.876l42.884,42.876
+                              c11.845,11.822,31.064,11.846,42.886,0l128.644-128.643c11.816-11.831,11.816-31.066,0-42.9l-42.881-42.881
+                              c-11.822-11.814-31.064-11.814-42.887,0l-45.928,45.936c-21.292-12.531-45.491-17.905-69.449-16.291l72.501-72.526
+                              c35.535-35.521,93.136-35.521,128.644,0l42.886,42.881C491.018,105.045,491.018,162.663,455.482,198.184z M201.206,366.698
+                              l-45.903,45.9c-11.845,11.846-31.064,11.817-42.881,0l-42.884-42.881c-11.845-11.821-11.845-31.041,0-42.886l128.646-128.648
+                              c11.819-11.814,31.069-11.814,42.884,0l42.886,42.886l42.876-42.886l-42.876-42.881c-35.54-35.521-93.113-35.521-128.65,0
+                              L26.655,283.946c-35.538,35.545-35.538,93.146,0,128.652l42.883,42.882c35.51,35.54,93.11,35.54,128.646,0l72.496-72.499
+                              C246.724,384.578,222.588,379.197,201.206,366.698z"></path>
+                        </svg>
+                      </a>
+                    </span>
+                    {/block:IfShowShortlink}
                   </p>
                   {block:RebloggedFrom}
                   <p>

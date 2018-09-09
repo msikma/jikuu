@@ -1,0 +1,19 @@
+/** Jikuu Tumblr Theme - Chat post */
+
+.post.type-chat .chat {
+  list-style: none;
+  border-bottom: 1px solid $light-gray;
+  font-family: "Menlo", "Consolas", "Monaco", monospace;
+  padding: 0;
+  margin: 8px 0;
+}
+.post.type-chat .chat li {
+  border: 1px solid $light-gray;
+  border-bottom: none;
+  padding: 3px 6px;
+}
+.post.type-chat .chat li .label {
+  display: inline-block;
+}
+.post.type-chat .chat li .line {
+}

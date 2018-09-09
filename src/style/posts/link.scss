@@ -1,0 +1,21 @@
+/** Jikuu Tumblr Theme - Link post */
+
+.post.type-link {
+  .post-content > p.link a {
+    font-size: 22px;
+    border: 1px solid $primary;
+    padding: 12px;
+    display: block;
+
+    &:hover,
+    &:focus {
+      color: $hover;
+      text-decoration: none;
+      border-color: $hover;
+    }
+    &:visited {
+      color: $visited;
+      border-color: $visited;
+    }
+  }
+}

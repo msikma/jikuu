@@ -1,0 +1,95 @@
+/** Jikuu Tumblr Theme - Mixins */
+
+// Adds background image of a dot pattern.
+@mixin dotted() {
+  background: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAABlBMVEX///////9VfPVsAAAAAnRSTlP/AOW3MEoAAAATSURBVAjXY2BkAEEGBkYkiJUHAAGkABNgY9FfAAAAAElFTkSuQmCC") scroll repeat $light-gray;
+}
+
+// Turns an element into a bevel out style button.
+// Needs to be an <a> and have a <span> inside.
+@mixin bevel-out-btn() {
+  @include dotted();
+  border: none;
+  padding: 1px;
+  margin-bottom: 5px;
+  position: relative;
+  line-height: 15px;
+  top: 1px;
+  z-index: 10;
+
+  span {
+    border: 1px solid $dark-lines;
+    padding: 3px 8px;
+    margin: -1px;
+    background: #ffffff;
+    color: $dark-lines;
+    position: relative;
+    top: -3px;
+    left: -3px;
+
+    &:after {
+      content: " >";
+    }
+  }
+
+  &:hover {
+    background: $primary;
+
+    span {
+      color: $primary;
+      border-color: $primary;
+    }
+  }
+}
+
+// Creates a navigation menu out of an <ul>.
+@mixin nav-menu() {
+  margin: 8px 0;
+  padding: 0 0 1px 0;
+
+  li,
+  li a,
+  li a span {
+    display: block;
+  }
+
+  li a {
+    background: #ffffff;
+    line-height: 15px;
+    margin-bottom: -1px;
+    position: relative;
+    border: 1px solid $dark-lines;
+    text-decoration: none;
+
+    span {
+      border: none;
+      padding: 4px 9px;
+      color: $dark-lines;
+      margin: -1px;
+    }
+
+    &:hover {
+      border-color: $primary;
+      z-index: 12;
+
+      span {
+        color: $primary;
+      }
+    }
+  }
+  li.active a {
+    @include bevel-out-btn();
+  }
+}
+
+@mixin nav-menu-horizontal() {
+  @include nav-menu();
+
+  li {
+    display: inline-block;
+
+    a span:after {
+      content: '' !important;
+    }
+  }
+}

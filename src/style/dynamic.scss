@@ -1,0 +1,60 @@
+/** Jikuu Tumblr Theme - Dynamic elements */
+
+// The loading image, hidden by default.
+/*
+.loader {
+  margin: 14px 0;
+  text-align: center;
+  display: block;
+  position: relative;
+  visibility: hidden;
+  display: none;
+}
+#root.endless .loader {
+  display: block;
+}
+.loader .inner {
+  display: block;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: url('http://static.tumblr.com/lpftwlt/3S9mj7i89/jikuu.loader.png') 0 0 no-repeat $dark-gray;
+  width: 16px;
+  height: 16px;
+}
+.loader .msg {
+  display: none;
+  font-size: 10px;
+  position: absolute;
+  font-weight: bold;
+  top: 0;
+  left: 20px;
+  line-height: 18px;
+  margin: 0;
+  text-align: left;
+  width: 500px;
+}
+.loader .done {
+  color: $dark-gray;
+  display: none;
+}
+// In case something goes wrong.
+.loader.error .msg.error {
+  display: block;
+  color: red;
+}
+.loader.error .msg.done {
+  display: none;
+}
+
+// A temporary container for new posts.
+#tmp_container {
+  // Can't be completely invisible, otherwise images won't auto-load.
+  width: 1px;
+  height: 1px;
+  visibility: hidden;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+*/

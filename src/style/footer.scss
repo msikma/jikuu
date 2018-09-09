@@ -1,0 +1,11 @@
+/** Jikuu Tumblr Theme - Footer and page navigation */
+
+.section.pagenav {
+  > hr {
+    // We already have a <hr /> in the content section.
+    display: none;
+  }
+  .menu {
+    @include nav-menu-horizontal();
+  }
+}

@@ -1,0 +1,101 @@
+/** Jikuu Tumblr Theme - Sidebar */
+
+#content_sidebar {
+  margin-bottom: 45px;
+
+  .section-container > hr:last-child {
+    display: none;
+  }
+
+  .title, h3.copyright-statement {
+    margin: 0 0 8px;
+    font-size: 12px;
+  }
+
+  .section {
+    margin-top: 14px;
+
+    &.navigation {
+      ul.menu.nav {
+        @include nav-menu();
+      }
+    }
+
+    &.blogs {
+      .blog-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+    }
+
+    .subsection {
+      margin-bottom: 5px;
+
+      .avatar {
+        display: block;
+        margin-bottom: 10px;
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .form-search {
+        position: relative;
+
+        &:hover, &:focus {
+          .search-submit input {
+            background-color: $primary;
+          }
+          .search-input input {
+            border-color: $primary;
+            color: $primary;
+          }
+        }
+
+        .search-submit input {
+          content: '';
+          color: $dark-lines;
+          background: url('./img/search_1x.png') $dark-gray;
+          height: 21px;
+          width: 26px;
+          position: absolute;
+          z-index: 20;
+          top: 1px;
+          right: 1px;
+          text-indent: -9999px;
+          border: 0;
+          cursor: pointer;
+
+          @media (-webkit-min-device-pixel-ratio: 2) {
+            background-image: url('./img/search_2x.png');
+          }
+        }
+        .search-input input {
+          width: 100%;
+          border: 1px solid $light-gray;
+          font-size: 12px;
+          padding: 3px 8px;
+          line-height: 15px;
+          height: 23px;
+          box-sizing: border-box;
+        }
+      }
+
+      &.follow-links {
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
