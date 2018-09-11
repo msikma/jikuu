@@ -30,7 +30,10 @@ module.exports = {
     context: root,
     output: {
       filename: '[name].bundle.js',
-      path: distPath
+      path: distPath,
+      publicPath: process.env.NODE_ENV === 'development'
+        ? ''
+        : 'https://letsdeliver.com/tumblr/jikuu/'
     },
     plugins: [
       new CleanWebpackPlugin(['dist'], { root }),
