@@ -4,7 +4,7 @@
   "description": "Jikuu theme for Tumblr",
   "private": true,
   "scripts": {
-    "develop": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
+    "dev": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
     "profile": "webpack --config config/webpack.prod.js --profile --json > stats.json"
   },
