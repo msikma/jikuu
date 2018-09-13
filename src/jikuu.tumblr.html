@@ -281,7 +281,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               <h3 class="title fluid-collapse-link">{lang:Contributors}<span class="arr"></span></h3>
               <ul class="blog-list fluid-collapse-content">
               {block:GroupMember}
-                <li class="blog"><a href="{GroupMemberURL}" class="icon-link" title="{PlaintextGroupMemberTitle}"><span class="icon" style="background-image: url({GroupMemberPortraitURL-32});"></span>{GroupMemberName}</a></li>
+                <li class="blog"><a href="{GroupMemberURL}" class="icon-link" title="{PlaintextGroupMemberTitle}"><span class="icon" style="background-image: url({GroupMemberPortraitURL-30});"></span>{GroupMemberName}</a></li>
               {/block:GroupMember}
               </ul>
               <hr />
@@ -297,7 +297,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               <h3 class="title fluid-collapse-link">{lang:People I follow}<span class="arr"></span></h3>
               <ul class="blog-list fluid-collapse-content">
               {block:Followed}
-                <li class="blog"><a href="{FollowedURL}" class="icon-link" title="{PlaintextFollowedTitle}"><span class="icon" style="background-image: url({FollowedPortraitURL-32});"></span>{FollowedName}</a></li>
+                <li class="blog"><a href="{FollowedURL}" class="icon-link" title="{PlaintextFollowedTitle}"><span class="icon" style="background-image: url({FollowedPortraitURL-30});"></span>{FollowedName}</a></li>
               {/block:Followed}
               </ul>
             </div>
@@ -363,7 +363,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               {block:Photo}
                 <!-- ↓ photo post -->
                 <div class="media{block:HighRes} has-highres{/block:HighRes}">
-                  <p class="photo">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" />{LinkCloseTag}</p>
+                  <p class="photo">{LinkOpenTag}<img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" />{LinkCloseTag}</p>
                 </div>
                 <div class="meta">
                 {block:HighRes}
@@ -394,7 +394,10 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <!-- ↓ photoset post -->
                 <div class="media photoset-grid" data-layout="{PhotosetLayout}" data-amount="{PhotoCount}" data-id="photoset-{PostID}">
                   {block:Photos}
-                  <img src="{PhotoURL-500}"{block:HighRes} data-highres="{PhotoURL-HighRes}"{/block:HighRes}{block:Caption} alt="{PlaintextCaption}"{/block:Caption} />
+                  <div class="image-container">
+                    <img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" />
+                    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+                  </div>
                   {/block:Photos}
                 </div>
                 {block:Caption}

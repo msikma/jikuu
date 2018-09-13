@@ -15,6 +15,9 @@ a:focus {
   text-decoration: underline;
   color: $hover;
 }
+a:visited {
+  color: $visited;
+}
 #root {
   padding: 0 25px;
   font-family: $body-font;
