@@ -1,5 +1,12 @@
+// Jikuu - Tumblr Theme <https://github.com/msikma/jikuu>
+// © 2009-2018, Michiel Sikma. MIT license.
+
+import 'luminous-lightbox'
+import { addHighlightWW, highlightSyntax } from './syntax'
+
 class Jikuu {
   constructor() {
+    // Default settings, to be overridden by what's in the HTML.
     this.settings = {
       rev: null,
       layout: {
@@ -16,11 +23,33 @@ class Jikuu {
    */
   decorate(id) {
     const post = document.querySelector(id)
+    if (!post) return
 
     // Check which post type this is and decorate accordingly.
     if (post.classList.contains('photoset')) {
+      // Decorating a photoset or photo will also add the lightbox.
       this.stylePhotoset(id)
     }
+  }
+
+  /**
+   * Adds syntax highlighting to any code that might be in a post.
+   */
+  decorateText(id) {
+    console.log('decorateText', id)
+
+  }
+
+  /**
+   * Adds a click handler to open the lightbox for every photoset or photo.
+   */
+  _addLightbox(id) {
+    const images = document.querySelectorAll(id + ' .media.photoset-grid .image-container:not(.lightbox-decorated)')
+    images.forEach(img => {
+      // TODO add lightbox
+      // Mark this file as decorated so we don't accidentally decorate it twice.
+      img.classList.add('lightbox-decorated')
+    })
   }
 
   /**
@@ -32,7 +61,7 @@ class Jikuu {
 
     // Layout is e.g. "23", for a row of 2 images and then a row of 3 images.
     const layout = grid.getAttribute('data-layout')
-    const images = document.querySelectorAll(id + ' .media.photoset-grid > .image-container')
+    const images = document.querySelectorAll(id + ' .media.photoset-grid > .image-container:not(.decorated)')
 
     // The gap in between photos.
     const gap = parseInt(this.settings.layout.photosetGutterSize, 10)
@@ -71,7 +100,8 @@ class Jikuu {
       calcHeight = calcWidth / (imgItem.getAttribute('width') / imgItem.getAttribute('height'))
       columnHeight = columnHeight == null ? calcHeight : columnHeight < calcHeight ? columnHeight : calcHeight
 
-      img.classList.add('photoset-image-' + String(layoutVal), 'image')
+      // Also add 'decorated' to indicate that we've already processed this item.
+      img.classList.add('photoset-image-' + String(layoutVal), 'image', 'decorated')
       column.appendChild(img)
 
       // Add a gap style on both sides if this is the middle picture of a 3 photo row.
@@ -100,6 +130,9 @@ class Jikuu {
       }
       n += 1
     })
+
+    // Finally, add the lightbox to the item.
+    this._addLightbox(id)
   }
 
   // Passes on a configuration object from an inline script in the page's <head>.
