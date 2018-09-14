@@ -80,7 +80,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <meta name="text:Photoset gutter size" content="5px" />
   <!-- ↓ base layout type -->
   <meta name="select:Layout" content="regular" title="Regular">
-  <meta name="select:Layout" content="narrow" title="Narrow">
+  <meta name="select:Layout" content="wide" title="Wide">
 
   <!-- External links and social media -->
   <meta name="if:External RSS feed link" content="1" />
@@ -151,6 +151,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
       }
     },
     layout: {
+      layoutType: "{select:Layout}",
       useEndlessScrolling: {block:IfUseEndlessScrolling}true{/block:IfUseEndlessScrolling}{block:IfNotUseEndlessScrolling}false{/block:IfNotUseEndlessScrolling},
       photosetGutterSize: "{text:Photoset gutter size}"
     }
@@ -158,20 +159,19 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   </script>
   {block:IfGoogleAnalyticsID}
   <!-- ↓ Google Analytics code -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', '{text:Google Analytics ID}', 'auto');
-  ga('send', 'pageview');
+  <script async src="https://www.googletagmanager.com/gtag/js?id={text:Google Analytics ID}"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{text:Google Analytics ID}');
   </script>
   {/block:IfGoogleAnalyticsID}
 </head>
 
 <body>
   <p class="textnav aural-only"><a href="#content_main_hajime">Jump to content</a></p>
-  <div data-urlencoded-name="{URLEncodedName}" id="root" data-page-type="{block:IndexPage}index{/block:IndexPage}{block:PermalinkPage}permalink{/block:PermalinkPage}" class="page{block:IfShowSidebarOnTheRightSide} sidebar-right{/block:IfShowSidebarOnTheRightSide}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}{block:IndexPage} index{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:IfUseEndlessScrolling} endless-scrolling{/block:IfUseEndlessScrolling}{block:DayPage} daypage archive{/block:DayPage}{block:TagPage} tagpage archive{/block:TagPage}" data-url="{block:PermalinkPage}{block:Posts}{Permalink}{/block:Posts}{/block:PermalinkPage}">
+  <div data-urlencoded-name="{URLEncodedName}" id="root" data-page-type="{block:IndexPage}index{/block:IndexPage}{block:PermalinkPage}permalink{/block:PermalinkPage}" class="layout-{select:Layout} page{block:IfShowSidebarOnTheRightSide} sidebar-right{/block:IfShowSidebarOnTheRightSide}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}{block:IndexPage} index{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:IfUseEndlessScrolling} endless-scrolling{/block:IfUseEndlessScrolling}{block:DayPage} daypage archive{/block:DayPage}{block:TagPage} tagpage archive{/block:TagPage}" data-url="{block:PermalinkPage}{block:Posts}{Permalink}{/block:Posts}{/block:PermalinkPage}">
     <div class="grid-container">
       <!-- ↓ main header -->
       <header id="header" class="row header{block:IfHeaderImage} header-image{/block:IfHeaderImage}{block:IfNotHeaderImage} no-header-image{/block:IfNotHeaderImage}">
@@ -349,8 +349,12 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
           <div class="post-container row" id="container_posts">
             <!-- jikuu_post_container_初め -->
             {block:Posts}
-            <article class="post col id-{PostID} type-{PostType}{block:Panorama} panorama{/block:Panorama}{block:Photoset} photoset photoset-amount-{PhotoCount} photoset-layout-{PhotosetLayout}{/block:Photoset}{block:Quote} quote-length-{Length}{/block:Quote}{block:HasTags} {TagsAsClasses}{/block:HasTags}"{block:HasTags} data-tags="{TagsAsClasses}"{/block:HasTags} data-type="post" data-permalink="{Permalink}" data-shorturl="{ShortURL}" data-id="{PostID}" id="post_{PostID}">
+            <article class="post col id-{PostID} type-{PostType}{block:Panorama} panorama{/block:Panorama}{block:Photoset} photoset photoset-amount-{PhotoCount} photoset-layout-{PhotosetLayout}{/block:Photoset}{block:Quote} quote-length-{Length}{/block:Quote}{block:HasTags} {TagsAsClasses}{/block:HasTags}"{block:HasTags} data-tags="{TagsAsClasses}"{/block:HasTags} data-type="post" data-permalink="{Permalink}" data-shorturl="{ShortURL}" data-notesurl="{PostNotesURL}" data-embedurl="{EmbedUrl}" data-id="{PostID}" id="post_{PostID}">
               <div class="post-content">
+                <div class="post-actions">
+                  <div class="reblog">{ReblogButton}</div>
+                  <div class="like">{LikeButton}</div>
+                </div>
 
               {block:Text}
                 <!-- ↓ text post -->
@@ -363,7 +367,9 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               {block:Photo}
                 <!-- ↓ photo post -->
                 <div class="media{block:HighRes} has-highres{/block:HighRes}">
-                  <p class="photo">{LinkOpenTag}<img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" />{LinkCloseTag}</p>
+                  <div class="image-container">
+                    <a href="{LinkURL}"><img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" /></a>
+                  </div>
                 </div>
                 <div class="meta">
                 {block:HighRes}
@@ -383,7 +389,9 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               {block:Panorama}
                 <!-- ↓ panorama post -->
                 <div class="media panorama">
-                  <p class="photo">{LinkOpenTag}<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" width="{PhotoWidth-Panorama}" height="{PhotoHeight-Panorama}" />{LinkCloseTag}</p>
+                  <div class="image-container">
+                    <a href="{LinkURL}"><img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" width="{PhotoWidth-Panorama}" height="{PhotoHeight-Panorama}" /></a>
+                  </div>
                 </div>
                 {block:Caption}
                 <div class="caption html-content">{Caption}</div>
@@ -395,7 +403,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <div class="media photoset-grid" data-layout="{PhotosetLayout}" data-amount="{PhotoCount}" data-id="photoset-{PostID}">
                   {block:Photos}
                   <div class="image-container">
-                    <img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" />
+                    <a href="{LinkURL}"><img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" /></a>
                     {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
                   </div>
                   {/block:Photos}
@@ -415,7 +423,23 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
 
               {block:Link}
                 <!-- ↓ link post -->
-                <p class="link"><a class="name" href="{URL}" {Target}>{Name}</a></p>
+                <div class="link-container">
+                  <a class="link" href="{URL}" {Target}>
+                    {block:Host}
+                    <div class="host">{Host}</div>
+                    {/block:Host}
+                    {block:Thumbnail}
+                    <div class="thumbnail" data-lowres="{Thumbnail}">{Thumbnail-HighRes}</div>
+                    {/block:Thumbnail}
+                    <div class="name">{Name}</div>
+                    {block:Excerpt}
+                    <div class="excerpt">{Excerpt}</div>
+                    {/block:Excerpt}
+                    {block:Author}
+                    <div class="author">{Author}</div>
+                    {/block:Author}
+                  </a>
+                </div>
                 {block:Description}
                 <div class="description html-content">{Description}</div>
                 {/block:Description}
@@ -474,10 +498,10 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <!-- ↓ video post -->
                 <div class="embed">{Video-500}</div>
                 {block:Caption}
-                <div class="caption">{Caption}</div>
+                <div class="caption html-content">{Caption}</div>
                 {/block:Caption}
                 <div class="meta">
-                  <div class="playcount"><p>{PlayCountWithLabel}</p></div>
+                  <div class="playcount" data-value="{PlayCount}">{PlayCountWithLabel}</div>
                 </div>
               {/block:Video}
 
@@ -495,6 +519,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                   </div>
                 </div>
                 <div class="answer html-content">
+                  <div class="avatar answerer"><img src="{AnswererPortraitURL-128}" data-blogavatar="{PortraitURL}" width="64" height="64" /></div>
                   <div class="bevel-container">
                     <div class="arr-outer"></div>
                     <div class="arr-inner"></div>
@@ -502,6 +527,9 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                       {Answer}
                     </div>
                   </div>
+                </div>
+                <div class="replies">
+                  {Replies}
                 </div>
               {/block:Answer}
 
@@ -559,13 +587,13 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               <hr class="post-sep" />
               {/block:IndexPage}
               {block:PermalinkPage}
-              {block:PostNotes}
-              <hr />
-              <div class="postnotes count-{NoteCount}">
-                {PostNotes-32}
-              </div>
-              <hr class="post-sep" />
-              {/block:PostNotes}
+                {block:PostNotes}
+                <hr />
+                <div class="postnotes count-{NoteCount}">
+                  {PostNotes-64}
+                </div>
+                <hr class="post-sep" />
+                {/block:PostNotes}
               {/block:PermalinkPage}
             </article>
             <script>
@@ -582,9 +610,9 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
             <hr class="post-sep" />
             {block:IfUseJumpNavigation}
             <ul class="page menu nav jumpnav">
-              {block:JumpPagination length="5"}
-              {block:CurrentPage}<li class="active"><a href="{URL}"><span>{PageNumber}</span></a></li>{/block:CurrentPage}
-              {block:JumpPage}<li><a href="{URL}" class="page"><span>{PageNumber}</span></a></li>{/block:JumpPage}
+              {block:JumpPagination length="10"}
+                {block:CurrentPage}<li class="active"><a href="{URL}"><span>{PageNumber}</span></a></li>{/block:CurrentPage}
+                {block:JumpPage}<li><a href="{URL}" class="page"><span>{PageNumber}</span></a></li>{/block:JumpPage}
               {/block:JumpPagination}
             </ul>
             {/block:IfUseJumpNavigation}
