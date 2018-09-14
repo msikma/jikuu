@@ -54,14 +54,12 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <meta name="if:Show copyright section" content="1" />
   <!-- ↓ always keeps the main navigation in sight when scrolling down -->
   <meta name="if:Always keep main navigation visible" content="1" />
-  <!-- ↓ moves the sidebar to the right side instead of the left -->
-  <meta name="if:Show sidebar on the right side" content="0" />
   <!-- ↓ displays "Navigate" header above your main menu -->
   <meta name="if:Show navigate header" content="1" />
   <!-- ↓ only has effect if there are multiple blog members -->
   <meta name="if:Show list of group blog contributors" content="1" />
   <!-- ↓ only has effect if this is your main blog -->
-  <meta name="if:Show list of blogs you follow" content="1" />
+  <meta name="if:Show list of blogs you follow" content="0" />
   <!-- ↓ displays your icon below post content (useful if you have multiple blog members) -->
   <meta name="if:Show author avatar" content="0" />
   <!-- ↓ displays your name below post content -->
@@ -77,7 +75,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <!-- ↓ force tags list to be a single line -->
   <meta name="if:Show tags as single line" content="1" />
   <!-- ↓ the gutter size of photosets -->
-  <meta name="text:Photoset gutter size" content="5px" />
+  <meta name="text:Photoset gutter size" content="6px" />
   <!-- ↓ base layout type -->
   <meta name="select:Layout" content="regular" title="Regular">
   <meta name="select:Layout" content="wide" title="Wide">
@@ -88,29 +86,11 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <meta name="text:External Twitter URL" content="" />
   <meta name="text:External Twitter text" content="" />
 
-  <meta name="text:External Facebook URL" content="" />
-  <meta name="text:External Facebook text" content="" />
-
-  <meta name="text:External Bandcamp URL" content="" />
-  <meta name="text:External Bandcamp text" content="" />
-
   <meta name="text:External Youtube URL" content="" />
   <meta name="text:External Youtube text" content="" />
 
   <meta name="text:External website URL" content="" />
   <meta name="text:External website text" content="" />
-
-  <meta name="text:External email address" content="" />
-  <meta name="text:External email text" content="" />
-
-  <meta name="text:External Flickr URL" content="" />
-  <meta name="text:External Flickr text" content="" />
-
-  <meta name="text:External Vimeo URL" content="" />
-  <meta name="text:External Vimeo text" content="" />
-
-  <meta name="text:External Instagram URL" content="" />
-  <meta name="text:External Instagram text" content="" />
 
   <!-- External connections -->
   <!-- ↓ Google Analytics ID (e.g. UA-1234567-89) -->
@@ -171,7 +151,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
 
 <body>
   <p class="textnav aural-only"><a href="#content_main_hajime">Jump to content</a></p>
-  <div data-urlencoded-name="{URLEncodedName}" id="root" data-page-type="{block:IndexPage}index{/block:IndexPage}{block:PermalinkPage}permalink{/block:PermalinkPage}" class="layout-{select:Layout} page{block:IfShowSidebarOnTheRightSide} sidebar-right{/block:IfShowSidebarOnTheRightSide}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}{block:IndexPage} index{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:IfUseEndlessScrolling} endless-scrolling{/block:IfUseEndlessScrolling}{block:DayPage} daypage archive{/block:DayPage}{block:TagPage} tagpage archive{/block:TagPage}" data-url="{block:PermalinkPage}{block:Posts}{Permalink}{/block:Posts}{/block:PermalinkPage}">
+  <div data-urlencoded-name="{URLEncodedName}" id="root" data-page-type="{block:IndexPage}index{/block:IndexPage}{block:PermalinkPage}permalink{/block:PermalinkPage}" class="layout-{select:Layout} page{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}{block:IndexPage} index{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:IfUseEndlessScrolling} endless-scrolling{/block:IfUseEndlessScrolling}{block:DayPage} daypage archive{/block:DayPage}{block:TagPage} tagpage archive{/block:TagPage}" data-url="{block:PermalinkPage}{block:Posts}{Permalink}{/block:Posts}{/block:PermalinkPage}">
     <div class="grid-container">
       <!-- ↓ main header -->
       <header id="header" class="row header{block:IfHeaderImage} header-image{/block:IfHeaderImage}{block:IfNotHeaderImage} no-header-image{/block:IfNotHeaderImage}">
@@ -211,27 +191,12 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 {block:IfExternalTwitterURL}
                   <li class="follow"><a class="icon-button icon-link twitter" href="{text:External Twitter URL}"></a><span class="icon"></span>{block:IfExternalTwitterText}{text:External Twitter text}{/block:IfExternalTwitterText}{block:IfNotExternalTwitterText}Twitter{/block:IfNotExternalTwitterText}</li>
                 {/block:IfExternalTwitterURL}
-                {block:IfExternalFacebookURL}
-                  <li class="follow"><a class="icon-button icon-link facebook" href="{text:External Facebook URL}"></a><span class="icon"></span>{block:IfExternalFacebookText}{text:External Facebook text}{/block:IfExternalFacebookText}{block:IfNotExternalFacebookText}Facebook{/block:IfNotExternalFacebookText}</li>
-                {/block:IfExternalFacebookURL}
-                {block:IfExternalBandcampURL}
-                  <li class="follow"><a class="icon-button icon-link bandcamp" href="{text:External Bandcamp URL}"></a><span class="icon"></span>{block:IfExternalBandcampText}{text:External Bandcamp text}{/block:IfExternalBandcampText}{block:IfNotExternalBandcampText}Bandcamp{/block:IfNotExternalBandcampText}</li>
-                {/block:IfExternalBandcampURL}
-                {block:IfExternalFlickrURL}
-                  <li class="follow"><a class="icon-button icon-link flickr" href="{text:External Youtube URL}"></a><span class="icon"></span>{block:IfExternalFlickrText}{text:External Flickr text}{/block:IfExternalFlickrText}{block:IfNotExternalFlickrText}Flickr{/block:IfNotExternalFlickrText}</li>
-                {/block:IfExternalFlickrURL}
                 {block:IfExternalYoutubeURL}
                   <li class="follow"><a class="icon-button icon-link youtube" href="{text:External website URL}"></a><span class="icon"></span>{block:IfExternalYoutubeText}{text:External Youtube text}{/block:IfExternalYoutubeText}{block:IfNotExternalYoutubeText}Youtube{/block:IfNotExternalYoutubeText}</li>
                 {/block:IfExternalYoutubeURL}
-                {block:IfExternalVimeoURL}
-                  <li class="follow"><a class="icon-button icon-link vimeo" href="{text:External email address}"></a><span class="icon"></span>{block:IfExternalVimeoText}{text:External Vimeo text}{/block:IfExternalVimeoText}{block:IfNotExternalVimeoText}Vimeo{/block:IfNotExternalVimeoText}</li>
-                {/block:IfExternalVimeoURL}
                 {block:IfExternalWebsiteURL}
                   <li class="follow"><a class="icon-button icon-link website" href="{text:External Flickr URL}"></a><span class="icon"></span>{block:IfExternalWebsiteText}{text:External website text}{/block:IfExternalWebsiteText}{block:IfNotExternalWebsiteText}Website{/block:IfNotExternalWebsiteText}</li>
                 {/block:IfExternalWebsiteURL}
-                {block:IfExternalEmailAddress}
-                  <li class="follow"><a class="icon-button icon-link email" href="{text:External Vimeo URL}"></a><span class="icon"></span>{block:IfExternalEmailText}{text:External email text}{/block:IfExternalEmailText}{block:IfNotExternalEmailText}Email{/block:IfNotExternalEmailText}</li>
-                {/block:IfExternalEmailAddress}
                 </ul>
               </div>
               <script>
@@ -519,7 +484,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                   </div>
                 </div>
                 <div class="answer html-content">
-                  <div class="avatar answerer"><img src="{AnswererPortraitURL-128}" data-blogavatar="{PortraitURL}" width="64" height="64" /></div>
+                  <div class="avatar answerer"><img src="{AnswererPortraitURL-128}" data-blogavatar="{PortraitURL-128}" width="64" height="64" /></div>
                   <div class="bevel-container">
                     <div class="arr-outer"></div>
                     <div class="arr-inner"></div>
@@ -527,9 +492,6 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                       {Answer}
                     </div>
                   </div>
-                </div>
-                <div class="replies">
-                  {Replies}
                 </div>
               {/block:Answer}
 
@@ -554,7 +516,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                     - <span class="notes">{NoteCountWithLabel}</span>
                     {/block:NoteCount}
                     {block:ContentSource}
-                    <span class="source">({lang:Source}: <a href="{SourceURL}">{SourceTitle}</a>)</span>
+                    <span class="source"> ({lang:Source}: <a href="{SourceURL}">{SourceTitle}</a>)</span>
                     {/block:ContentSource}
                     {block:IfShowShortlink}
                     <span class="shorturl">
