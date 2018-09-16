@@ -362,8 +362,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <div class="media photoset-grid" data-layout="{PhotosetLayout}" data-amount="{PhotoCount}" data-id="photoset-{PostID}">
                   {block:Photos}
                   <div class="image-container">
-                    <a href="{LinkURL}"><img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" /></a>
-                    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+                    <a href="{LinkURL}" data-caption="{block:Caption}{URLEncodedCaption}{/block:Caption}"><img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" /></a>
                   </div>
                   {/block:Photos}
                 </div>
@@ -409,11 +408,13 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 {block:Title}
                 <h2 class="title">{Title}</h2>
                 {/block:Title}
-                <ul class="chat">
-                {block:Lines}
-                  <li class="{Alt} user-{UserNumber}{block:Label} has-label{/block:Label}">{block:Label}<span class="label">{Label}<span class="space">&nbsp;</span></span>{/block:Label}<span class="line">{Line}</span></li>
-                {/block:Lines}
-                </ul>
+                <div class="chat-wrapper">
+                  <ul class="chat">
+                  {block:Lines}
+                    <li class="{Alt} user-{UserNumber}{block:Label} has-label{/block:Label}">{block:Label}<span class="label">{Label}<span class="space">&nbsp;</span></span>{/block:Label}<span class="line">{Line}</span></li>
+                  {/block:Lines}
+                  </ul>
+                </div>
               {/block:Chat}
 
               {block:Audio}

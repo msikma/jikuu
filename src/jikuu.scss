@@ -37,3 +37,6 @@ $break-small: 768px;
 @import "style/posts/quote.scss";
 @import "style/posts/text.scss";
 @import "style/posts/video.scss";
+
+@import "~luminous-lightbox/dist/luminous-basic.css";
+@import "style/lightbox.scss";

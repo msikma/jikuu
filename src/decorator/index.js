@@ -1,8 +1,8 @@
 // Jikuu - Tumblr Theme <https://github.com/msikma/jikuu>
 // © 2009-2018, Michiel Sikma. MIT license.
 
-import 'luminous-lightbox'
-import { addHighlightWW, highlightSyntax } from './syntax'
+import LuminousGalleryCaptions from './gallery'
+//import { addHighlightWW, highlightSyntax } from './syntax'
 
 class Jikuu {
   constructor() {
@@ -44,12 +44,9 @@ class Jikuu {
    * Adds a click handler to open the lightbox for every photoset or photo.
    */
   _addLightbox(id) {
-    const images = document.querySelectorAll(id + ' .media.photoset-grid .image-container:not(.lightbox-decorated)')
-    images.forEach(img => {
-      // TODO add lightbox
-      // Mark this file as decorated so we don't accidentally decorate it twice.
-      img.classList.add('lightbox-decorated')
-    })
+    const images = document.querySelectorAll(id + ' .media.photoset-grid .image-container a:not(.lightbox-decorated)')
+    new LuminousGalleryCaptions(images)
+    images.forEach(img => img.classList.add('lightbox-decorated'))
   }
 
   /**
