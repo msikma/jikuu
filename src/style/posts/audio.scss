@@ -1,8 +1,45 @@
 /** Jikuu - Tumblr Theme - Audio post */
-/*
-.wrapper.content .main .post.type-audio {
+
+.post {
+  .audio {
+    @include bevel-out-btn();
+    display: inline-block;
+
+    > div {
+      display: block;
+    }
+
+    .player {
+      display: flex;
+      padding: 0;
+
+      .art, .art img {
+        height: 27px;
+        width: 27px;
+      }
+      .embed {
+        flex: 1 0;
+        height: 27px;
+      }
+    }
+    .info {
+      color: #444444; // Same as audio embed color.
+      height: 27px;
+      line-height: 27px;
+      padding: 0 0 0 8px;
+      font-size: 10px;
+    }
+    &:hover, &:focus {
+      .player, .info {
+        border-color: $primary;
+      }
+      .info p {
+        color: $primary;
+      }
+    }
+  }
+  .meta .playcount p {
+    margin: 8px 0;
+    color: $meta-text;
+  }
 }
-.wrapper.content .main .post.type-audio .embed.native embed {
-    border: 1px solid $light-gray;
-}
-*/

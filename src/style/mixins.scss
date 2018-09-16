@@ -6,8 +6,8 @@
 }
 
 // Turns an element into a bevel out style button.
-// Needs to be an <a> and have a <span> inside.
-@mixin bevel-out-btn() {
+// Needs to have a <span> or <div> directly inside.
+@mixin bevel-out-btn($after: null) {
   @include dotted();
   border: none;
   padding: 1px;
@@ -17,7 +17,7 @@
   top: 1px;
   z-index: 10;
 
-  span {
+  > span, > div {
     border: 1px solid $dark-lines;
     padding: 3px 8px;
     margin: -1px;
@@ -27,8 +27,10 @@
     top: -3px;
     left: -3px;
 
-    &:after {
-      content: " >";
+    @if ($after) {
+      &:after {
+        content: " >";
+      }
     }
   }
 

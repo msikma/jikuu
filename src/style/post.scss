@@ -2,9 +2,102 @@
 
 #container_posts {
   .post {
+    position: relative;
+
     &:first-child {
       h2.title {
         margin-top: 0;
+      }
+    }
+
+    h2.title {
+      font-weight: normal;
+      font-size: 21px;
+      line-height: 27px;
+      margin-bottom: 10px;
+    }
+
+    .html-content {
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid $light-gray;
+        padding-bottom: 6px;
+        display: inline-block;
+        margin: 10px 0 5px 0;
+        font-size: 17px;
+        line-height: 17px;
+      }
+      h2 {
+        font-weight: bold;
+        border-bottom: 1px solid $light-gray;
+        display: inline-block;
+        padding-bottom: 4px;
+        margin: 3px 0 4px;
+        font-size: 15px;
+        line-height: 18px;
+      }
+      h3 {
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      ul {
+        padding-left: 24px;
+      }
+
+      pre, code {
+        font-family: $monospace-font;
+      }
+      pre {
+        border-radius: 2px;
+        background: $super-light-gray;
+        overflow: auto;
+        padding: 12px 16px;
+      }
+      code {
+        font-size: 102%;
+      }
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 8px 0;
+        $border-rounding: 2px;
+
+        thead {
+          th, td {
+            border-top: 1px solid $light-gray;
+          }
+          th:first-child, td:first-child {
+            border-top-left-radius: $border-rounding;
+            border-left: 1px solid $light-gray;
+          }
+          th:last-child, td:last-child {
+            border-top-right-radius: $border-rounding;
+          }
+        }
+        tbody {
+          tr {
+            th:first-child, td:first-child {
+              border-left: 1px solid $light-gray;
+            }
+          }
+          tr:last-child {
+            th:first-child, td:first-child {
+              border-bottom-left-radius: $border-rounding;
+            }
+            th:last-child, td:last-child {
+              border-bottom-right-radius: $border-rounding;
+            }
+          }
+        }
+
+        th, td {
+          padding: 6px 8px;
+          border-right: 1px solid $light-gray;
+          border-bottom: 1px solid $light-gray;
+        }
       }
     }
 
@@ -20,7 +113,8 @@
     }
 
     // Post info with metadata, possibly containing a user avatar.
-    .info {
+    // Note: target the direct descendant to avoid selecting .info in .post-content.
+    > .info {
       overflow: hidden;
       margin-top: 8px;
 

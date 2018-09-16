@@ -1,13 +1,10 @@
 /** Jikuu - Tumblr Theme - Video post */
 
-/*
-.wrapper.content .main .post.type-video {
+.post.type-video {
+  .meta {
+    .playcount {
+      margin: 8px 0;
+      color: $meta-text;
+    }
+  }
 }
-.wrapper.content .main .post.type-video .embed {
-    display: block;
-    margin-bottom: 10px;
-}
-.wrapper.content .main .post.type-video .embed iframe {
-    display: block;
-}
-*/

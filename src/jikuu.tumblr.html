@@ -210,7 +210,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               <nav class="subsection">
                 <h3 class="title{block:IfNotShowNavigateHeader} hidden{/block:IfNotShowNavigateHeader}">{lang:Navigate}</h3>
                 <ul class="menu nav">
-                  <li{block:IndexPage} class="active"{/block:IndexPage}><a href="/"><span>{lang:Home}</span></a></li>
+                  <li class="{block:IndexPage}active{/block:IndexPage}">><a href="/"><span>{lang:Home}</span></a></li>
                   <li><a href="/archive"><span>{lang:Archive}</span></a></li>
                   {block:AskEnabled}
                   <li class="ask"><a href="/ask"><span>{AskLabel}</span></a></li>
@@ -314,10 +314,6 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
             {block:Posts}
             <article class="post col id-{PostID} type-{PostType}{block:Panorama} panorama{/block:Panorama}{block:Photoset} photoset photoset-amount-{PhotoCount} photoset-layout-{PhotosetLayout}{/block:Photoset}{block:Quote} quote-length-{Length}{/block:Quote}{block:HasTags} {TagsAsClasses}{/block:HasTags}"{block:HasTags} data-tags="{TagsAsClasses}"{/block:HasTags} data-type="post" data-permalink="{Permalink}" data-shorturl="{ShortURL}" data-notesurl="{PostNotesURL}" data-embedurl="{EmbedUrl}" data-id="{PostID}" id="post_{PostID}">
               <div class="post-content">
-                <div class="post-actions">
-                  <div class="reblog">{ReblogButton}</div>
-                  <div class="like">{LikeButton}</div>
-                </div>
 
               {block:Text}
                 <!-- ↓ text post -->
@@ -423,21 +419,23 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               {block:Audio}
                 <!-- ↓ audio post -->
                 <div class="audio{block:AlbumArt} has-art{/block:AlbumArt}{block:Artist} has-artist{/block:Artist}{block:Album} has-album{/block:Album}{block:TrackName} has-trackname{/block:TrackName}"{block:Artist} data-artist="{PlaintextArtist}"{/block:Artist}{block:Album} data-album="{PlaintextAlbum}"{/block:Album}{block:TrackName} data-trackname="{PlaintextTrackname}"{/block:TrackName}>
-                  {block:AlbumArt}
-                  <div class="art">
-                    <img src="{AlbumArtURL}" width="50" alt="{block:Artist}{PlaintextArtist}{/block:Artist} - {block:TrackName}{PlaintextTrackName}{/block:TrackName}" />
+                  <div class="player">
+                    {block:AlbumArt}
+                    <div class="art">
+                      <img src="{AlbumArtURL}" width="50" alt="{block:Artist}{PlaintextArtist}{/block:Artist} - {block:TrackName}{PlaintextTrackName}{/block:TrackName}" />
+                    </div>
+                    {/block:AlbumArt}
+                    {block:AudioEmbed}
+                    <div class="embed ext">
+                      {AudioEmbed-500}
+                    </div>
+                    {/block:AudioEmbed}
+                    {block:AudioPlayer}
+                    <div class="embed native">
+                      {AudioPlayerBlack}
+                    </div>
+                    {/block:AudioPlayer}
                   </div>
-                  {/block:AlbumArt}
-                  {block:AudioEmbed}
-                  <div class="embed ext">
-                    {AudioEmbed-500}
-                  </div>
-                  {/block:AudioEmbed}
-                  {block:AudioPlayer}
-                  <div class="embed native">
-                    {AudioPlayerBlack}
-                  </div>
-                  {/block:AudioPlayer}
                   <div class="info">
                     {block:Artist}
                     <p><span class="artist">{Artist}</span>{block:TrackName} - <span class="trackname">{TrackName}</span>{/block:TrackName}</p>
@@ -518,18 +516,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                     {/block:ContentSource}
                     {block:IfShowShortlink}
                     <span class="shorturl">
-                      <a href="{ShortURL}">
-                        <svg version="1.1" aria-label="Link" role="img" width="11" height="13" viewBox="0 0 482.136 482.135">
-                          <path d="M455.482,198.184L326.829,326.832c-35.535,35.54-93.108,35.54-128.646,0l-42.881-42.886l42.881-42.876l42.884,42.876
-                              c11.845,11.822,31.064,11.846,42.886,0l128.644-128.643c11.816-11.831,11.816-31.066,0-42.9l-42.881-42.881
-                              c-11.822-11.814-31.064-11.814-42.887,0l-45.928,45.936c-21.292-12.531-45.491-17.905-69.449-16.291l72.501-72.526
-                              c35.535-35.521,93.136-35.521,128.644,0l42.886,42.881C491.018,105.045,491.018,162.663,455.482,198.184z M201.206,366.698
-                              l-45.903,45.9c-11.845,11.846-31.064,11.817-42.881,0l-42.884-42.881c-11.845-11.821-11.845-31.041,0-42.886l128.646-128.648
-                              c11.819-11.814,31.069-11.814,42.884,0l42.886,42.886l42.876-42.886l-42.876-42.881c-35.54-35.521-93.113-35.521-128.65,0
-                              L26.655,283.946c-35.538,35.545-35.538,93.146,0,128.652l42.883,42.882c35.51,35.54,93.11,35.54,128.646,0l72.496-72.499
-                              C246.724,384.578,222.588,379.197,201.206,366.698z"></path>
-                        </svg>
-                      </a>
+                      <a href="{ShortURL}">Permalink</a>
                     </span>
                     {/block:IfShowShortlink}
                   </p>

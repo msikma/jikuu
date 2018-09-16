@@ -2,20 +2,52 @@
 
 .post.type-link {
   .post-content > .link-container a {
-    font-size: 22px;
-    border: 1px solid $primary;
-    padding: 12px;
+    padding: 12px 14px;
     display: block;
+    color: $dark-lines;
+    border-radius: 2px;
+    margin-bottom: 15px;
+    background-color: mix(white, $primary, 92);
 
-    &:hover,
-    &:focus {
-      color: $hover;
+    .host {
+      font-size: 12px;
+      font-weight: bold;
+      padding: 0 0 10px;
+    }
+
+    .name {
+      color: $primary;
+      font-size: 22px;
+      line-height: 22px;
+
+      &:after {
+        content: "⌃";
+        transform: rotate(90deg);
+        display: inline-block;
+        position: relative;
+        top: 1px;
+        font-size: 84%;
+        font-weight: bold;
+      }
+    }
+    .excerpt {
+      margin-top: 10px;
+    }
+    &:hover, &:focus {
       text-decoration: none;
       border-color: $hover;
+      background-color: mix(white, $hover, 92);
     }
     &:visited {
-      color: $visited;
       border-color: $visited;
+      background-color: mix(white, $visited, 92);
+    }
+    &:hover .name,
+    &:focus .name {
+      color: $hover;
+    }
+    &:visited .name {
+      color: $visited;
     }
   }
 }

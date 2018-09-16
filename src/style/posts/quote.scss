@@ -1,21 +1,38 @@
 /** Jikuu - Tumblr Theme - Quote post */
-/*
-.wrapper.content .main .post.type-quote {
-}
-.wrapper.content .main .post.type-quote .quote {
-    font-size: 18px;
-    line-height: 24px;
-}
-.wrapper.content .main .post.type-quote .quote:before {
-    content: '“';
-}
-.wrapper.content .main .post.type-quote .quote:after {
-    content: '”';
-}
-.wrapper.content .main .post.type-quote .source {
+
+.post.type-quote {
+  .quote {
+    font-size: 24px;
+    line-height: 34px;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-style: italic;
+    color: $hover;
+
+    &:before {
+      content: '“';
+    }
+    &:after {
+      content: '”';
+    }
+  }
+  .source {
     margin-top: 6px;
+    margin-bottom: 16px;
+
+    // Make the dash one long line.
+    .dash {
+      margin-left: 4px;
+      margin-right: 6px;
+      letter-spacing: -0.1em;
+
+      &:after {
+        content: '———';
+      }
+    }
+    .dash, .content {
+      display: inline-block;
+    }
+  }
 }
-.wrapper.content .main .post.type-quote .source:before {
-    content: '— ';
-}
-*/
