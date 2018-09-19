@@ -2,7 +2,7 @@
 // © 2009-2018, Michiel Sikma. MIT license.
 
 import LuminousGalleryCaptions from './gallery'
-//import { addHighlightWW, highlightSyntax } from './syntax'
+import { highlightSyntax } from './syntax'
 
 class Jikuu {
   constructor() {
@@ -25,6 +25,10 @@ class Jikuu {
     const post = document.querySelector(id)
     if (!post) return
 
+    if (post.classList.contains('type-text')) {
+      this.decorateText(id)
+    }
+
     // Check which post type this is and decorate accordingly.
     if (post.classList.contains('photoset')) {
       // Decorating a photoset or photo will also add the lightbox.
@@ -36,8 +40,16 @@ class Jikuu {
    * Adds syntax highlighting to any code that might be in a post.
    */
   decorateText(id) {
-    console.log('decorateText', id)
+    const code = document.querySelectorAll(`${id} .html-content pre code`)
+    if (!code.length) return
 
+    // Preprocess the code blocks: if they don't have a language set,
+    // don't try to guess the language inside. Just don't highlight it.
+    code.forEach(cb => {
+      if (!cb.classList.length) cb.classList.add('nohighlight')
+    })
+    // Add syntax highlighting.
+    highlightSyntax(code)
   }
 
   /**
