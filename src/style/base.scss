@@ -18,6 +18,10 @@ a:focus {
 a:visited {
   color: $visited;
 }
+a:visited:hover,
+a:visited:focus {
+  color: $hover;
+}
 #root {
   padding: 0 25px;
   font-family: $body-font;
