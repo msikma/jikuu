@@ -51,6 +51,33 @@ a:visited:focus {
         text-decoration: none;
         margin: 0;
 
+        &.std-logo {
+          padding: 0;
+
+          > a {
+            width: 329px;
+            margin: auto;
+            display: block;
+            padding: 29px 40px 14px;
+
+            // Note: SVG colors can be modified by targeting
+            // svg .st0 (left text)
+            // svg .st1 (middle text)
+            // svg .st2 (right text)
+            svg {
+              .st0 {
+                fill: $hover;
+              }
+              .st1 {
+                fill: $primary;
+              }
+              .st2 {
+                fill: $dark-lines;
+              }
+            }
+          }
+        }
+
         &.img .text {
           display: none;
         }
