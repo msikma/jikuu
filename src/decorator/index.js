@@ -23,15 +23,15 @@ class Jikuu {
    * @param {String} id ID string for the object to target
    */
   decorate(id) {
-    const post = document.querySelector(id)
-    if (!post) return
+    const el = document.querySelector(id)
+    if (!el) return
 
-    if (post.classList.contains('type-text')) {
+    if (el.classList.contains('type-text')) {
       this.decorateText(id)
     }
 
     // Check which post type this is and decorate accordingly.
-    if (post.classList.contains('photoset')) {
+    if (el.classList.contains('photoset')) {
       // Decorating a photoset or photo will also add the lightbox.
       this.stylePhotoset(id)
     }

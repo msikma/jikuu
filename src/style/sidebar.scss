@@ -101,7 +101,7 @@
   }
 }
 
-#root.layout-wide {
+@include wide-viewport() {
   #content_sidebar {
     .section {
       .subsection {

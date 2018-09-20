@@ -1,0 +1,11 @@
+#root {
+  .grid-container {
+    transition: width 1s;
+
+    #content {
+      .main, .sidebar {
+        transition: width 1s;
+      }
+    }
+  }
+}

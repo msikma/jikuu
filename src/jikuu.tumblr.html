@@ -152,6 +152,9 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
 <body>
   <p class="textnav aural-only"><a href="#content_main_hajime">Jump to content</a></p>
   <div data-urlencoded-name="{URLEncodedName}" id="root" data-page-type="{block:IndexPage}index{/block:IndexPage}{block:PermalinkPage}permalink{/block:PermalinkPage}" class="layout-{select:Layout} page{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}{block:IndexPage} index{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:IfUseEndlessScrolling} endless-scrolling{/block:IfUseEndlessScrolling}{block:IfUseSystemFont} use-system-font{/block:IfUseSystemFont}{block:DayPage} daypage archive{/block:DayPage}{block:TagPage} tagpage archive{/block:TagPage}" data-url="{block:PermalinkPage}{block:Posts}{Permalink}{/block:Posts}{/block:PermalinkPage}">
+    <script>
+    Jikuu.decorate("#root");
+    </script>
     <div class="grid-container">
       <!-- ↓ main header -->
       <header id="header" class="row header{block:IfHeaderImage} header-image{/block:IfHeaderImage}{block:IfNotHeaderImage} no-header-image{/block:IfNotHeaderImage}">

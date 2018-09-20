@@ -22,6 +22,16 @@
   }
 }
 
+// Add CSS that only applies to the large (above $break-regular) viewports.
+// This only activates if the layout mode is set to 'wide'.
+@mixin wide-viewport() {
+  @media only screen and (min-width: $break-regular) {
+    #root.layout-wide {
+      @content;
+    }
+  }
+}
+
 // Turns an element into a bevel out style button.
 // Needs to have a <span> or <div> directly inside.
 @mixin bevel-out-btn($after: null) {

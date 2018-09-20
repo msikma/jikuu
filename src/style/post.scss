@@ -162,14 +162,21 @@
   }
 }
 
-// Scale down monospace fonts if using system native font.
-#root.use-system-font {
+@include wide-viewport() {
   #container_posts {
     .post {
       h2.title {
         font-size: $wide-header-font-size;
         line-height: $wide-header-line-height;
       }
+    }
+  }
+}
+
+// Scale down monospace fonts if using system native font.
+#root.use-system-font {
+  #container_posts {
+    .post {
       .html-content {
         pre, code {
           font-size: $monospace-font-native-scale;

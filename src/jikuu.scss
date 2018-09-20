@@ -20,8 +20,10 @@ $monospace-font-native: 'Menlo', 'Andale Mono', 'Ubuntu Mono', monospace;
 // Make the monospace font slightly smaller if using the native font as base.
 $monospace-font-native-scale: 94%;
 
-// Point at which the layout goes into small resolution mode.
+// Small resolution breakpoint.
 $break-small: 768px;
+// Regular layout breakpoint.
+$break-regular: 1100px;
 
 // Base sizes for the regular layout.
 $base-font-size: 12px;
@@ -31,7 +33,6 @@ $base-header-line-height: 27px;
 $base-width: 718px;
 $base-width-sidebar: 173px;
 $base-width-content: 500px;
-$base-margin-content: 45px;
 
 // Base sizes for the wide layout.
 $wide-font-size: 14px;
@@ -41,7 +42,6 @@ $wide-header-line-height: 40px;
 $wide-width: 1070px;
 $wide-width-sidebar: 170px;
 $wide-width-content: 770px;
-$wide-margin-content: 130px;
 
 @import "style/mixins.scss";
 @import "style/base.scss";
@@ -49,6 +49,7 @@ $wide-margin-content: 130px;
 @import "style/dynamic.scss";
 @import "style/footer.scss";
 @import "style/sidebar.scss";
+@import "style/transition.scss";
 @import "style/post.scss";
 @import "style/posts/answer.scss";
 @import "style/posts/audio.scss";

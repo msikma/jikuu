@@ -99,30 +99,28 @@ a:visited:focus {
         width: $base-width-sidebar;
       }
       .main {
-        float: left;
+        float: right;
         min-height: 1px;
         width: $base-width-content;
-        margin-left: $base-margin-content;
       }
     }
   }
+}
 
-  // Modifications for the wide layout type.
-  &.layout-wide {
-    font-size: $wide-font-size;
-    line-height: $wide-line-height;
+// Modifications for the wide layout type.
+@include wide-viewport() {
+  font-size: $wide-font-size;
+  line-height: $wide-line-height;
 
-    .grid-container {
-      width: $wide-width;
+  .grid-container {
+    width: $wide-width;
 
-      #content {
-        .sidebar {
-          width: $wide-width-sidebar;
-        }
-        .main {
-          width: $wide-width-content;
-          margin-left: $wide-margin-content;
-        }
+    #content {
+      .sidebar {
+        width: $wide-width-sidebar;
+      }
+      .main {
+        width: $wide-width-content;
       }
     }
   }

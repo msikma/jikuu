@@ -42,7 +42,7 @@
   }
 }
 
-#root.layout-wide {
+@include wide-viewport() {
   .icon-link {
     .icon {
       top: 2px;
