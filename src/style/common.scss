@@ -21,6 +21,7 @@
     margin-top: -1px;
     position: relative;
     background-size: 100%;
+    top: 1px;
   }
 
   // Icon buttons are the exact same but need a bit of offset due to image margin.
@@ -33,8 +34,18 @@
       left: 1px;
 
       @include retina-only() {
+        // For some reason, this extra pixel doesn't look right on non-retina.
+        top: 1px;
         background-image: url('./img/rss_2x.png');
       }
+    }
+  }
+}
+
+#root.layout-wide {
+  .icon-link {
+    .icon {
+      top: 2px;
     }
   }
 }

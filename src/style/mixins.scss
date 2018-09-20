@@ -101,6 +101,16 @@
   }
 }
 
+// Small modifications to the nav menu for the wide layout.
+@mixin nav-menu-wide() {
+  li a {
+    span {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+}
+
 @mixin nav-menu-horizontal() {
   @include nav-menu();
 

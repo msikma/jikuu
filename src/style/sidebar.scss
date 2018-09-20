@@ -100,3 +100,26 @@
     }
   }
 }
+
+#root.layout-wide {
+  #content_sidebar {
+    .section {
+      .subsection {
+        .form-search {
+          .search-input input {
+            font-size: $wide-font-size;
+            height: 25px;
+          }
+          .search-submit input {
+            margin-top: 1px;
+          }
+        }
+      }
+      &.navigation {
+        ul.menu.nav {
+          @include nav-menu-wide();
+        }
+      }
+    }
+  }
+}

@@ -343,6 +343,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <!-- ↓ text post -->
                 {block:Title}
                 <h2 class="title">{Title}</h2>
+                <p class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</p>
                 {/block:Title}
                 <div class="body html-content">{Body}</div>
               {/block:Text}

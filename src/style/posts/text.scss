@@ -1,17 +1,10 @@
 /** Jikuu - Tumblr Theme - Text post */
-/*
-.wrapper.content .main .post.type-text {
+
+.post.type-text {
+  .post-content {
+    h2 + .date {
+      color: $dark-gray;
+      margin-bottom: 18px;
+    }
+  }
 }
-// Some support for the theme readme page.
-.wrapper.content .main .post.type-text .term {
-    margin-bottom: 10px;
-}
-.wrapper.content .main .post.type-text .term .option {
-    display: block;
-    font-weight: bold;
-}
-.wrapper.content .main .post.type-text .term .definition {
-    display: block;
-    text-indent: 25px;
-}
-*/
