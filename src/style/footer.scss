@@ -8,4 +8,7 @@
   .menu {
     @include nav-menu-horizontal();
   }
+
+  // Ensure there's a decent amount of space, so the pagenav isn't completely at the bottom.
+  margin-bottom: 80px;
 }
