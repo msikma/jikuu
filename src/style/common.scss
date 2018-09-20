@@ -32,7 +32,7 @@
       top: 0;
       left: 1px;
 
-      @media (-webkit-min-device-pixel-ratio: 2) {
+      @include retina-only() {
         background-image: url('./img/rss_2x.png');
       }
     }

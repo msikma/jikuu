@@ -60,6 +60,7 @@
           content: '';
           color: $dark-lines;
           background: url('./img/search_1x.png') $dark-gray;
+          background-size: 26px 21px;
           height: 21px;
           width: 26px;
           position: absolute;
@@ -70,7 +71,7 @@
           border: 0;
           cursor: pointer;
 
-          @media (-webkit-min-device-pixel-ratio: 2) {
+          @include retina-only() {
             background-image: url('./img/search_2x.png');
           }
         }
