@@ -12,8 +12,8 @@
 
     h2.title {
       font-weight: normal;
-      font-size: 21px;
-      line-height: 27px;
+      font-size: $base-header-font-size;
+      line-height: $base-header-line-height;
       margin-bottom: 10px;
     }
 
@@ -165,9 +165,15 @@
 // Scale down monospace fonts if using system native font.
 #root.use-system-font {
   #container_posts {
-    .post .html-content {
-      pre, code {
-        font-size: $monospace-font-native-scale;
+    .post {
+      h2.title {
+        font-size: $wide-header-font-size;
+        line-height: $wide-header-line-height;
+      }
+      .html-content {
+        pre, code {
+          font-size: $monospace-font-native-scale;
+        }
       }
     }
   }
