@@ -17,6 +17,11 @@ $shadow-color: #696161;
 
 $body-font: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
 $monospace-font: 'Menlo', 'Andale Mono', 'Ubuntu Mono', monospace;
+$body-font-native: -apple-system, BlinkMacSystemFont, sans-serif;
+// Same as regular. Use "SF Mono" in a future update when it's usable.
+$monospace-font-native: 'Menlo', 'Andale Mono', 'Ubuntu Mono', monospace;
+// Make the monospace font slightly smaller if using the native font as base.
+$monospace-font-native-scale: 94%;
 
 $base-width: 718px;
 $break-small: 768px;

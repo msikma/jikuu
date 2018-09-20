@@ -161,3 +161,14 @@
     height: 5px;
   }
 }
+
+// Scale down monospace fonts if using system native font.
+#root.use-system-font {
+  #container_posts {
+    .post .html-content {
+      pre, code {
+        font-size: $monospace-font-native-scale;
+      }
+    }
+  }
+}

@@ -18,3 +18,11 @@
     }
   }
 }
+
+#root.use-system-font {
+  .lum-lightbox-inner {
+    .lum-lightbox-caption {
+      font-family: $body-font-native;
+    }
+  }
+}

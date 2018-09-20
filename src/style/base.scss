@@ -28,6 +28,10 @@ a:visited:focus {
   font-size: 12px;
   line-height: 19px;
 
+  &.use-system-font {
+    font-family: $body-font-native;
+  }
+
   .grid-container {
     width: 718px;
     margin: auto;

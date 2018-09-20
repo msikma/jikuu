@@ -24,3 +24,12 @@
     }
   }
 }
+
+// Modify font if using system font.
+#root.use-system-font {
+  .post.type-chat {
+    .chat {
+      font-size: $monospace-font-native-scale;
+    }
+  }
+}
