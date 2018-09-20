@@ -3,6 +3,7 @@
 // Adds background image of a dot pattern.
 @mixin dotted() {
   background: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAABlBMVEX///////9VfPVsAAAAAnRSTlP/AOW3MEoAAAATSURBVAjXY2BkAEEGBkYkiJUHAAGkABNgY9FfAAAAAElFTkSuQmCC") scroll repeat $light-gray;
+  image-rendering: optimizeSpeed;
 }
 
 // Turns an element into a bevel out style button.
