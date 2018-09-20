@@ -2,7 +2,7 @@
 
 // Adds background image of a dot pattern.
 @mixin dotted() {
-  background: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAABlBMVEX///////9VfPVsAAAAAnRSTlP/AOW3MEoAAAATSURBVAjXY2BkAEEGBkYkiJUHAAGkABNgY9FfAAAAAElFTkSuQmCC") scroll repeat $light-gray;
+  background: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAABlBMVEX///////9VfPVsAAAAAnRSTlP/AOW3MEoAAAATSURBVAjXY2BkAEEGBkYkiJUHAAGkABNgY9FfAAAAAElFTkSuQmCC") scroll repeat $medium-gray;
   image-rendering: optimizeSpeed;
 }
 
@@ -35,11 +35,11 @@
   z-index: 10;
 
   > span, > div {
-    border: 1px solid $dark-lines;
+    border: 1px solid $near-black;
     padding: 3px 8px;
     margin: -1px;
     background: #ffffff;
-    color: $dark-lines;
+    color: $near-black;
     position: relative;
     top: -3px;
     left: -3px;
@@ -77,13 +77,13 @@
     line-height: 15px;
     margin-bottom: -1px;
     position: relative;
-    border: 1px solid $dark-lines;
+    border: 1px solid $near-black;
     text-decoration: none;
 
     span {
       border: none;
       padding: 4px 9px;
-      color: $dark-lines;
+      color: $near-black;
       margin: -1px;
     }
 

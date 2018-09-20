@@ -20,7 +20,7 @@
     .html-content {
       h1 {
         font-weight: normal;
-        border-bottom: 1px solid $light-gray;
+        border-bottom: 1px solid $medium-gray;
         padding-bottom: 6px;
         display: inline-block;
         margin: 10px 0 5px 0;
@@ -29,7 +29,7 @@
       }
       h2 {
         font-weight: bold;
-        border-bottom: 1px solid $light-gray;
+        border-bottom: 1px solid $medium-gray;
         display: inline-block;
         padding-bottom: 4px;
         margin: 3px 0 4px;
@@ -70,11 +70,11 @@
 
         thead {
           th, td {
-            border-top: 1px solid $light-gray;
+            border-top: 1px solid $medium-gray;
           }
           th:first-child, td:first-child {
             border-top-left-radius: $border-rounding;
-            border-left: 1px solid $light-gray;
+            border-left: 1px solid $medium-gray;
           }
           th:last-child, td:last-child {
             border-top-right-radius: $border-rounding;
@@ -83,7 +83,7 @@
         tbody {
           tr {
             th:first-child, td:first-child {
-              border-left: 1px solid $light-gray;
+              border-left: 1px solid $medium-gray;
             }
           }
           tr:last-child {
@@ -98,8 +98,8 @@
 
         th, td {
           padding: 6px 8px;
-          border-right: 1px solid $light-gray;
-          border-bottom: 1px solid $light-gray;
+          border-right: 1px solid $medium-gray;
+          border-bottom: 1px solid $medium-gray;
         }
       }
     }
@@ -111,7 +111,7 @@
       blockquote {
         margin-left: 14px;
         padding-left: 14px;
-        border-left: 1px solid $light-gray;
+        border-left: 1px solid $medium-gray;
       }
     }
 

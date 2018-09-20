@@ -80,18 +80,18 @@
 
 @mixin bevel-out-inverted() {
   .bevel-container:before {
-    background-color: $dark-lines;
+    background-color: $near-black;
   }
   .arr-outer {
     display: none;
   }
   .arr-inner {
-    border-color: transparent $dark-lines transparent transparent;
+    border-color: transparent $near-black transparent transparent;
   }
   .inner {
-    background: $dark-lines;
+    background: $near-black;
     color: white;
-    border-color: $dark-lines;
+    border-color: $near-black;
   }
 }
 

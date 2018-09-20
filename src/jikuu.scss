@@ -6,14 +6,11 @@
 $primary: #006AFF;
 $visited: #5E0FFF;
 $hover: #FF086B;
-$super-light-gray: #f9f7f7;
-$light-gray: #CDCACA;
+$light-gray: #f9f7f7;
+$medium-gray: #CDCACA;
 $dark-gray: #696161;
+$near-black: #0A0A0B;
 $meta-text: #585151;
-$dark-lines: #0A0A0B;
-$meta-links: #0A0A0B;
-$outer-color: #FFFFFF;
-$shadow-color: #696161;
 
 $body-font: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
 $monospace-font: 'Menlo', 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -26,6 +23,7 @@ $monospace-font-native-scale: 94%;
 // Point at which the layout goes into small resolution mode.
 $break-small: 768px;
 
+// Base sizes for the regular layout.
 $base-font-size: 12px;
 $base-line-height: 19px;
 $base-header-font-size: 21px;
@@ -35,6 +33,7 @@ $base-width-sidebar: 173px;
 $base-width-content: 500px;
 $base-margin-content: 45px;
 
+// Base sizes for the wide layout.
 $wide-font-size: 14px;
 $wide-line-height: 21px;
 $wide-header-font-size: 28px;
@@ -43,7 +42,6 @@ $wide-width: 1070px;
 $wide-width-sidebar: 170px;
 $wide-width-content: 770px;
 $wide-margin-content: 130px;
-
 
 @import "style/mixins.scss";
 @import "style/base.scss";

@@ -58,7 +58,7 @@
 
         .search-submit input {
           content: '';
-          color: $dark-lines;
+          color: $near-black;
           background: url('./img/search_1x.png') $dark-gray;
           background-size: 26px 21px;
           height: 21px;
@@ -77,7 +77,7 @@
         }
         .search-input input {
           width: 100%;
-          border: 1px solid $light-gray;
+          border: 1px solid $medium-gray;
           font-size: $base-font-size;
           padding: 3px 8px;
           line-height: 15px;
