@@ -10,7 +10,8 @@ class Jikuu {
     this.settings = {
       rev: null,
       layout: {
-        photosetGutterSize: "5px"
+        layoutType: 'regular',
+        photosetGutterSize: '5px'
       }
     }
   }
@@ -74,7 +75,7 @@ class Jikuu {
 
     // The gap in between photos.
     const gap = parseInt(this.settings.layout.photosetGutterSize, 10)
-    const contentWidth = 500
+    const contentWidth = this.settings.layout.layoutType === 'regular' ? 500 : 770;
 
     let n = 0
     let layoutPos = 0

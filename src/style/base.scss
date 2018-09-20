@@ -25,15 +25,15 @@ a:visited:focus {
 #root {
   padding: 0 25px;
   font-family: $body-font;
-  font-size: 12px;
-  line-height: 19px;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 
   &.use-system-font {
     font-family: $body-font-native;
   }
 
   .grid-container {
-    width: 718px;
+    width: $base-width;
     margin: auto;
 
     // On small sizes, revert to full width.
@@ -96,13 +96,33 @@ a:visited:focus {
         margin-bottom: 45px;
         float: left;
         min-height: 1px;
-        width: 173px;
+        width: $base-width-sidebar;
       }
       .main {
         float: left;
         min-height: 1px;
-        width: 500px;
-        margin-left: 45px;
+        width: $base-width-content;
+        margin-left: $base-margin-content;
+      }
+    }
+  }
+
+  // Modifications for the wide layout type.
+  &.layout-wide {
+    font-size: $wide-font-size;
+    line-height: $wide-line-height;
+
+    .grid-container {
+      width: $wide-width;
+
+      #content {
+        .sidebar {
+          width: $wide-width-sidebar;
+        }
+        .main {
+          width: $wide-width-content;
+          margin-left: $wide-margin-content;
+        }
       }
     }
   }

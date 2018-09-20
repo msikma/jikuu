@@ -8,8 +8,8 @@
     background: rgba($dark-lines, 0.9);
     font-family: $body-font;
     padding: 8px 12px;
-    font-size: 12px;
-    line-height: 19px;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
     display: table;
     border-radius: 2px;
 

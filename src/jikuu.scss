@@ -23,8 +23,23 @@ $monospace-font-native: 'Menlo', 'Andale Mono', 'Ubuntu Mono', monospace;
 // Make the monospace font slightly smaller if using the native font as base.
 $monospace-font-native-scale: 94%;
 
-$base-width: 718px;
+// Point at which the layout goes into small resolution mode.
 $break-small: 768px;
+
+$base-font-size: 12px;
+$base-line-height: 19px;
+$base-width: 718px;
+$base-width-sidebar: 173px;
+$base-width-content: 500px;
+$base-margin-content: 45px;
+
+$wide-font-size: 14px;
+$wide-line-height: 21px;
+$wide-width: 1070px;
+$wide-width-sidebar: 170px;
+$wide-width-content: 770px;
+$wide-margin-content: 130px;
+
 
 @import "style/mixins.scss";
 @import "style/base.scss";

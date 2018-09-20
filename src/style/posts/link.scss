@@ -10,7 +10,7 @@
     background-color: mix(white, $primary, 92);
 
     .host {
-      font-size: 12px;
+      font-size: $base-font-size;
       font-weight: bold;
       padding: 0 0 10px;
     }

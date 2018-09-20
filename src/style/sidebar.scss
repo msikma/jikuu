@@ -9,7 +9,7 @@
 
   .title, h3.copyright-statement {
     margin: 0 0 8px;
-    font-size: 12px;
+    font-size: $base-font-size;
   }
 
   .section {
@@ -78,7 +78,7 @@
         .search-input input {
           width: 100%;
           border: 1px solid $light-gray;
-          font-size: 12px;
+          font-size: $base-font-size;
           padding: 3px 8px;
           line-height: 15px;
           height: 23px;
