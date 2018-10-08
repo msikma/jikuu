@@ -4,7 +4,9 @@
 
     #content {
       .main, .sidebar {
-        transition: width 1s;
+        // FIXME: disabled for now because it interferes with width calculation for photosets.
+        // Possibly add the transition somewhere else.
+        //transition: width 1s;
       }
     }
   }

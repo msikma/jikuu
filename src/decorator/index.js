@@ -14,6 +14,9 @@ class Jikuu {
         photosetGutterSize: '5px'
       }
     }
+    this.resizeEvent = false
+    this.resizeCallbacks = []
+    this.mainContentStyle = null
   }
 
   /**
@@ -25,6 +28,8 @@ class Jikuu {
   decorate(id) {
     const el = document.querySelector(id)
     if (!el) return
+
+    this._setWindowResize()
 
     if (el.classList.contains('type-text')) {
       this.decorateText(id)
@@ -63,9 +68,32 @@ class Jikuu {
   }
 
   /**
+   * Creates a live style object from the main content object.
+   * This allows us to see what layout we're currently seeing.
+   */
+  _getMainContentStyle() {
+    if (this.mainContentStyle != null) return
+    this.mainContentStyle = window.getComputedStyle(document.querySelector('#content_main'))
+  }
+
+  /**
+   * Set up the window resize event.
+   */
+  _setWindowResize() {
+    if (this.resizeEvent) return
+    this.resizeEvent = true
+    window.onresize = () => {
+      this.resizeCallbacks.forEach(cb => cb())
+    }
+  }
+
+  /**
    * Adds CSS classes to the photos in a photoset.
    */
   stylePhotoset(id) {
+    // Ensure the main content styles are available.
+    this._getMainContentStyle()
+
     // Grab the grid object which contains the actual photoset data.
     const grid = document.querySelector(id + ' .media.photoset-grid')
 
@@ -80,11 +108,7 @@ class Jikuu {
     let n = 0
     let layoutPos = 0
     let layoutVal = Number(layout.slice(layoutPos, layoutPos + 1))
-    let column
-    let imgItem
-    let calcWidth
-    let calcHeight
-    let columnHeight
+    let row
 
     // Run through all images and add classes to indicate how big they should be.
     // E.g. rows of 2 photos and 3 photos has them get .photoset-image-2, and then .photoset-image-3.
@@ -95,8 +119,9 @@ class Jikuu {
         return
       }
       if (n === 0) {
-        column = document.createElement('div')
-        column.classList.add('photoset-row-' + String(layoutVal), 'row')
+        row = document.createElement('div')
+        row.setAttribute('data-photoset-row', String(layoutVal))
+        row.classList.add('photoset-row-' + String(layoutVal), 'row')
         img.classList.add('first')
         // Add a gap style if this is a 2 photo row.
         if (layoutVal === 2) {
@@ -104,15 +129,9 @@ class Jikuu {
         }
       }
 
-      // Determine the image's height. The column will be sized per the smallest item.
-      imgItem = img.querySelector('img')
-      calcWidth = (contentWidth - (gap * (layoutVal - 1))) / layoutVal
-      calcHeight = calcWidth / (imgItem.getAttribute('width') / imgItem.getAttribute('height'))
-      columnHeight = columnHeight == null ? calcHeight : columnHeight < calcHeight ? columnHeight : calcHeight
-
       // Also add 'decorated' to indicate that we've already processed this item.
       img.classList.add('photoset-image-' + String(layoutVal), 'image', 'decorated')
-      column.appendChild(img)
+      row.appendChild(img)
 
       // Add a gap style on both sides if this is the middle picture of a 3 photo row.
       if (n === 1 && layoutVal === 3) {
@@ -128,18 +147,50 @@ class Jikuu {
           img.style.marginLeft = (gap / 2 << 0) + 'px'
         }
 
-        column.style.height = columnHeight + 'px'
-        column.style.borderBottom = gap + 'px solid white'
-        grid.appendChild(column)
+        row.style.borderBottom = gap + 'px solid white'
+        grid.appendChild(row)
         // We've added classes to all photos in this row. Move on to the next.
         n = 0
         layoutPos += 1
         layoutVal = Number(layout.slice(layoutPos, layoutPos + 1))
-        columnHeight = null
         return
       }
       n += 1
     })
+
+    // Now crop the images to the right size.
+    const resizeRow = (contentWidth) => {
+      const rows = document.querySelectorAll(id + ' .media.photoset-grid > .row')
+      let calcHeight
+      let calcWidth
+      let imgItem
+      let layoutVal
+      let rowHeight
+      rows.forEach(row2 => {
+        const images = row2.querySelectorAll('.image-container')
+        layoutVal = Number(row2.getAttribute('data-photoset-row'))
+        rowHeight = null
+        images.forEach(img => {
+          imgItem = img.querySelector('img')
+          calcWidth = (contentWidth - (gap * (layoutVal - 1))) / layoutVal
+          calcHeight = calcWidth / (imgItem.getAttribute('width') / imgItem.getAttribute('height'))
+          rowHeight = rowHeight == null ? calcHeight : rowHeight < calcHeight ? rowHeight : calcHeight
+        })
+        row2.style.height = rowHeight + 'px'
+      })
+    }
+
+    let prevWidth
+    const resizePost = () => {
+      const currWidth = parseInt(this.mainContentStyle.width, 10)
+      if (currWidth === prevWidth) return
+
+      prevWidth = currWidth
+      this.settings.layout.layoutType = currWidth === 500 ? 'regular' : 'wide'
+      resizeRow(this.settings.layout.layoutType === 'regular' ? 500 : 770)
+    }
+    this.resizeCallbacks.push(resizePost)
+    resizePost()
 
     // Finally, add the lightbox to the item.
     this._addLightbox(id)
