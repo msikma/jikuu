@@ -25,10 +25,10 @@
     .dash {
       margin-left: 4px;
       margin-right: 6px;
-      letter-spacing: -0.1em;
 
       &:after {
-        content: '———';
+        // 4x U+2500: BOX DRAWINGS LIGHT HORIZONTAL
+        content: '────';
       }
     }
     .dash, .content {
