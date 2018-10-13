@@ -61,6 +61,25 @@
         border-radius: 2px;
         padding: 12px 16px;
       }
+      // Code blocks that have been decorated by highlight.js.
+      pre code.hljs {
+        a {
+          color: $hljs-text;
+          text-decoration: underline;
+        }
+        a:hover,
+        a:focus {
+          color: rgba($hljs-text, 0.7);
+          text-decoration: none;
+        }
+        a:visited {
+          color: rgba($hljs-text, 0.7);
+        }
+        a:visited:hover,
+        a:visited:focus {
+          text-decoration: none;
+        }
+      }
       table {
         width: 100%;
         border-collapse: separate;

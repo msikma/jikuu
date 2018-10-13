@@ -11,6 +11,8 @@ hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascri
 hljs.registerLanguage('php', require('highlight.js/lib/languages/php'))
 hljs.registerLanguage('css', require('highlight.js/lib/languages/css'))
 hljs.registerLanguage('python', require('highlight.js/lib/languages/python'))
+// Empty language to avoid guessing what language something is.
+hljs.registerLanguage('empty', require('./empty'))
 
 /**
  * Adds syntax highlighting to a number of code blocks.

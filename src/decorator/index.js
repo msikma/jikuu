@@ -52,7 +52,7 @@ class Jikuu {
     // Preprocess the code blocks: if they don't have a language set,
     // don't try to guess the language inside. Just don't highlight it.
     code.forEach(cb => {
-      if (!cb.classList.length) cb.classList.add('nohighlight')
+      if (!cb.classList.length) cb.classList.add('empty')
     })
     // Add syntax highlighting.
     highlightSyntax(code)
