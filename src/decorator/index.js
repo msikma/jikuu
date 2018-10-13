@@ -14,11 +14,24 @@ class Jikuu {
         photosetGutterSize: '5px'
       }
     }
+    // Resize and scroll event state.
     this.resizeEvent = false
+    this.scrollEvent = false
+    this.scrollDistThreshold = 500
     this.resizeCallbacks = []
+    this.scrollCallbacks = []
+
+    // Live style object of the main content container.
     this.mainContentStyle = null
 
+    // State of infinite loading.
+    this.currPage = 1
+    this.isLoadingTop = false
+    this.isLoadingBottom = false
+
+    // Perform one-time setup.
     this._setWindowResize()
+    this._setWindowScroll()
   }
 
   /**
@@ -33,6 +46,13 @@ class Jikuu {
 
     if (el.classList.contains('type-text')) {
       this.decorateText(id)
+    }
+
+    // Enable infinite scrolling when we've reached the end of the page.
+    // If it's enabled sooner it will likely trigger a page load prematurely.
+    if (id === '#section_loader' && this.settings.layout.useEndlessScrolling) {
+      this._hidePageNav()
+      this._loadPageOnScroll()
     }
 
     // Check which post type this is and decorate accordingly.
@@ -77,13 +97,65 @@ class Jikuu {
   }
 
   /**
-   * Set up the window resize event.
+   * Hides page navigation, if using infinite scrolling.
+   */
+  _hidePageNav() {
+    const pageNav = document.querySelector('#section_pagenav')
+    pageNav.classList.add('hidden')
+  }
+
+  /**
+   * Adds a scroll callback that loads the next page if the user is close to the bottom.
+   * Runs when infinite loading is enabled, upon receiving the settings object.
+   */
+  _loadPageOnScroll() {
+    this.scrollCallbacks.push(() => {
+      let pageToLoad = null
+      const distTop = window.scrollY
+      const distBottom = document.body.scrollHeight - window.innerHeight - window.scrollY
+
+      // Exit if already loading a page or not in range.
+      if (this.isLoadingBottom || distBottom > this.scrollDistThreshold) return
+      if (this.isLoadingTop || distTop > this.scrollDistThreshold) return
+
+      // Whether to load a new page at the top (newer page) or the bottom (older page).
+      const loadTop = distTop < distBottom
+      if (loadTop) {
+        this.isLoadingTop = true
+        pageToLoad = Math.max(this.currPage - 1, 1)
+      }
+      else {
+        this.isLoadingBottom = true
+        pageToLoad = this.currPage + 1
+      }
+
+      // Turn on loader.
+
+
+      // Retrieve next page and inject.
+      //const
+    })
+  }
+
+  /**
+   * Sets up the window resize event.
    */
   _setWindowResize() {
     if (this.resizeEvent) return
     this.resizeEvent = true
     window.onresize = () => {
       this.resizeCallbacks.forEach(cb => cb())
+    }
+  }
+
+  /**
+   * Sets up the window scroll event.
+   */
+  _setWindowScroll() {
+    if (this.scrollEvent) return
+    this.scrollEvent = true
+    window.onscroll = () => {
+      this.scrollCallbacks.forEach(cb => cb())
     }
   }
 

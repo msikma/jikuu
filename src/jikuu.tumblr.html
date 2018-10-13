@@ -605,6 +605,8 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
           {/block:Pagination}
           {block:IfUseEndlessScrolling}
           <div id="section_loader" class="loader">
+            <div class="loader-indicator"></div>
+            <div class="msg"></div>
           </div>
           <script>
           Jikuu.decorate("#section_loader");

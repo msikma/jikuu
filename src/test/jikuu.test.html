@@ -129,7 +129,7 @@ Build date: Sat Jun 30 2018 19:54:11 GMT+0200 (CEST)
         }
       },
       layout: {
-        useEndlessScrolling: false,
+        useEndlessScrolling: true,
         photosetGutterSize: "6px"
       }
     })
@@ -1447,6 +1447,13 @@ lerna bootstrap --hoist</code></pre><p>Finally, we need to manually link the CLI
           </div>
           <script>
             Jikuu.decorate("#section_pagenav");
+          </script>
+          <div id="section_loader" class="loader">
+            <div class="loader-indicator"></div>
+            <div class="msg">asdf</div>
+          </div>
+          <script>
+          Jikuu.decorate("#section_loader");
           </script>
         </div>
       </section>
