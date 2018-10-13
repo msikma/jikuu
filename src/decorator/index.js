@@ -166,9 +166,9 @@ class Jikuu {
       let imgItem
       let layoutVal
       let rowHeight
-      rows.forEach(row2 => {
-        const images = row2.querySelectorAll('.image-container')
-        layoutVal = Number(row2.getAttribute('data-photoset-row'))
+      rows.forEach(row => {
+        const images = row.querySelectorAll('.image-container')
+        layoutVal = Number(row.getAttribute('data-photoset-row'))
         rowHeight = null
         images.forEach(img => {
           imgItem = img.querySelector('img')
@@ -176,7 +176,7 @@ class Jikuu {
           calcHeight = calcWidth / (imgItem.getAttribute('width') / imgItem.getAttribute('height'))
           rowHeight = rowHeight == null ? calcHeight : rowHeight < calcHeight ? rowHeight : calcHeight
         })
-        row2.style.height = rowHeight + 'px'
+        row.style.height = rowHeight + 'px'
       })
     }
 
