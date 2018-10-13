@@ -17,6 +17,8 @@ class Jikuu {
     this.resizeEvent = false
     this.resizeCallbacks = []
     this.mainContentStyle = null
+
+    this._setWindowResize()
   }
 
   /**
@@ -28,8 +30,6 @@ class Jikuu {
   decorate(id) {
     const el = document.querySelector(id)
     if (!el) return
-
-    this._setWindowResize()
 
     if (el.classList.contains('type-text')) {
       this.decorateText(id)
