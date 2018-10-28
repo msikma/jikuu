@@ -8,6 +8,7 @@ static/css
 
 # The build
 build
+dist
 
 ## Mac OS X
 
