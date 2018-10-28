@@ -29,14 +29,30 @@
     left: -2px;
 
     .icon {
-      background-image: url('./img/rss_1x.png');
       top: 0;
       left: 1px;
 
       @include retina-only() {
         // For some reason, this extra pixel doesn't look right on non-retina.
         top: 1px;
-        background-image: url('./img/rss_2x.png');
+      }
+
+      // RSS icon link
+      &.rss {
+        background-image: url('./img/rss_1x.png');
+
+        @include retina-only() {
+          background-image: url('./img/rss_2x.png');
+        }
+      }
+
+      // Twitter account link
+      &.twitter {
+        background-image: url('./img/twitter_1x.png');
+
+        @include retina-only() {
+          background-image: url('./img/twitter_2x.png');
+        }
       }
     }
   }

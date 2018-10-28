@@ -25,6 +25,8 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <!-- Layout settings -->
   <!-- ↓ displays the standard logo as SVG instead of the uploaded header image -->
   <meta name="if:Use standard logo" content="0" />
+  <!-- ↓ hides the header text if not using a header image -->
+  <meta name="if:Hide header text" content="0" />
   <!-- ↓ uses the system's native font instead of Lucida Sans -->
   <meta name="if:Use system font" content="0" />
   <!-- ↓ displays your icon or profile photo in the sidebar -->
@@ -167,7 +169,9 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
           </h1>
         {/block:IfUseStandardLogo}
         {block:IfNotHeaderImage}
-          <h1 class="title txt" id="title"><a href="/">{Title}</a></h1>
+          {block:IfNotHideHeaderText}
+            <h1 class="title txt" id="title"><a href="/">{Title}</a></h1>
+          {/block:IfNotHideHeaderText}
         {/block:IfNotHeaderImage}
         </div>
       </header>
@@ -196,13 +200,13 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                   <li class="follow"><a class="icon-button icon-link rss" href="{RSS}"><span class="icon"></span>{lang:Subscribe via RSS}</a></li>
                 {/block:IfExternalRSSFeedLink}
                 {block:IfExternalTwitterURL}
-                  <li class="follow"><a class="icon-button icon-link twitter" href="{text:External Twitter URL}"></a><span class="icon"></span>{block:IfExternalTwitterText}{text:External Twitter text}{/block:IfExternalTwitterText}{block:IfNotExternalTwitterText}Twitter{/block:IfNotExternalTwitterText}</li>
+                  <li class="follow"><a class="icon-button icon-link twitter" href="{text:External Twitter URL}"><span class="icon"></span>{block:IfExternalTwitterText}{text:External Twitter text}{/block:IfExternalTwitterText}{block:IfNotExternalTwitterText}Twitter{/block:IfNotExternalTwitterText}</a></li>
                 {/block:IfExternalTwitterURL}
                 {block:IfExternalYoutubeURL}
-                  <li class="follow"><a class="icon-button icon-link youtube" href="{text:External website URL}"></a><span class="icon"></span>{block:IfExternalYoutubeText}{text:External Youtube text}{/block:IfExternalYoutubeText}{block:IfNotExternalYoutubeText}Youtube{/block:IfNotExternalYoutubeText}</li>
+                  <li class="follow"><a class="icon-button icon-link youtube" href="{text:External website URL}"><span class="icon"></span>{block:IfExternalYoutubeText}{text:External Youtube text}{/block:IfExternalYoutubeText}{block:IfNotExternalYoutubeText}Youtube{/block:IfNotExternalYoutubeText}</a></li>
                 {/block:IfExternalYoutubeURL}
                 {block:IfExternalWebsiteURL}
-                  <li class="follow"><a class="icon-button icon-link website" href="{text:External Flickr URL}"></a><span class="icon"></span>{block:IfExternalWebsiteText}{text:External website text}{/block:IfExternalWebsiteText}{block:IfNotExternalWebsiteText}Website{/block:IfNotExternalWebsiteText}</li>
+                  <li class="follow"><a class="icon-button icon-link website" href="{text:External Flickr URL}"><span class="icon"></span>{block:IfExternalWebsiteText}{text:External website text}{/block:IfExternalWebsiteText}{block:IfNotExternalWebsiteText}Website{/block:IfNotExternalWebsiteText}</a></li>
                 {/block:IfExternalWebsiteURL}
                 </ul>
               </div>
