@@ -11,6 +11,17 @@
     margin: 0 0 8px;
     font-size: $base-font-size;
   }
+  .build-info a {
+    font-size: 11px;
+    color: $meta-text;
+    line-height: 17px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: $hover;
+    }
+  }
 
   .section {
     margin-top: 14px;

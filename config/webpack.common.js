@@ -2,6 +2,7 @@ const { resolve } = require('path')
 const { execSync } = require('child_process')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const package = require('../package.json')
 
 const root = resolve(__dirname, '..')
 const distPath = `${root}/dist`
@@ -18,6 +19,7 @@ const tplVars = {
   rev: `${repo.branch}-${repo.count} [${repo.hash}]`,
   year: new Date().getUTCFullYear(),
   buildDate: new Date().toString(),
+  homepage: package.homepage,
   ...repo
 }
 
