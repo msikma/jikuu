@@ -234,6 +234,7 @@
 @mixin bevel-out-inverted-pagenav() {
   a {
     background-color: $near-black;
+    z-index: 50;
 
     span {
       background-color: $near-black;
@@ -244,7 +245,6 @@
     &:hover {
       @include dotted();
       background-color: $primary;
-      z-index: 50;
 
       span {
         background-color: $primary;
