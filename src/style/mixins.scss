@@ -236,14 +236,18 @@
     background-color: $near-black;
 
     span {
-      background: $near-black;
+      background-color: $near-black;
       color: white;
       border-color: $near-black;
     }
 
     &:hover {
+      @include dotted();
+      background-color: $primary;
+      z-index: 50;
+
       span {
-        background: $primary;
+        background-color: $primary;
         color: white;
         border-color: $primary;
       }
