@@ -235,14 +235,14 @@
   a {
     background-color: $near-black;
 
-    .inner {
+    span {
       background: $near-black;
       color: white;
       border-color: $near-black;
     }
 
     &:hover {
-      .inner {
+      span {
         background: $primary;
         color: white;
         border-color: $primary;
