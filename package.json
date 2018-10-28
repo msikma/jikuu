@@ -1,9 +1,9 @@
 {
   "name": "tumblr-jikuu",
   "version": "1.0.0",
-  "description": "Jikuu theme for Tumblr",
+  "description": "A simple light Tumblr theme based on a design from 2009",
   "private": true,
-  "homepage": "https://github.com/msikma/tumblr-jikuu",
+  "homepage": "https://github.com/msikma/jikuu",
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/msikma/tumblr-jikuu.git"
+    "url": "git+ssh://git@bitbucket.org/msikma/jikuu.git"
   },
   "keywords": [],
   "author": "",
