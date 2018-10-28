@@ -29,13 +29,8 @@
     left: -2px;
 
     .icon {
-      top: 0;
+      top: 1px;
       left: 1px;
-
-      @include retina-only() {
-        // For some reason, this extra pixel doesn't look right on non-retina.
-        top: 1px;
-      }
     }
 
     // RSS icon link
