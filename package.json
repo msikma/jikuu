@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "Jikuu theme for Tumblr",
   "private": true,
+  "homepage": "https://github.com/msikma/tumblr-jikuu",
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
     "profile": "webpack --config config/webpack.prod.js --profile --json > stats.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/msikma/tumblr-jikuu.git"
   },
   "keywords": [],
   "author": "",
