@@ -7,6 +7,13 @@
   }
   .menu {
     @include nav-menu-horizontal();
+
+    li {
+      &.active {
+        @include bevel-out-inverted-pagenav();
+      }
+      margin-right: 5px;
+    }
   }
   &.hidden {
     display: none;

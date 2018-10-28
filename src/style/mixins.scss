@@ -229,3 +229,24 @@
     border-color: $near-black;
   }
 }
+
+// Inverts a menu item. Used by the pagenav.
+@mixin bevel-out-inverted-pagenav() {
+  a {
+    background-color: $near-black;
+
+    .inner {
+      background: $near-black;
+      color: white;
+      border-color: $near-black;
+    }
+
+    &:hover {
+      .inner {
+        background: $primary;
+        color: white;
+        border-color: $primary;
+      }
+    }
+  }
+}
