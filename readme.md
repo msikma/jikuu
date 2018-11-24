@@ -16,7 +16,7 @@ If, for some reason, you want to use this theme, feel free to do that as well. [
 
 All the way back in 2008 it was common to run all Javascript after the page had loaded, e.g. through jQuery's `$(document).ready()` callback. This meant your JS would not work at all until after your page had fully finished loading and parsing the HTML—which can take quite a while for large pages on slow connections. A better approach is the one used in this theme: pre-load a small master JS file in the `<head>` that exposes a `decorate()` function; and then, for every bit of HTML that requires JS that loads, follow it up with a `<script>decorate('#post_1234')</script>` (or whatever ID the item has). At the cost of a small blocking load, this means the user will never see HTML that should be interactive but isn't.
 
-The funny thing is, this pattern (called the "decorator" pattern) is actually more relevant today than it was in 2008. Page sizes have ballooned and the web is probably slower than it was a decade ago if you don't have an ad blocker.
+The funny thing is, this pattern (called the "decorator" pattern) is actually more relevant today than it was in 2008 given that page sizes have ballooned. Even when taking today's faster connection speed into account, the web is probably slower than it was a decade ago if you don't have an ad blocker.
 
 There are many other good ways to go about it, of course, but if you are a web developer you might want to consider this method. Always make sure that your site or app can recover from failed or stalled requests, and to test with a poor connection.
 
