@@ -35,3 +35,9 @@ The dev server displays a copy of the testing blog with all external links (e.g.
 ### Copyright
 
 MIT license.
+
+### Example screenshot
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/msikma/jikuu/master/design/jikuu_example_master_67.png" alt="Screenshot of example blog as of master-67" />
+</p>
