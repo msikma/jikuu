@@ -1,5 +1,5 @@
 // Jikuu - Tumblr Theme <https://github.com/msikma/jikuu>
-// © 2009-2018, Michiel Sikma. MIT license.
+// © 2008-2018, Michiel Sikma. MIT license.
 
 import hljs from 'highlight.js/lib/highlight.js'
 
