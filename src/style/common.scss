@@ -1,7 +1,29 @@
 /** Jikuu - Tumblr Theme - Common UI items */
 
-.icon-link {
+@include wide-viewport() {
+  .icon-link {
+    line-height: 23px;
+
+    .icon {
+      top: 2px;
+    }
+  }
+  .blog-list .icon-link {
+    line-height: 20px;
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.blog-list .icon-link {
   line-height: 18px;
+}
+
+.icon-link {
+  line-height: 20px;
   padding-left: 0;
   margin: 0;
   display: block;
@@ -49,14 +71,6 @@
       @include retina-only() {
         background-image: url('./img/twitter_2x.png');
       }
-    }
-  }
-}
-
-@include wide-viewport() {
-  .icon-link {
-    .icon {
-      top: 2px;
     }
   }
 }

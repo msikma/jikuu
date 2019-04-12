@@ -29,6 +29,8 @@ $break-regular: 1100px;
 // Base sizes for the regular layout.
 $base-font-size: 12px;
 $base-line-height: 19px;
+// Slightly smaller line-height when using the native font.
+$base-line-height-native: 18px;
 $base-header-font-size: 21px;
 $base-header-line-height: 27px;
 $base-width: 718px;
@@ -40,9 +42,9 @@ $wide-font-size: 14px;
 $wide-line-height: 21px;
 $wide-header-font-size: 28px;
 $wide-header-line-height: 40px;
-$wide-width: 1070px;
-$wide-width-sidebar: 170px;
-$wide-width-content: 770px;
+$wide-width: 1000px;
+$wide-width-sidebar: 203px;
+$wide-width-content: 700px;
 
 @import "style/mixins.scss";
 @import "style/base.scss";
