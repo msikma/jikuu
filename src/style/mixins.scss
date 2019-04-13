@@ -111,10 +111,12 @@
       }
     }
   }
-  li.active a {
-    @include bevel-out-btn();
+  li.active {
+    a {
+      @include bevel-out-btn();
+    }
 
-    &:last-child {
+    &:last-child a {
       margin-bottom: 0;
     }
   }
