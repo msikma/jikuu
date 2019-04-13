@@ -35,7 +35,7 @@ module.exports = {
       path: distPath,
       publicPath: process.env.NODE_ENV === 'development'
         ? ''
-        : 'https://letsdeliver.com/tumblr/jikuu/'
+        : `https://letsdeliver.com/tumblr/jikuu/${package.version}/`
     },
     plugins: [
       new CleanWebpackPlugin(['dist'], { root }),
