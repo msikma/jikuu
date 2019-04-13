@@ -1,0 +1,44 @@
+/** Jikuu - Tumblr Theme - Mobile layout fixes */
+
+@include small-viewport() {
+  #root .grid-container #content {
+    .main {
+      width: 100%;
+    }
+    .sidebar {
+      width: 100%;
+      margin-bottom: 10px;
+
+      // Turn the biography section into two columns.
+      #section_me.has-profile-photo {
+        display: flex;
+
+        & > .subsection.profile-pic {
+          margin-right: 20px;
+        }
+        & > .subsection.profile-pic,
+        & > .subsection-group {
+          flex-basis: 50%;
+        }
+      }
+      #section_contributors,
+      #section_following,
+      #section_copyright, #section_copyright + hr {
+        display: none;
+      }
+
+      // Turn off the biography photo altogether on very small sizes.
+      @include tiny-viewport() {
+        #section_me.has-profile-photo {
+          .subsection.profile-pic {
+            display: none;
+          }
+          & > .subsection.profile-pic,
+          & > .subsection-group {
+            flex-basis: 100%;
+          }
+        }
+      }
+    }
+  }
+}

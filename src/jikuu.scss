@@ -21,6 +21,8 @@ $monospace-font-native: 'Menlo', 'Andale Mono', 'Ubuntu Mono', monospace;
 // Make the monospace font slightly smaller if using the native font as base.
 $monospace-font-native-scale: 94%;
 
+// Used to turn off some layout elements on very small mobile sizes.
+$break-tiny: 370px;
 // Small resolution breakpoint.
 $break-small: 768px;
 // Regular layout breakpoint.
@@ -52,6 +54,7 @@ $wide-width-content: 730px;
 @import "style/footer.scss";
 @import "style/sidebar.scss";
 @import "style/transition.scss";
+@import "style/responsive.scss";
 @import "style/post.scss";
 @import "style/posts/answer.scss";
 @import "style/posts/audio.scss";

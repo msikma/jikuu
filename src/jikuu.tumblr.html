@@ -180,40 +180,42 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
         <!-- ↓ sidebar with navigation and blog information -->
         <div class="col sidebar" id="content_sidebar">
           <div class="section-container">
-            <div class="section me" id="section_me">
+            <div class="section me {block:IfShowProfilePhoto}has-profile-photo{/block:IfShowProfilePhoto}" id="section_me">
             {block:IfShowProfilePhoto}
               <div class="subsection profile-pic{block:IfUseBigProfilePhoto} full-width{/block:IfUseBigProfilePhoto}">
                 <a href="/" class="avatar">{block:IfProfilePhotoImage}<img src="{image:Profile photo}" width="128" height="128" alt="{PlaintextTitle}" />{/block:IfProfilePhotoImage}{block:IfNotProfilePhotoImage}<img src="{PortraitURL-128}" width="128" height="128" alt="{PlaintextTitle}" />{/block:IfNotProfilePhotoImage}</a>
               </div>
             {/block:IfShowProfilePhoto}
-            {block:IfShowBlogDescription}
-              {block:Description}
-              <div class="subsection blog-desc post-content html-content">
-                <p>{Description}</p>
+              <div class="subsection-group">
+                {block:IfShowBlogDescription}
+                  {block:Description}
+                  <div class="subsection blog-desc post-content html-content">
+                    <p>{Description}</p>
+                  </div>
+                  {/block:Description}
+                {/block:IfShowBlogDescription}
+                {block:IfShowSocialMediaLinks}
+                  <div class="subsection follow-links" id="section_socmed">
+                    <ul>
+                    {block:IfExternalRSSFeedLink}
+                      <li class="follow"><a class="icon-button icon-link rss" href="{RSS}"><span class="icon"></span>{lang:Subscribe via RSS}</a></li>
+                    {/block:IfExternalRSSFeedLink}
+                    {block:IfExternalTwitterURL}
+                      <li class="follow"><a class="icon-button icon-link twitter" href="{text:External Twitter URL}"><span class="icon"></span>{block:IfExternalTwitterText}{text:External Twitter text}{/block:IfExternalTwitterText}{block:IfNotExternalTwitterText}Twitter{/block:IfNotExternalTwitterText}</a></li>
+                    {/block:IfExternalTwitterURL}
+                    {block:IfExternalYoutubeURL}
+                      <li class="follow"><a class="icon-button icon-link youtube" href="{text:External website URL}"><span class="icon"></span>{block:IfExternalYoutubeText}{text:External Youtube text}{/block:IfExternalYoutubeText}{block:IfNotExternalYoutubeText}Youtube{/block:IfNotExternalYoutubeText}</a></li>
+                    {/block:IfExternalYoutubeURL}
+                    {block:IfExternalWebsiteURL}
+                      <li class="follow"><a class="icon-button icon-link website" href="{text:External Flickr URL}"><span class="icon"></span>{block:IfExternalWebsiteText}{text:External website text}{/block:IfExternalWebsiteText}{block:IfNotExternalWebsiteText}Website{/block:IfNotExternalWebsiteText}</a></li>
+                    {/block:IfExternalWebsiteURL}
+                    </ul>
+                  </div>
+                  <script>
+                  Jikuu.decorate("#section_socmed");
+                  </script>
+                {/block:IfShowSocialMediaLinks}
               </div>
-              {/block:Description}
-            {/block:IfShowBlogDescription}
-            {block:IfShowSocialMediaLinks}
-              <div class="subsection follow-links" id="section_socmed">
-                <ul>
-                {block:IfExternalRSSFeedLink}
-                  <li class="follow"><a class="icon-button icon-link rss" href="{RSS}"><span class="icon"></span>{lang:Subscribe via RSS}</a></li>
-                {/block:IfExternalRSSFeedLink}
-                {block:IfExternalTwitterURL}
-                  <li class="follow"><a class="icon-button icon-link twitter" href="{text:External Twitter URL}"><span class="icon"></span>{block:IfExternalTwitterText}{text:External Twitter text}{/block:IfExternalTwitterText}{block:IfNotExternalTwitterText}Twitter{/block:IfNotExternalTwitterText}</a></li>
-                {/block:IfExternalTwitterURL}
-                {block:IfExternalYoutubeURL}
-                  <li class="follow"><a class="icon-button icon-link youtube" href="{text:External website URL}"><span class="icon"></span>{block:IfExternalYoutubeText}{text:External Youtube text}{/block:IfExternalYoutubeText}{block:IfNotExternalYoutubeText}Youtube{/block:IfNotExternalYoutubeText}</a></li>
-                {/block:IfExternalYoutubeURL}
-                {block:IfExternalWebsiteURL}
-                  <li class="follow"><a class="icon-button icon-link website" href="{text:External Flickr URL}"><span class="icon"></span>{block:IfExternalWebsiteText}{text:External website text}{/block:IfExternalWebsiteText}{block:IfNotExternalWebsiteText}Website{/block:IfNotExternalWebsiteText}</a></li>
-                {/block:IfExternalWebsiteURL}
-                </ul>
-              </div>
-              <script>
-              Jikuu.decorate("#section_socmed");
-              </script>
-            {/block:IfShowSocialMediaLinks}
             </div>
             <script>
             Jikuu.decorate("#section_me");
@@ -284,7 +286,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
             {/block:Following}
             {/block:IfShowListOfBlogsYouFollow}
             {block:IfShowCopyrightSection}
-            <div class="section copyright">
+            <div class="section copyright" id="section_copyright">
               <h3 class="meta copyright-statement">© {CopyrightYears}{block:IfAdditionalCopyrightInfo}, {text:Additional copyright info}{/block:IfAdditionalCopyrightInfo}</h3>
               <div class="build-info"><a href="<%= htmlWebpackPlugin.options.homepage %>"><%= htmlWebpackPlugin.options.rev %></a></div>
             </div>
@@ -327,7 +329,9 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <!-- ↓ text post -->
                 {block:Title}
                 <h2 class="title">{Title}</h2>
+                {block:Date}
                 <p class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</p>
+                {/block:Date}
                 {/block:Title}
                 <div class="body html-content">{Body}</div>
               {/block:Text}

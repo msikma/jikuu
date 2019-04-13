@@ -27,6 +27,13 @@
   }
 }
 
+// Adds CSS that only applies to extremely small ($break-tiny) mobile viewports.
+@mixin tiny-viewport() {
+  @media only screen and (max-width: $break-tiny) {
+    @content;
+  }
+}
+
 // Add CSS that only applies to the large (above $break-regular) viewports.
 // This only activates if the layout mode is set to 'wide'.
 @mixin wide-viewport() {

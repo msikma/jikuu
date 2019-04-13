@@ -278,29 +278,31 @@ Build date: Sat Jun 30 2018 19:54:11 GMT+0200 (CEST)
         <!-- ↓ sidebar with navigation and blog information -->
         <div class="col sidebar" id="content_sidebar">
           <div class="section-container">
-            <div class="section me" id="section_me">
+            <div class="section me has-profile-photo" id="section_me">
               <div class="subsection profile-pic">
                 <a href="http://jikuu.tumblr.com/" class="avatar">
                   <img src="./resources/tumblr_static_axolotl.jpg" width="128" height="128" alt="Jikuu Theme"></a></div>
-              <div class="subsection blog-desc post-content html-content">
-                <p>(Note: still testing!)
-                  <br>
-                  This is the example blog for the Jikuu theme, made by
-                  <a href="http://michielsikma.tumblr.com/">Michiel&nbsp;Sikma</a>. It has plenty of customization options.</p>
-              </div>
-              <script>
-                Jikuu.decorate("#section_me");
-						</script>
-              <div class="subsection follow-links" id="section_socmed">
-                <ul>
-                  <li class="follow">
-                    <a class="icon-button icon-link rss" href="http://jikuu.tumblr.com/rss">
-                      <span class="icon"></span>Subscribe via RSS</a></li>
+              <div class="subsection-group">
+                <div class="subsection blog-desc post-content html-content">
+                  <p>(Note: still testing!)
+                    <br>
+                    This is the example blog for the Jikuu theme, made by
+                    <a href="http://michielsikma.tumblr.com/">Michiel&nbsp;Sikma</a>. It has plenty of customization options.</p>
+                </div>
+                <script>
+                  Jikuu.decorate("#section_me");
+              </script>
+                <div class="subsection follow-links" id="section_socmed">
+                  <ul>
+                    <li class="follow">
+                      <a class="icon-button icon-link rss" href="http://jikuu.tumblr.com/rss">
+                        <span class="icon"></span>Subscribe via RSS</a></li>
 
-                  <li class="follow">
-                    <a class="icon-button icon-link twitter" href="https://twitter.com/michielsikma">
-                      <span class="icon"></span>@michielsikma</a></li>
-                </ul>
+                    <li class="follow">
+                      <a class="icon-button icon-link twitter" href="https://twitter.com/michielsikma">
+                        <span class="icon"></span>@michielsikma</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
             <script>
@@ -668,7 +670,7 @@ Build date: Sat Jun 30 2018 19:54:11 GMT+0200 (CEST)
             <script>
               Jikuu.decorate("#section_following");
             </script>
-            <div class="section copyright">
+            <div class="section copyright" id="section_copyright">
               <h3 class="meta copyright-statement">© 2008–2018</h3>
             </div>
             <hr>
