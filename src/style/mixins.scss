@@ -113,6 +113,10 @@
   }
   li.active a {
     @include bevel-out-btn();
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
