@@ -34,7 +34,7 @@ The dev server displays a copy of the testing blog with all external links (e.g.
 
 ### Copyright
 
-MIT license. © 2008-2018.
+MIT license. © 2008-2019.
 
 ### Example screenshot
 
