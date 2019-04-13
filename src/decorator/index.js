@@ -57,6 +57,25 @@ class Jikuu {
       // Decorating a photoset or photo will also add the lightbox.
       this.stylePhotoset(id)
     }
+
+    if (id === '#section_nav') {
+      this.decorateMenu(id)
+    }
+  }
+
+  /**
+   * Ensures any menu item receives the 'active' styling if we are on that page.
+   */
+  decorateMenu(id) {
+    // Remove leading slashes.
+    const currPage = window.location.href.replace(/\/$/, '');
+    const items = document.querySelectorAll(`${id} ul li`)
+    items.forEach(item => {
+      const link = item.querySelector('a').getAttribute('href').replace(/\/$/, '');
+      if (link === currPage) {
+        item.classList.add('active');
+      }
+    })
   }
 
   /**
