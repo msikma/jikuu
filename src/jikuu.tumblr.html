@@ -328,7 +328,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
               {block:Text}
                 <!-- ↓ text post -->
                 {block:Title}
-                <h2 class="title">{Title}</h2>
+                <h2 class="title"><a href="{Permalink}">{Title}</a></h2>
                 {block:Date}
                 <p class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">
                   {block:English}{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}{/block:English}
@@ -534,7 +534,27 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <div class="meta">
                   <p>
                     {block:Date}
-                    <span class="date timestamp-{Timestamp}"><a href="{Permalink}">{block:IfShowAuthorName}{lang:Posted TimeAgo by PostAuthorName}{/block:IfShowAuthorName}{block:IfNotShowAuthorName}{lang:Posted TimeAgo}{/block:IfNotShowAuthorName}</a>{block:PermalinkPage} (<span class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{Month} {DayOfMonth}, {Year}</span> <span class="time">{block:IfUse24HourClock}{24HourWithZero}:{Minutes}{/block:IfUse24HourClock}{block:IfNotUse24HourClock}{12HourWithZero}:{Minutes} {AmPm}{/block:IfNotUse24HourClock}</span>){/block:PermalinkPage}</span>
+                    <span class="date timestamp-{Timestamp}">
+                      {block:English}
+                        <a href="{Permalink}">
+                          {block:IfShowAuthorName}{lang:Posted TimeAgo by PostAuthorName}{/block:IfShowAuthorName}
+                          {block:IfNotShowAuthorName}{lang:Posted TimeAgo}{/block:IfNotShowAuthorName}
+                        </a>
+                        {block:PermalinkPage} (<span class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{Month} {DayOfMonth}, {Year}</span> <span class="time">{block:IfUse24HourClock}{24HourWithZero}:{Minutes}{/block:IfUse24HourClock}{block:IfNotUse24HourClock}{12HourWithZero}:{Minutes} {AmPm}{/block:IfNotUse24HourClock}</span>){/block:PermalinkPage}
+                      {/block:English}
+                      {block:Japanese}
+                        <a href="{Permalink}">{block:IfShowAuthorName}{lang:Posted TimeAgo by PostAuthorName}{/block:IfShowAuthorName}{block:IfNotShowAuthorName}{lang:Posted TimeAgo}{/block:IfNotShowAuthorName}</a>{block:PermalinkPage}（<span class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{Year}年{Month}{DayOfMonth}日</span> <span class="time">{block:IfUse24HourClock}{24HourWithZero}:{Minutes}{/block:IfUse24HourClock}{block:IfNotUse24HourClock}{12HourWithZero}:{Minutes} {AmPm}{/block:IfNotUse24HourClock}</span>）{/block:PermalinkPage}
+                      {/block:Japanese}
+                      {block:NotEnglish}
+                        {block:NotJapanese}
+                          <a href="{Permalink}">
+                            {block:IfShowAuthorName}{lang:Posted TimeAgo by PostAuthorName}{/block:IfShowAuthorName}
+                            {block:IfNotShowAuthorName}{lang:Posted TimeAgo}{/block:IfNotShowAuthorName}
+                          </a>
+                          {block:PermalinkPage} (<span class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</span> <span class="time">{block:IfUse24HourClock}{24HourWithZero}:{Minutes}{/block:IfUse24HourClock}{block:IfNotUse24HourClock}{12HourWithZero}:{Minutes} {AmPm}{/block:IfNotUse24HourClock}</span>){/block:PermalinkPage}
+                        {/block:NotJapanese}
+                      {/block:NotEnglish}
+                    </span>
                     {/block:Date}
                     {block:NoteCount}
                     - <span class="notes">{NoteCountWithLabel}</span>

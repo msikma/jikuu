@@ -15,6 +15,10 @@
       font-size: $base-header-font-size;
       line-height: $base-header-line-height;
       margin-bottom: 10px;
+
+      a {
+        color: $near-black;
+      }
     }
 
     .html-content {
