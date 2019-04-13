@@ -336,7 +336,13 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 <!-- ↓ photo post -->
                 <div class="media{block:HighRes} has-highres{/block:HighRes}">
                   <div class="image-container">
-                    <a href="{LinkURL}"><img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" /></a>
+                    {block:LinkURL}
+                    <a href="{LinkURL}">
+                    {/block:LinkURL}
+                      <img width="{PhotoWidth-500}" height="{PhotoHeight-500}" src="{PhotoURL-1280}" srcset="{PhotoURL-HighRes} {PhotoWidth-HighRes}w, {PhotoURL-1280} {PhotoWidth-1280}w, {PhotoURL-500} {PhotoWidth-500}w" sizes="(min-width: 1280px) 1280px, 100vw" alt="{PhotoAlt}" />
+                    {block:LinkURL}
+                    </a>
+                    {/block:LinkURL}
                   </div>
                 </div>
                 <div class="meta">
