@@ -330,7 +330,15 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
                 {block:Title}
                 <h2 class="title">{Title}</h2>
                 {block:Date}
-                <p class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</p>
+                <p class="date iso-{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">
+                  {block:English}{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}{/block:English}
+                  {block:Japanese}{Year}年{Month}{DayOfMonth}日{/block:Japanese}
+                  {block:NotEnglish}
+                    {block:NotJapanese}
+                      {Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}
+                    {/block:NotJapanese}
+                  {/block:NotEnglish}
+                </p>
                 {/block:Date}
                 {/block:Title}
                 <div class="body html-content">{Body}</div>
