@@ -52,13 +52,6 @@ class Jikuu {
       this.decorateText(id)
     }
 
-    // Enable infinite scrolling when we've reached the end of the page.
-    // If it's enabled sooner it will likely trigger a page load prematurely.
-    if (id === '#section_loader' && this.settings.layout.useEndlessScrolling) {
-      this._hidePageNav()
-      this._loadPageOnScroll()
-    }
-
     // Check which post type this is and decorate accordingly.
     if (el.classList.contains('photoset')) {
       // Decorating a photoset or photo will also add the lightbox.
@@ -98,47 +91,6 @@ class Jikuu {
   _getMainContentStyle() {
     if (this.mainContentStyle != null) return
     this.mainContentStyle = window.getComputedStyle(document.querySelector('#content_main'))
-  }
-
-  /**
-   * Hides page navigation, if using infinite scrolling.
-   */
-  _hidePageNav() {
-    const pageNav = document.querySelector('#section_pagenav')
-    pageNav.classList.add('hidden')
-  }
-
-  /**
-   * Adds a scroll callback that loads the next page if the user is close to the bottom.
-   * Runs when infinite loading is enabled, upon receiving the settings object.
-   */
-  _loadPageOnScroll() {
-    this.scrollCallbacks.push(() => {
-      let pageToLoad = null
-      const distTop = window.scrollY
-      const distBottom = document.body.scrollHeight - window.innerHeight - window.scrollY
-
-      // Exit if already loading a page or not in range.
-      if (this.isLoadingBottom || distBottom > this.scrollDistThreshold) return
-      if (this.isLoadingTop || distTop > this.scrollDistThreshold) return
-
-      // Whether to load a new page at the top (newer page) or the bottom (older page).
-      const loadTop = distTop < distBottom
-      if (loadTop) {
-        this.isLoadingTop = true
-        pageToLoad = Math.max(this.currPage - 1, 1)
-      }
-      else {
-        this.isLoadingBottom = true
-        pageToLoad = this.currPage + 1
-      }
-
-      // Turn on loader.
-
-
-      // Retrieve next page and inject.
-      //const
-    })
   }
 
   /**
