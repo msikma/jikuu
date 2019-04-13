@@ -187,6 +187,10 @@
       h2.title {
         font-size: $wide-header-font-size;
         line-height: $wide-header-line-height;
+        // Move up the text a bit to visually line it up with the sidebar top image.
+        position: relative;
+        top: -1px;
+        margin-bottom: 8px;
       }
     }
   }

@@ -21,6 +21,10 @@ class Jikuu {
     this.resizeCallbacks = []
     this.scrollCallbacks = []
 
+    // Layout size (for calculating the photo gallery styling)
+    this.layoutRegular = 500
+    this.layoutWide = 730
+
     // Live style object of the main content container.
     this.mainContentStyle = null
 
@@ -175,7 +179,6 @@ class Jikuu {
 
     // The gap in between photos.
     const gap = parseInt(this.settings.layout.photosetGutterSize, 10)
-    const contentWidth = this.settings.layout.layoutType === 'regular' ? 500 : 770;
 
     let n = 0
     let layoutPos = 0
@@ -259,7 +262,7 @@ class Jikuu {
 
       prevWidth = currWidth
       this.settings.layout.layoutType = currWidth === 500 ? 'regular' : 'wide'
-      resizeRow(this.settings.layout.layoutType === 'regular' ? 500 : 770)
+      resizeRow(this.settings.layout.layoutType === 'regular' ? this.layoutRegular : this.layoutWide)
     }
     this.resizeCallbacks.push(resizePost)
     resizePost()

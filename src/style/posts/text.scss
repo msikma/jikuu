@@ -4,7 +4,21 @@
   .post-content {
     h2 + .date {
       color: $dark-gray;
+      margin-top: 8px;
       margin-bottom: 18px;
+    }
+  }
+}
+
+@include wide-viewport() {
+  #container_posts {
+    .post.type-text {
+      .post-content {
+        h2 + .date {
+          // Reduce the margin just a tad to give it the same ratio as the narrow viewport.
+          margin-top: 6px;
+        }
+      }
     }
   }
 }
