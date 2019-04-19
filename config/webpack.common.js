@@ -19,6 +19,7 @@ const repo = {
 const tplVars = {
   rev: `${repo.branch}-${repo.count} [${repo.hash}]`,
   year: new Date().getUTCFullYear(),
+  version: package.version,
   homepage: package.homepage,
   ...repo
 }
