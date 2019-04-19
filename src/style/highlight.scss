@@ -1,0 +1,14 @@
+/** Jikuu - Tumblr Theme - Highlight.js overrides */
+
+#content {
+  // Make diffs/patches use green and red for additions/deletions.
+  .hljs.diff,
+  .hljs.patch {
+    .hljs-addition {
+      color: #91e129;
+    }
+    .hljs-deletion {
+      color: #fd4787;
+    }
+  }
+}
