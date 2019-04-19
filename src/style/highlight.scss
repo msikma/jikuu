@@ -1,14 +1,85 @@
 /** Jikuu - Tumblr Theme - Highlight.js overrides */
 
+$really-dark: #0e131a; // new background?
+
+$hl-addition: #91e129;
+$hl-deletion: #fd4787;
+
+$hl-somethingsomethingsomething: #1cbcfa;
+$hl-string: #d6f808;
+$hl-name: #fd9007; // class name, object property name
+$hl-attribute: #fd5b06;
+$hl-params: #fd9007;
+$hl-keyword: #936bff;
+$hl-refer: #fc4f5b;
+$hl-comment: #5f7790;
+$hl-background: #081c29;
+
 #content {
-  // Make diffs/patches use green and red for additions/deletions.
-  .hljs.diff,
-  .hljs.patch {
-    .hljs-addition {
-      color: #91e129;
+  .hljs {
+    background: $hl-background;
+
+    // Theme overrides. Based on <highlight.js/styles/dracula.css>.
+    .hljs-title {
+      font-weight: normal;
+      color: $hl-string;
     }
-    .hljs-deletion {
-      color: #fd4787;
+    .hljs-attribute {
+      color: $hl-attribute;
+    }
+    .hljs-keyword {
+      font-weight: normal;
+      font-style: italic;
+      color: $hl-keyword;
+    }
+    .hljs-string {
+      font-weight: normal;
+      color: $hl-string;
+    }
+    .hljs-params {
+      // not ready yet.
+      //color: $hl-params;
+    }
+    .hljs-comment {
+      color: $hl-comment;
+    }
+    .hljs-tag {
+      .hljs-name {
+        color: $hl-refer;
+      }
+      .hljs-attr {
+        color: $hl-attribute;
+      }
+    }
+
+    // Make diffs/patches use green and red for additions/deletions.
+    &.diff,
+    &.patch {
+      .hljs-addition {
+        color: $hl-addition;
+      }
+      .hljs-deletion {
+        color: $hl-deletion;
+      }
+    }
+
+    // Modifications for Javascript.
+    &.javascript {
+      .hljs-decorator {
+        color: $hl-somethingsomethingsomething;
+      }
+      .hljs-class {
+        // Colors 'extends' in a class declaration.
+        .hljs-extends {
+          .hljs-keyword {
+            color: $hl-refer;
+          }
+        }
+        // Colors the class name.
+        .hljs-keyword:first-child + .hljs-title {
+          color: $hl-name;
+        }
+      }
     }
   }
 }
