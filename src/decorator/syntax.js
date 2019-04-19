@@ -8,13 +8,14 @@ import hljs from 'highlight.js/lib/highlight.js'
 // See <node_modules/highlight.js/lib/languages/*.js> for more items.
 hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'))
 hljs.registerLanguage('sql', require('highlight.js/lib/languages/sql'))
-hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'))
 hljs.registerLanguage('php', require('highlight.js/lib/languages/php'))
 hljs.registerLanguage('css', require('highlight.js/lib/languages/css'))
 hljs.registerLanguage('python', require('highlight.js/lib/languages/python'))
 hljs.registerLanguage('diff', require('highlight.js/lib/languages/diff'))
 // Empty language to avoid guessing what language something is.
 hljs.registerLanguage('empty', require('./empty'))
+// Customized version.
+hljs.registerLanguage('javascript', require('./hljs/javascript'))
 
 /**
  * Adds syntax highlighting to a number of code blocks.
