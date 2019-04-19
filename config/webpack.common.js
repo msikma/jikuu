@@ -10,6 +10,7 @@ const distPath = `${root}/dist`
 // Retrieve current state of the repo.
 const exec = cmd => execSync(cmd, { encoding: 'utf8' }).trim()
 const repo = {
+  date: exec('git log -1 --format=%ad'),
   count: exec('git rev-list head --count'),
   hash: exec('git rev-parse --short head'),
   branch: exec('git describe --all | sed s@heads/@@')
@@ -18,7 +19,6 @@ const repo = {
 const tplVars = {
   rev: `${repo.branch}-${repo.count} [${repo.hash}]`,
   year: new Date().getUTCFullYear(),
-  buildDate: new Date().toString(),
   homepage: package.homepage,
   ...repo
 }

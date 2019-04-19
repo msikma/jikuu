@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}">
 <!--
 
-Jikuu - Tumblr Theme (<%= htmlWebpackPlugin.options.rev %>) <<%= htmlWebpackPlugin.options.homepage %>>
+Jikuu - Tumblr Theme <<%= htmlWebpackPlugin.options.homepage %>>
 Copyright © 2008-<%= htmlWebpackPlugin.options.year %>, Michiel Sikma. MIT license.
-Build date: <%= htmlWebpackPlugin.options.buildDate %>
+Commit: <%= htmlWebpackPlugin.options.rev %> (<%= htmlWebpackPlugin.options.date %>)
 
 (；ﾟ～ﾟ)ゝ”
 
@@ -107,7 +107,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
   <!-- ↓ settings to pass on to the interface code -->
   <script type="text/javascript" data-jikuu="settings">
   Jikuu.configure({
-    rev: { count: '<%= htmlWebpackPlugin.options.count %>', hash: '<%= htmlWebpackPlugin.options.hash %>', branch: '<%= htmlWebpackPlugin.options.branch %>' },
+    rev: { date: '<%= htmlWebpackPlugin.options.date %>', count: '<%= htmlWebpackPlugin.options.count %>', hash: '<%= htmlWebpackPlugin.options.hash %>', branch: '<%= htmlWebpackPlugin.options.branch %>' },
     i18n: {
       lang: '{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}',
       str: {
@@ -288,7 +288,7 @@ Build date: <%= htmlWebpackPlugin.options.buildDate %>
             {block:IfShowCopyrightSection}
             <div class="section copyright" id="section_copyright">
               <h3 class="meta copyright-statement">© {CopyrightYears}{block:IfAdditionalCopyrightInfo}, {text:Additional copyright info}{/block:IfAdditionalCopyrightInfo}</h3>
-              <div class="build-info"><a href="<%= htmlWebpackPlugin.options.homepage %>"><%= htmlWebpackPlugin.options.rev %></a></div>
+              <div class="build-info"><a href="<%= htmlWebpackPlugin.options.homepage %>" id="build_info" title="<%= htmlWebpackPlugin.options.date %>"><%= htmlWebpackPlugin.options.rev %></a></div>
             </div>
             <hr />
             {/block:IfShowCopyrightSection}
