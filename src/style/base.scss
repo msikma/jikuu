@@ -103,6 +103,8 @@ a:visited:focus {
         float: right;
         min-height: 1px;
         width: $base-width-content;
+        // Add some extra space below to ensure the page doesn't end too abruptly.
+        margin-bottom: 80px;
       }
     }
   }
