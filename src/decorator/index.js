@@ -69,13 +69,13 @@ class Jikuu {
    */
   decorateMenu(id) {
     // Remove leading slashes.
-    const currPage = window.location.pathname.replace(/\/$/, '');
+    const currPage = window.location.pathname.replace(/\/$/, '')
 
     const items = document.querySelectorAll(`${id} ul li`)
     items.forEach(item => {
-      const link = item.querySelector('a').getAttribute('href').replace(/\/$/, '');
+      const link = item.querySelector('a').getAttribute('href').replace(/\/$/, '')
       if (link === currPage) {
-        item.classList.add('active');
+        item.classList.add('active')
       }
     })
 
