@@ -9,6 +9,7 @@ class Jikuu {
     // Default settings, to be overridden by what's in the HTML.
     this.settings = {
       rev: null,
+      menuActive: true,
       layout: {
         layoutType: 'regular',
         photosetGutterSize: '5px'
@@ -69,6 +70,7 @@ class Jikuu {
   decorateMenu(id) {
     // Remove leading slashes.
     const currPage = window.location.pathname.replace(/\/$/, '');
+
     const items = document.querySelectorAll(`${id} ul li`)
     items.forEach(item => {
       const link = item.querySelector('a').getAttribute('href').replace(/\/$/, '');
@@ -76,6 +78,13 @@ class Jikuu {
         item.classList.add('active');
       }
     })
+
+    // Check if any item is highlighted at all; if not, activate home.
+    const activated = document.querySelectorAll(`${id} ul li.active`).length
+    if (activated || !this.settings.menuActive) return
+    const index = document.querySelector(`${id} ul li.page-index`)
+    if (!index) return
+    index.classList.add('active')
   }
 
   /**
@@ -244,7 +253,7 @@ class Jikuu {
 
   // Passes on a configuration object from an inline script in the page's <head>.
   configure(settings) {
-    this.settings = settings
+    this.settings = { ...this.settings, ...settings }
   }
 }
 
