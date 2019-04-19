@@ -14,12 +14,13 @@ $hl-keyword: #936bff;
 $hl-refer: #fc4f5b;
 $hl-comment: #5f7790;
 $hl-background: #081c29;
+$hl-number: #936bff; // for CSS numbers
 
 #content {
   .hljs {
     background: $hl-background;
 
-    // Theme overrides. Based on <highlight.js/styles/dracula.css>.
+    // Global theme overrides. Based on <highlight.js/styles/dracula.css>.
     .hljs-title {
       font-weight: normal;
       color: $hl-string;
@@ -52,7 +53,17 @@ $hl-background: #081c29;
       }
     }
 
-    // Make diffs/patches use green and red for additions/deletions.
+    // CSS
+    &.css {
+      .hljs-selector-class {
+        color: $hl-params;
+      }
+      .hljs-number {
+        color: $hl-number;
+      }
+    }
+
+    // Diff/patch
     &.diff,
     &.patch {
       .hljs-addition {
@@ -63,7 +74,7 @@ $hl-background: #081c29;
       }
     }
 
-    // Modifications for Javascript.
+    // JS
     &.javascript {
       .hljs-decorator {
         color: $hl-somethingsomethingsomething;
