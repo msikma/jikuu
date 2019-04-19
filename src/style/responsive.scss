@@ -42,3 +42,11 @@
     }
   }
 }
+
+@include wide-viewport() {
+  .grid-container {
+    #header #title.std-logo > a {
+      margin-left: $wide-width - $wide-width-content;
+    }
+  }
+}

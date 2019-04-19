@@ -71,6 +71,9 @@ Commit: <%= htmlWebpackPlugin.options.rev %> (<%= htmlWebpackPlugin.options.date
   <meta name="text:External Twitter URL" content="" />
   <meta name="text:External Twitter text" content="" />
 
+  <meta name="text:External Github URL" content="" />
+  <meta name="text:External Github text" content="" />
+
   <meta name="text:External Youtube URL" content="" />
   <meta name="text:External Youtube text" content="" />
 
@@ -200,6 +203,9 @@ Commit: <%= htmlWebpackPlugin.options.rev %> (<%= htmlWebpackPlugin.options.date
                     {block:IfExternalRSSFeedLink}
                       <li class="follow"><a class="icon-button icon-link rss" href="{RSS}"><span class="icon"></span>{lang:Subscribe via RSS}</a></li>
                     {/block:IfExternalRSSFeedLink}
+                    {block:IfExternalGithubURL}
+                      <li class="follow"><a class="icon-button icon-link github" href="{text:External Github URL}"><span class="icon"></span>{block:IfExternalGithubText}{text:External Github text}{/block:IfExternalGithubText}{block:IfNotExternalGithubText}Github{/block:IfNotExternalGithubText}</a></li>
+                    {/block:IfExternalGithubURL}
                     {block:IfExternalTwitterURL}
                       <li class="follow"><a class="icon-button icon-link twitter" href="{text:External Twitter URL}"><span class="icon"></span>{block:IfExternalTwitterText}{text:External Twitter text}{/block:IfExternalTwitterText}{block:IfNotExternalTwitterText}Twitter{/block:IfNotExternalTwitterText}</a></li>
                     {/block:IfExternalTwitterURL}

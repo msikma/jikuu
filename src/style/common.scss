@@ -51,8 +51,11 @@
     left: -2px;
 
     .icon {
+      background-color: $primary;
       top: 1px;
       left: 1px;
+      width: 14px;
+      height: 14px;
     }
 
     // RSS icon link
@@ -70,6 +73,37 @@
 
       @include retina-only() {
         background-image: url('./img/twitter_2x.png');
+      }
+    }
+
+    // Github account link
+    &.github .icon {
+      background-image: url('./img/github_1x.png');
+
+      @include retina-only() {
+        background-image: url('./img/github_2x.png');
+      }
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      
+      .icon {
+        background-color: $hover;
+      }
+    }
+    &:visited {
+      color: $primary;
+      .icon {
+        background-color: $primary;
+      }
+    }
+    &:visited:hover,
+    &:visited:focus {
+      color: $hover;
+      .icon {
+        background-color: $hover;
       }
     }
   }

@@ -44,8 +44,7 @@ a:visited:focus {
 
     // Header section.
     #header {
-      margin: 0 0 25px 0;
-      border-bottom: 5px solid $primary;
+      margin: 0;
 
       #title {
         font-size: 31px;
@@ -61,9 +60,10 @@ a:visited:focus {
 
           > a {
             width: 329px;
-            margin: auto;
+            margin: 0;
             display: block;
-            padding: 29px 40px 14px;
+            padding: 30px 0 0 0;
+            margin-left: $base-width - $base-width-content;
 
             // Note: SVG colors can be modified by targeting
             // svg .st0 (left text)
@@ -91,15 +91,21 @@ a:visited:focus {
 
     // Content section.
     #content {
-      margin: 25px 0;
+      margin: 0 0 25px 0;
 
       .sidebar {
+        border-top: 5px solid $hover;
+        padding-top: 20px;
+        margin-top: 16px;
         margin-bottom: 45px;
         float: left;
         min-height: 1px;
         width: $base-width-sidebar;
       }
       .main {
+        border-top: 5px solid $primary;
+        padding-top: 20px;
+        margin-top: 16px;
         float: right;
         min-height: 1px;
         width: $base-width-content;
