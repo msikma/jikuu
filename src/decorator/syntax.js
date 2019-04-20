@@ -6,7 +6,7 @@ import Prism from 'prismjs'
 // List of PrismJS languages we recognize, passed on from .babelrc.
 const languages = PRISM_JS_CONFIG.languages
 // Aliases: used to map short codes (e.g. 'js') to PrismJS language names.
-const aliases = { js: 'jsx', html: 'markup', sh: 'bash', shell: 'bash', fish: 'bash' }
+const aliases = { js: 'jsx', html: 'markup', sh: 'bash', shell: 'bash', fish: 'bash', css: 'scss' }
 
 /** Patches the syntax highlighting definitions. */
 export const patchGrammar = () => {

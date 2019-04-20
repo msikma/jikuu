@@ -4,7 +4,7 @@
     "transform-object-rest-spread",
     "transform-class-properties",
     ["prismjs", {
-      "languages": ["javascript", "css", "markup", "scss", "php", "bash", "js-extras", "jsx", "diff"]
+      "languages": ["javascript", "markup", "scss", "php", "bash", "js-extras", "jsx", "diff"]
     }]
   ]
 }
