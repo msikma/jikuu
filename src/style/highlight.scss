@@ -147,6 +147,14 @@ $hl-comment: #5f7790;
       &.number {
         color: $hl-attribute;
       }
+      &.shell-command {
+        .dollar {
+          color: $hl-keyword;
+        }
+        .function {
+          color: $hl-function;
+        }
+      }
     }
 
     // Fish shell fixes.
