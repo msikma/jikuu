@@ -147,44 +147,9 @@ module.exports = function(hljs) {
         excludeEnd: true,
         end: /\s?\(/
       },
-      // TODO:
-      /*{
-        className: 'arrow-function',
-        includeBegin: true,
-        returnBegin: true,
-        begin: /[A-Za-z0-9]+\s?\=\s?\(\s?[A-Za-z0-9,\s]+\s?\)\s?\=\>/,
-        end: /\>\s/,
-        excludeEnd: false,
-        contains: [
-          {
-            className: 'keyword',
-            begin: /const/
-          },
-          {
-            className: 'function-name',
-            begin: /\s[A-Za-z0-9]/,
-            end: /\s/
-          },
-          {
-            className: 'eq',
-            begin: /\=/
-          },
-          {
-            className: 'parentheses',
-            begin: /\(|\)/
-          },
-          {
-            className: 'params',
-            begin: /\(/, end: /\)/,
-            excludeBegin: true,
-            excludeEnd: true,
-            contains: PARAMS_CONTAINS
-          }
-        ]
-      },*/
       {
         className: 'function',
-        beginKeywords: 'function', end: /\{/, excludeEnd: true,
+        beginKeywords: 'function const', end: /\{|\n/, excludeEnd: true,
         contains: [
           hljs.inherit(hljs.TITLE_MODE, {begin: IDENT_RE}),
           {
