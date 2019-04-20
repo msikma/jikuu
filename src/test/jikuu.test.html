@@ -688,20 +688,24 @@ Build date: Sat Jun 30 2018 19:54:11 GMT+0200 (CEST)
             <article class="post col id-178086885221 type-text some_code programming javascript css something" data-tags="some_code programming javascript css something" data-type="post" data-permalink="https://jikuu.tumblr.com/post/178086885221/programming-code-example" data-shorturl="https://tmblr.co/Znf7_t2bspZTb" data-notesurl="https://jikuu.tumblr.com/notes/178086885221/5E47a0DKZ" data-embedurl="https://jikuu.tumblr.com/post/178086885221/programming-code-example/embed" data-id="178086885221" id="post_178086885221"><div class="post-content"><!-- ↓ text post --><h2 class="title">Programming code example</h2>
               <p class="date iso-2017-05-02">August 24th, 2018</p><div class="body html-content"><p>So let&rsquo;s see what it looks like when you post some code. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut felis nec turpis iaculis tempor. Nulla facilisi. Nullam cursus ullamcorper libero, a condimentum eros hendrerit nec.</p><p>This is Markdown. Here is a piece of Javascript code.</p><pre><code class="js">import React from 'react'
 
-/**
- * Decorates an element. This binds JS to a piece of HTML as soon as it's loaded in the DOM.
- * This is called from an inline &lt;script&gt; tag right after the relevant HTML is sent.
- *
- * @param {String} id ID string for the object to target
- */
-decorate(id) {
-  const post = document.querySelector(id)
-  if (!post) return
-
-  // Check which post type this is and decorate accordingly.
-  if (post.classList.contains('photoset')) {
-    // Decorating a photoset or photo will also add the lightbox.
-    this.stylePhotoset(id)
+function myFunc(par1, par2) {
+  console.log('hi', par1, par2)
+}
+const myFunc2 = (par1, par2) =&gt; {
+  console.log(par1, par2, 'hi')
+}
+const myFunc3 = par =&gt; {
+  console.log(par, 'hi');
+}
+const myNormalValue = 345
+const myOtherValue = ['a', 'b', 'c'];
+const myObj = {
+  myAttr: par =&gt; console.log('par', par),
+  'myQuotedAttr': (par1, par2) =&gt; {
+    console.log(par1, par2)
+  },
+  anotherAttr: function(parA, parB) {
+    console.log(parA, parB)
   }
 }
 
@@ -712,6 +716,16 @@ const addMessage = (str) => (component) => {
 
 @addMessage('Hello world!')
 export default class DecoratorTest extends React.PureComponent {
+  render() {
+    return &lt;div className="hello world"&gt;{ this.message }&lt;/div&gt;
+  }
+}
+export default class DecoratorTest extends PureComponent {
+  render() {
+    return &lt;div className="hello world"&gt;{ this.message }&lt;/div&gt;
+  }
+}
+export default class DecoratorTest {
   render() {
     return &lt;div className="hello world"&gt;{ this.message }&lt;/div&gt;
   }
