@@ -8,6 +8,9 @@ const languages = PRISM_JS_CONFIG.languages
 // Aliases: used to map short codes (e.g. 'js') to PrismJS language names.
 const aliases = { js: 'jsx', html: 'markup', sh: 'bash', shell: 'bash', fish: 'bash' }
 
+// Additional commands to be recognized by the Bash syntax highlighter.
+const commands = ['npx', 'fish']
+
 /** Patches the syntax highlighting definitions. */
 export const patchGrammar = () => {
   Prism.languages.jsx.punctuation = /[().:]/
@@ -22,6 +25,20 @@ export const patchGrammar = () => {
   Prism.languages.php['punctuation comma'] = /[,;]/
   Prism.languages.php['punctuation curly-brace'] = /[{}]/
   Prism.languages.php['punctuation bracket'] = /[[\]]/
+
+  // Some surgery to modify the list of shell script built-in commands.
+  // We retrieve the current list by extracting it from the regex.
+  // The original regex is /(^|[\s;|&])(?:add|alias| ... |yes|zip|zypper)(?=$|[\s;|&])/
+  try {
+    const reStr = String(Prism.languages.bash.function.pattern)
+    const reCmds = reStr.match(new RegExp('\\(?:(.+?)\\)', ''))[1].split('|')
+    const newRe = new RegExp(`(^|[\\s;|&])(?:${[...reCmds, ...commands].sort().join('|')})(?=$|[\\s;|&])`)
+    Prism.languages.bash.function.pattern = newRe
+  }
+  catch (err) {
+    // Silently fail if something unexpected happens.
+    console && console.log(err)
+  }
 }
 
 /**
