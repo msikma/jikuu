@@ -2,7 +2,7 @@
 // © 2008-2018, Michiel Sikma. MIT license.
 
 import LuminousGalleryCaptions from './gallery'
-import { highlightSyntax } from './syntax'
+import { highlightSyntax, patchGrammar } from './syntax'
 
 class Jikuu {
   constructor() {
@@ -37,6 +37,9 @@ class Jikuu {
     // Perform one-time setup.
     this._setWindowResize()
     this._setWindowScroll()
+
+    // Patch syntax highlighting grammars with some custom modifications.
+    patchGrammar()
   }
 
   /**

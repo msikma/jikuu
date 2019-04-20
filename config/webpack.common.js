@@ -1,11 +1,17 @@
+const { readFileSync } = require('fs')
 const { resolve } = require('path')
 const { execSync } = require('child_process')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 const package = require('../package.json')
 
 const root = resolve(__dirname, '..')
 const distPath = `${root}/dist`
+
+// Find PrismJS configuration to get our list of included languages.
+const babelRc = JSON.parse(readFileSync(resolve(`${root}/.babelrc`), 'utf8'))
+const prismConfig = babelRc.plugins.find(p => p[0] === 'prismjs')[1]
 
 // Retrieve current state of the repo.
 const exec = cmd => execSync(cmd, { encoding: 'utf8' }).trim()
@@ -51,6 +57,9 @@ module.exports = {
         template: 'src/jikuu.tumblr.html',
         inject: false,
         ...tplVars
+      }),
+      new webpack.DefinePlugin({
+        PRISM_JS_CONFIG: JSON.stringify(prismConfig)
       })
     ],
     module: {

@@ -1,111 +1,159 @@
 /** Jikuu - Tumblr Theme - Highlight.js overrides */
 
-$really-dark: #0e131a; // new background?
+$hl-inserted: #91e129;
+$hl-deleted: #fd4787;
 
-$hl-addition: #91e129;
-$hl-deletion: #fd4787;
+$hl-text: #f8f8f2;
+$hl-background: #081c29;
 
+$hl-curly-braces: #ebeb9e;
 $hl-builtin: #1cbcfa;
 $hl-function: #1cbcfa;
 $hl-string: #d6f808;
-$hl-name: #fd9007; // class name, object property name
+$hl-extended-class-name: #d6f808;
 $hl-attribute: #fd5b06;
-$hl-params: #fd9007;
+$hl-operator: #fd9007;
+$hl-class-name: #fd9007;
+$hl-punctuation: #f8c200;
 $hl-keyword: #936bff;
-$hl-refer: #fc4f5b;
+$hl-arrow-operator: #936bff;
+$hl-extends: #fc4f5b;
+$hl-comma: #5f7790;
 $hl-comment: #5f7790;
-$hl-background: #081c29;
-$hl-number: #936bff; // for CSS numbers
 
 #content {
-  .hljs {
+  // Code blocks that have been decorated by PrismJS.
+  pre code.prismjs {
+    color: $hl-text;
     background: $hl-background;
+    
+    a {
+      color: $hl-text;
+      text-decoration: underline;
+    }
+    a:hover,
+    a:focus {
+      color: rgba($hl-text, 0.7);
+      text-decoration: none;
+    }
+    a:visited {
+      color: rgba($hl-text, 0.7);
+    }
+    a:visited:hover,
+    a:visited:focus {
+      text-decoration: none;
+    }
 
-    // Global theme overrides. Based on <highlight.js/styles/dracula.css>.
-    .hljs-title {
-      font-weight: normal;
-      color: $hl-string;
-    }
-    .hljs-attribute {
-      color: $hl-attribute;
-    }
-    .hljs-keyword {
-      font-weight: normal;
-      font-style: italic;
-      color: $hl-keyword;
-    }
-    .hljs-string {
-      font-weight: normal;
-      color: $hl-string;
-    }
-    .hljs-params {
-      // not ready yet.
-      //color: $hl-params;
-    }
-    .hljs-comment {
-      color: $hl-comment;
-    }
-    .hljs-built_in {
-      color: $hl-builtin;
-    }
-    .hljs-function {
-      .hljs-title {
+    .token {
+      &.inserted {
+        color: $hl-inserted;
+      }
+      &.deleted {
+        color: $hl-deleted;
+      }
+      &.parameter {
+        color: $hl-text;
+
+        .punctuation {
+          color: $hl-comma;
+        }
+      }
+      &.operator {
+        color: $hl-operator;
+      }
+      &.operator.arrow {
+        color: $hl-arrow-operator;
+      }
+      &.keyword {
+        color: $hl-keyword;
+      }
+      &.string {
+        color: $hl-string;
+
+        .variable {
+          color: $hl-text;
+        }
+      }
+      &.function {
         color: $hl-function;
       }
-    }
-    .hljs-tag {
-      .hljs-name {
-        color: $hl-refer;
+      &.atrule {
+        .rule {
+          color: $hl-keyword;
+        }
+        .property {
+          color: $hl-builtin;
+        }
       }
-      .hljs-attr {
+      &.punctuation {
+        color: $hl-punctuation;
+      }
+      &.punctuation.comma {
+        color: $hl-comma;
+      }
+      &.punctuation.curly-brace {
+        color: $hl-curly-braces;
+      }
+      &.punctuation.bracket {
+        color: $hl-function;
+      }
+      &.class-name {
+        color: $hl-class-name;
+      }
+      &.console.class-name {
+        color: $hl-builtin;
+      }
+      &.property {
+        color: $hl-operator;
+      }
+      &.comment {
+        color: $hl-comment;
+      }
+      &.url {
+        color: $hl-function;
+      }
+      // 'extends' keyword.
+      &.class-name + .keyword {
+        color: $hl-extends;
+      }
+      // The extended class.
+      &.class-name + .keyword + .class-name {
+        color: $hl-extended-class-name;
+      }
+      // JSX tags.
+      &.tag {
+        color: $hl-extends;
+
+        .tag .punctuation {
+          color: $hl-text;
+        }
+        .attr-name {
+          color: $hl-attribute;
+        }
+        .attr-value {
+          color: $hl-string;
+
+          .punctuation {
+            color: $hl-text;
+          }
+          .punctuation:first-child {
+            color: $hl-operator;
+          }
+        }
+        .punctuation:last-child {
+          color: $hl-text;
+        }
+      }
+      &.number {
         color: $hl-attribute;
       }
     }
 
-    // CSS
-    &.css {
-      .hljs-selector-class {
-        color: $hl-params;
-      }
-      .hljs-number {
-        color: $hl-number;
-      }
-    }
-
-    // Diff/patch
-    &.diff,
-    &.patch {
-      .hljs-addition {
-        color: $hl-addition;
-      }
-      .hljs-deletion {
-        color: $hl-deletion;
-      }
-    }
-
-    // JS
-    &.javascript {
-      .hljs-decorator {
-        color: $hl-function;
-      }
-      .hljs-class {
-        // Some styling decisions taken from VS Code.
-        // The 'extends' keyword is a different color than usual.
-        .hljs-extends {
-          .hljs-keyword {
-            color: $hl-refer;
-          }
-        }
-        // Class names use $name, except the class that's being extended.
-        .hljs-title {
-          color: $hl-name;
-        }
-        .hljs-title:last-child {
-          color: $hl-string;
-        }
-        .hljs-keyword + .hljs-title:last-child {
-          // In case a class doesn't extend anything, go back to $name.
-          color: $hl-name;
+    // Fish shell fixes.
+    &.fish.language-bash {
+      .token {
+        &.variable {
+          color: $hl-class-name;
         }
       }
     }

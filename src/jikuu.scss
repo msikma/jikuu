@@ -6,7 +6,6 @@
 $primary: #006AFF;
 $visited: #5E0FFF;
 $hover: #FF086B;
-$hljs-text: #f8f8f2; // Default text color used by highlight.js.
 $light-gray: #f9f7f7;
 $medium-gray: #CDCACA;
 $dark-gray: #696161;
@@ -67,6 +66,5 @@ $wide-width-content: 730px;
 @import "style/posts/video.scss";
 
 @import "~luminous-lightbox/dist/luminous-basic.css";
-@import "~highlight.js/styles/dracula.css";
 @import "style/lightbox.scss";
 @import "style/highlight.scss";
