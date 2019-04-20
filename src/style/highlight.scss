@@ -5,7 +5,8 @@ $really-dark: #0e131a; // new background?
 $hl-addition: #91e129;
 $hl-deletion: #fd4787;
 
-$hl-somethingsomethingsomething: #1cbcfa;
+$hl-builtin: #1cbcfa;
+$hl-function: #1cbcfa;
 $hl-string: #d6f808;
 $hl-name: #fd9007; // class name, object property name
 $hl-attribute: #fd5b06;
@@ -44,6 +45,14 @@ $hl-number: #936bff; // for CSS numbers
     .hljs-comment {
       color: $hl-comment;
     }
+    .hljs-built_in {
+      color: $hl-builtin;
+    }
+    .hljs-function {
+      .hljs-title {
+        color: $hl-function;
+      }
+    }
     .hljs-tag {
       .hljs-name {
         color: $hl-refer;
@@ -77,17 +86,25 @@ $hl-number: #936bff; // for CSS numbers
     // JS
     &.javascript {
       .hljs-decorator {
-        color: $hl-somethingsomethingsomething;
+        color: $hl-function;
       }
       .hljs-class {
-        // Colors 'extends' in a class declaration.
+        // Some styling decisions taken from VS Code.
+        // The 'extends' keyword is a different color than usual.
         .hljs-extends {
           .hljs-keyword {
             color: $hl-refer;
           }
         }
-        // Colors the class name.
-        .hljs-keyword:first-child + .hljs-title {
+        // Class names use $name, except the class that's being extended.
+        .hljs-title {
+          color: $hl-name;
+        }
+        .hljs-title:last-child {
+          color: $hl-string;
+        }
+        .hljs-keyword + .hljs-title:last-child {
+          // In case a class doesn't extend anything, go back to $name.
           color: $hl-name;
         }
       }
