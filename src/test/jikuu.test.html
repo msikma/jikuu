@@ -686,7 +686,15 @@ Build date: Sat Jun 30 2018 19:54:11 GMT+0200 (CEST)
           <div class="post-container row" id="container_posts">
             <!-- jikuu_post_container_初め -->
             <article class="post col id-178086885221 type-text some_code programming javascript css something" data-tags="some_code programming javascript css something" data-type="post" data-permalink="https://jikuu.tumblr.com/post/178086885221/programming-code-example" data-shorturl="https://tmblr.co/Znf7_t2bspZTb" data-notesurl="https://jikuu.tumblr.com/notes/178086885221/5E47a0DKZ" data-embedurl="https://jikuu.tumblr.com/post/178086885221/programming-code-example/embed" data-id="178086885221" id="post_178086885221"><div class="post-content"><!-- ↓ text post --><h2 class="title">Programming code example</h2>
-              <p class="date iso-2017-05-02">August 24th, 2018</p><div class="body html-content"><p>So let&rsquo;s see what it looks like when you post some code. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut felis nec turpis iaculis tempor. Nulla facilisi. Nullam cursus ullamcorper libero, a condimentum eros hendrerit nec.</p><p>This is Markdown. Here is a piece of Javascript code.</p><pre><code class="js">import React from 'react'
+              <p class="date iso-2017-05-02">August 24th, 2018</p><div class="body html-content"><p>So let&rsquo;s see what it looks like when you post some code. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut felis nec turpis iaculis tempor. Nulla facilisi. Nullam cursus ullamcorper libero, a condimentum eros hendrerit nec.</p><pre><code class="diff">   "scripts": {
+-    "start": "react-scripts start",
+-    "build": "react-scripts build",
+-    "test": "react-scripts test",
++    "start": "react-app-rewired start",
++    "build": "react-app-rewired build",
++    "test": "react-app-rewired test",
+      "eject": "react-scripts eject"
+    },</code></pre><p>This is Markdown. Here is a piece of Javascript code.</p><pre><code class="jsx">import React from 'react'
 
 function myFunc(par1, par2) {
   console.log('hi', par1, par2)
@@ -697,6 +705,9 @@ const myFunc2 = (par1, par2) =&gt; {
 const myFunc3 = par =&gt; {
   console.log(par, 'hi');
 }
+const string = 'a'
+const myTemplateString = `this is a template $&#123;string}
+with more`;
 const myNormalValue = 345
 const myOtherValue = ['a', 'b', 'c'];
 const myObj = {
@@ -730,7 +741,99 @@ export default class DecoratorTest {
     return &lt;div className="hello world"&gt;{ this.message }&lt;/div&gt;
   }
 }
-</code></pre><p>And here is some CSS.</p><pre><code class="css">.icon-link {
+</code></pre><p>Here is some Fish</p><pre><code class="fish">function _iterate_help \
+  --description "Iterate through and print a list of commands and descriptions"
+  set _cmd_all $argv
+  set neutral (set_color normal)
+
+  # Iterate through our merged list and print the command name and description.
+  set m 0
+  set total (math 4 + (count $_cmd_all))
+  set half (math "(floor($total / 8) * 4)")
+  for n in (seq 1 4 (math $half))
+    set m (math $m + 1)
+
+    set l_color $_cmd_all[$n]
+    set l_cmd_n $_cmd_all[(math $n + 1)]
+    set l_cmd_d $_cmd_all[(math $n + 3)]
+
+    set r_color $_cmd_all[(math $n + $half)]
+    set r_cmd_n $_cmd_all[(math $n + $half + 1)]
+    set r_cmd_d $_cmd_all[(math $n + $half + 3)]
+
+    printf "%s%-16s%s%-34s%s%-16s%s%-34s\\n" $l_color $l_cmd_n $neutral $l_cmd_d $r_color $r_cmd_n $neutral $r_cmd_d
+  end
+end
+</code></pre><p>Here is some Bash</p><pre><code class="bash">if [ -z $&#123;dada_hostname+x} ]; then
+  echo "$err \$dada_hostname is not set"
+  exit 1
+fi
+
+echo $myvar
+
+# Check whether our directories exist.
+for ((a = 0; a &lt; $&#123;#SRC_DIRS[@]}; a++)); do
+  src="$&#123;SRC_DIRS[a]}"
+  dest="$&#123;DEST_DIRS[a]}"
+  if [[ ! "$src" || ! -d "$src" ]]; then
+    echo "$err Could not access source directory: $src"
+    exit 1
+  fi
+  if [[ ! "$dest" || ! -d "$dest" ]]; then
+    echo "$err Could not access destination directory: $dest"
+    exit 1
+  fi
+done
+
+# Create a temporary directory to store our zip files in.
+if [[ ! "$WORK_DIR" || ! -d "$WORK_DIR" ]]; then
+  echo "$err Could not create temp directory: $WORK_DIR"
+  exit 1
+fi
+</code></pre><p>Here is some PHP</p><pre><code class="php">function get_route($server, $redir_xy=true) {
+  if (!empty($server['QUERY_STRING'])) {
+    parse_str($server['QUERY_STRING'], $query);
+    if ($redir_xy && (isset($query['x']) || isset($query['y']))) {
+      $loc = $GLOBALS['BASE_URL'].'/?query='.$query['query'];
+      header('Location: '.$loc);
+      exit;
+    }
+    return array('search', $query['query']);
+  }
+  $base = dirname($server['PHP_SELF']);
+
+  // Filter out the base part of the URL.
+  $pos = strpos($server['REQUEST_URI'], $base);
+  if ($pos !== false) {
+    $path = substr_replace($server['REQUEST_URI'], '', $pos, strlen($base));
+  }
+  $path = trim($path, '/');
+  $parts = explode('/', $path);
+
+  // If this is a news page, check if this is a valid news link.
+  // If it's just 'news' without a subpage part, it's valid. If there is a subpage,
+  // check if we have this category in the news results.
+  if ($parts[0] === 'news' && !empty($parts[1])) {
+    if ($parts[1] !== 'all' && !is_valid_news_category($parts[1])) {
+      $parts = array('error', '404');
+    }
+  }
+
+  // If the path is not prefixed by any of the other pages, we assume it's an info page.
+  else if ($parts[0] !== 'search' && $parts[0] !== 'news' && $parts[0] !== '') {
+    // Check whether the requested info page exists, by seeing if &lt;pagename&gt;.twig exists.
+    if (is_file($GLOBALS['ROOT_DIR'].$GLOBALS['BASE_URL'].'/views/info/'.$parts[0].'.twig')) {
+      // File exists, so this is a valid route.
+      array_unshift($parts, 'info');
+    }
+    else {
+      // File doesn't exist, so we'll redirect to 404.
+      $parts = array('error', '404');
+    }
+  }
+
+  return $path === '' ? array('home') : $parts;
+}</code></pre><p>And here is some CSS.</p><pre><code class="css">.icon-link {
   line-height: 18px;
   padding-left: 0;
   margin: 0;
@@ -739,7 +842,9 @@ export default class DecoratorTest {
   text-overflow: ellipsis;
   white-space: nowrap;
   position: relative;
-}</code></pre><p>Finally let&rsquo;s see if we can also post SCSS.</p><pre><code class="scss">// Icon buttons are the exact same but need a bit of offset due to image margin.
+}
+
+#zap { color: red; }</code></pre><p>Terminal session</p><pre><code class="sh">$ ls -lah</code></pre><p>Finally let&rsquo;s see if we can also post SCSS.</p><pre><code class="scss">// Icon buttons are the exact same but need a bit of offset due to image margin.
 &amp;.icon-button {
   left: -2px;
 
