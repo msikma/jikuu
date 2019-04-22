@@ -13,6 +13,18 @@ $dark-gray: #696161;
 $near-black: #0A0A0B;
 $meta-text: #585151;
 
+:root {
+  --jikuu-primary: #{$primary};
+  --jikuu-visited: #{$visited};
+  --jikuu-hover: #{$hover};
+  --jikuu-white: #{$white};
+  --jikuu-light-gray: #{$light-gray};
+  --jikuu-medium-gray: #{$medium-gray};
+  --jikuu-dark-gray: #{$dark-gray};
+  --jikuu-near-black: #{$near-black};
+  --jikuu-meta-text: #{$meta-text};
+}
+
 $body-font: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
 $monospace-font: 'Menlo', 'Andale Mono', 'Ubuntu Mono', monospace;
 $body-font-native: -apple-system, BlinkMacSystemFont, sans-serif;

@@ -3,20 +3,20 @@
 .post.type-chat {
   .chat {
     list-style: none;
-    border-bottom: 1px solid $medium-gray;
+    border-bottom: 1px solid var(--jikuu-medium-gray);
     font-family: $monospace-font;
     font-size: 100%;
     padding: 0;
     margin: 8px 0;
 
     li {
-      border: 1px solid $medium-gray;
+      border: 1px solid var(--jikuu-medium-gray);
       border-bottom: none;
       padding: 3px 6px;
 
       .label {
         display: inline-block;
-        color: $primary;
+        color: var(--jikuu-primary);
         font-style: italic;
       }
       .line {

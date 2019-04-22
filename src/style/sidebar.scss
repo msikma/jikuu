@@ -13,13 +13,13 @@
   }
   .build-info a {
     font-size: 11px;
-    color: $meta-text;
+    color: var(--jikuu-meta-text);
     line-height: 17px;
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
-      color: $hover;
+      color: var(--jikuu-hover);
     }
   }
 
@@ -59,18 +59,18 @@
 
         &:hover, &:focus {
           .search-submit input {
-            background-color: $primary;
+            background-color: var(--jikuu-primary);
           }
           .search-input input {
-            border-color: $primary;
-            color: $primary;
+            border-color: var(--jikuu-primary);
+            color: var(--jikuu-primary);
           }
         }
 
         .search-submit input {
           content: '';
-          color: $near-black;
-          background: url('./img/search_1x.png') $dark-gray;
+          color: var(--jikuu-near-black);
+          background: url('./img/search_1x.png') var(--jikuu-dark-gray);
           background-size: 26px 21px;
           height: 21px;
           width: 26px;
@@ -88,7 +88,7 @@
         }
         .search-input input {
           width: 100%;
-          border: 1px solid $medium-gray;
+          border: 1px solid var(--jikuu-medium-gray);
           font-size: $base-font-size;
           padding: 3px 8px;
           line-height: 15px;

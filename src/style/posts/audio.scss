@@ -31,15 +31,15 @@
     }
     &:hover, &:focus {
       .player, .info {
-        border-color: $primary;
+        border-color: var(--jikuu-primary);
       }
       .info p {
-        color: $primary;
+        color: var(--jikuu-primary);
       }
     }
   }
   .meta .playcount p {
     margin: 8px 0;
-    color: $meta-text;
+    color: var(--jikuu-meta-text);
   }
 }

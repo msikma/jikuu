@@ -3,7 +3,7 @@
 .post.type-text {
   .post-content {
     h2 + .date {
-      color: $dark-gray;
+      color: var(--jikuu-dark-gray);
       margin-top: 8px;
       margin-bottom: 18px;
     }

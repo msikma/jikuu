@@ -51,7 +51,7 @@
     left: -2px;
 
     .icon {
-      background-color: $primary;
+      background-color: var(--jikuu-primary);
       top: 1px;
       left: 1px;
       width: 14px;
@@ -90,20 +90,20 @@
       text-decoration: none;
       
       .icon {
-        background-color: $hover;
+        background-color: var(--jikuu-hover);
       }
     }
     &:visited {
-      color: $primary;
+      color: var(--jikuu-primary);
       .icon {
-        background-color: $primary;
+        background-color: var(--jikuu-primary);
       }
     }
     &:visited:hover,
     &:visited:focus {
-      color: $hover;
+      color: var(--jikuu-hover);
       .icon {
-        background-color: $hover;
+        background-color: var(--jikuu-hover);
       }
     }
   }

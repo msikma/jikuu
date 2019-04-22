@@ -2,11 +2,11 @@
 
 // Adds background image of a dot pattern.
 @mixin dotted() {
-  background: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAABlBMVEX///////9VfPVsAAAAAnRSTlP/AOW3MEoAAAATSURBVAjXY2BkAEEGBkYkiJUHAAGkABNgY9FfAAAAAElFTkSuQmCC") scroll repeat $medium-gray;
+  background: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAABlBMVEX///////9VfPVsAAAAAnRSTlP/AOW3MEoAAAATSURBVAjXY2BkAEEGBkYkiJUHAAGkABNgY9FfAAAAAElFTkSuQmCC") scroll repeat var(--jikuu-medium-gray);
   image-rendering: pixelated;
 
   @include retina-only() {
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAMAAACeL25MAAAABlBMVEX///////9VfPVsAAAAAnRSTlP/AOW3MEoAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADImlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMTEgNzkuMTU4MzI1LCAyMDE1LzA5LzEwLTAxOjEwOjIwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5QTRFNzhGMTU2MTIxMUU5OUIzQUJGMEI5OEM2NTA0RSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5QTRFNzhGMDU2MTIxMUU5OUIzQUJGMEI5OEM2NTA0RSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjc5ODcwOTg3NTYwQzExRTk5QjNBQkYwQjk4QzY1MDRFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjc5ODcwOTg4NTYwQzExRTk5QjNBQkYwQjk4QzY1MDRFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+2wcOFQAAABNJREFUCFtjYGRkYGAAE1CKkREAAGQACUNUyl8AAAAASUVORK5CYII=') scroll repeat $medium-gray;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAMAAACeL25MAAAABlBMVEX///////9VfPVsAAAAAnRSTlP/AOW3MEoAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADImlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMTEgNzkuMTU4MzI1LCAyMDE1LzA5LzEwLTAxOjEwOjIwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5QTRFNzhGMTU2MTIxMUU5OUIzQUJGMEI5OEM2NTA0RSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5QTRFNzhGMDU2MTIxMUU5OUIzQUJGMEI5OEM2NTA0RSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjc5ODcwOTg3NTYwQzExRTk5QjNBQkYwQjk4QzY1MDRFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjc5ODcwOTg4NTYwQzExRTk5QjNBQkYwQjk4QzY1MDRFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+2wcOFQAAABNJREFUCFtjYGRkYGAAE1CKkREAAGQACUNUyl8AAAAASUVORK5CYII=');
     background-size: 2px 2px;
   }
 }
@@ -57,11 +57,11 @@
   z-index: 10;
 
   > span, > div {
-    border: 1px solid $near-black;
+    border: 1px solid var(--jikuu-near-black);
     padding: 3px 8px;
     margin: -1px;
-    background: $white;
-    color: $near-black;
+    background: var(--jikuu-white);
+    color: var(--jikuu-near-black);
     position: relative;
     top: -3px;
     left: -3px;
@@ -74,11 +74,11 @@
   }
 
   &:hover {
-    background: $primary;
+    background: var(--jikuu-primary);
 
     span {
-      color: $primary;
-      border-color: $primary;
+      color: var(--jikuu-primary);
+      border-color: var(--jikuu-primary);
     }
   }
 }
@@ -95,26 +95,26 @@
   }
 
   li a {
-    background: $white;
+    background: var(--jikuu-white);
     line-height: 15px;
     margin-bottom: -1px;
     position: relative;
-    border: 1px solid $near-black;
+    border: 1px solid var(--jikuu-near-black);
     text-decoration: none;
 
     span {
       border: none;
       padding: 4px 9px;
-      color: $near-black;
+      color: var(--jikuu-near-black);
       margin: -1px;
     }
 
     &:hover {
-      border-color: $primary;
+      border-color: var(--jikuu-primary);
       z-index: 12;
 
       span {
-        color: $primary;
+        color: var(--jikuu-primary);
       }
     }
   }
@@ -167,7 +167,7 @@
     height: 0px;
     border-style: solid;
     border-width: 8px 8px 8px 0;
-    border-color: transparent $dark-gray transparent transparent;
+    border-color: transparent var(--jikuu-dark-gray) transparent transparent;
   }
   .arr-inner {
     width: 0px;
@@ -175,14 +175,14 @@
     margin: 1px 0 0 1px;
     border-style: solid;
     border-width: 7px 7px 7px 0;
-    border-color: transparent $white transparent transparent;
+    border-color: transparent var(--jikuu-white) transparent transparent;
   }
   .inner {
     display: block;
     position: relative;
     z-index: 12;
     background: white;
-    border: 1px solid $dark-gray;
+    border: 1px solid var(--jikuu-dark-gray);
     margin-left: 7px;
     padding: 6px 10px;
     min-height: 50px;
@@ -209,14 +209,14 @@
 @mixin bevel-out-item-down() {
   .arr-outer {
     border-width: 8px 8px 0 8px;
-    border-color: $dark-gray transparent transparent transparent;
+    border-color: var(--jikuu-dark-gray) transparent transparent transparent;
     bottom: -8px;
     top: auto;
     left: 6px;
   }
   .arr-inner {
     border-width: 7px 7px 0px 7px;
-    border-color: $white transparent transparent transparent;
+    border-color: var(--jikuu-white) transparent transparent transparent;
     bottom: -6px;
     top: auto;
     left: 6px;
@@ -233,41 +233,41 @@
 // Inverts the bevel by making it black and the text white.
 @mixin bevel-out-inverted() {
   .bevel-container:before {
-    background-color: $near-black;
+    background-color: var(--jikuu-near-black);
   }
   .arr-outer {
     display: none;
   }
   .arr-inner {
-    border-color: transparent $near-black transparent transparent;
+    border-color: transparent var(--jikuu-near-black) transparent transparent;
   }
   .inner {
-    background: $near-black;
+    background: var(--jikuu-near-black);
     color: white;
-    border-color: $near-black;
+    border-color: var(--jikuu-near-black);
   }
 }
 
 // Inverts a menu item. Used by the pagenav.
 @mixin bevel-out-inverted-pagenav() {
   a {
-    background-color: $near-black;
+    background-color: var(--jikuu-near-black);
     z-index: 50;
 
     span {
-      background-color: $near-black;
+      background-color: var(--jikuu-near-black);
       color: white;
-      border-color: $near-black;
+      border-color: var(--jikuu-near-black);
     }
 
     &:hover {
       @include dotted();
-      background-color: $primary;
+      background-color: var(--jikuu-primary);
 
       span {
-        background-color: $primary;
+        background-color: var(--jikuu-primary);
         color: white;
-        border-color: $primary;
+        border-color: var(--jikuu-primary);
       }
     }
   }

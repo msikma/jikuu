@@ -8,19 +8,19 @@ body {
 }
 a {
   text-decoration: none;
-  color: $primary;
+  color: var(--jikuu-primary);
 }
 a:hover,
 a:focus {
   text-decoration: underline;
-  color: $hover;
+  color: var(--jikuu-hover);
 }
 a:visited {
-  color: $visited;
+  color: var(--jikuu-visited);
 }
 a:visited:hover,
 a:visited:focus {
-  color: $hover;
+  color: var(--jikuu-hover);
 }
 #root {
   padding: 0 25px;
@@ -50,7 +50,7 @@ a:visited:focus {
         font-size: 31px;
         line-height: 23px;
         padding: 29px 0 14px;
-        color: $primary;
+        color: var(--jikuu-primary);
         text-align: center;
         text-decoration: none;
         margin: 0;
@@ -71,13 +71,13 @@ a:visited:focus {
             // svg .st2 (right text)
             svg {
               .st0 {
-                fill: $hover;
+                fill: var(--jikuu-hover);
               }
               .st1 {
-                fill: $primary;
+                fill: var(--jikuu-primary);
               }
               .st2 {
-                fill: $near-black;
+                fill: var(--jikuu-near-black);
               }
             }
           }
@@ -94,7 +94,7 @@ a:visited:focus {
       margin: 0 0 25px 0;
 
       .sidebar {
-        border-top: 5px solid $hover;
+        border-top: 5px solid var(--jikuu-hover);
         padding-top: 20px;
         margin-top: 16px;
         margin-bottom: 45px;
@@ -103,7 +103,7 @@ a:visited:focus {
         width: $base-width-sidebar;
       }
       .main {
-        border-top: 5px solid $primary;
+        border-top: 5px solid var(--jikuu-primary);
         padding-top: 20px;
         margin-top: 16px;
         float: right;

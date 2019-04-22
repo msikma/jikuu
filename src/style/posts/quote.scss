@@ -8,7 +8,7 @@
     margin: 0;
     text-align: left;
     font-style: italic;
-    color: $hover;
+    color: var(--jikuu-hover);
 
     &:before {
       content: '“';

@@ -4,7 +4,7 @@
   .post-content > .link-container a {
     padding: 12px 14px;
     display: block;
-    color: $near-black;
+    color: var(--jikuu-near-black);
     border-radius: 2px;
     margin-bottom: 15px;
     position: relative;
@@ -16,7 +16,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: $primary;
+      background: var(--jikuu-primary);
       opacity: 0.08;
     }
     .host, .name, .excerpt {
@@ -31,7 +31,7 @@
     }
 
     .name {
-      color: $primary;
+      color: var(--jikuu-primary);
       font-size: 22px;
       line-height: 22px;
 
@@ -50,22 +50,22 @@
     }
     &:hover, &:focus, &:visited:hover {
       .bg {
-        background-color: $hover;
+        background-color: var(--jikuu-hover);
       }
       .name {
-        color: $hover;
+        color: var(--jikuu-hover);
       }
       text-decoration: none;
-      border-color: $hover;
+      border-color: var(--jikuu-hover);
     }
     &:visited {
       .bg {
-        background-color: $visited;
+        background-color: var(--jikuu-visited);
       }
       .name {
-        color: $visited;
+        color: var(--jikuu-visited);
       }
-      border-color: $visited;
+      border-color: var(--jikuu-visited);
     }
   }
 }
