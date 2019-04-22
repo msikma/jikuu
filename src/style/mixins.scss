@@ -60,7 +60,7 @@
     border: 1px solid $near-black;
     padding: 3px 8px;
     margin: -1px;
-    background: #ffffff;
+    background: $white;
     color: $near-black;
     position: relative;
     top: -3px;
@@ -95,7 +95,7 @@
   }
 
   li a {
-    background: #ffffff;
+    background: $white;
     line-height: 15px;
     margin-bottom: -1px;
     position: relative;
@@ -175,7 +175,7 @@
     margin: 1px 0 0 1px;
     border-style: solid;
     border-width: 7px 7px 7px 0;
-    border-color: transparent #ffffff transparent transparent;
+    border-color: transparent $white transparent transparent;
   }
   .inner {
     display: block;
@@ -209,14 +209,14 @@
 @mixin bevel-out-item-down() {
   .arr-outer {
     border-width: 8px 8px 0 8px;
-    border-color: #696161 transparent transparent transparent;
+    border-color: $dark-gray transparent transparent transparent;
     bottom: -8px;
     top: auto;
     left: 6px;
   }
   .arr-inner {
     border-width: 7px 7px 0px 7px;
-    border-color: #ffffff transparent transparent transparent;
+    border-color: $white transparent transparent transparent;
     bottom: -6px;
     top: auto;
     left: 6px;
