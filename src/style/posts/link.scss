@@ -7,7 +7,22 @@
     color: $near-black;
     border-radius: 2px;
     margin-bottom: 15px;
-    background-color: mix(white, $primary, 92);
+    position: relative;
+    overflow: hidden;
+
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $primary;
+      opacity: 0.08;
+    }
+    .host, .name, .excerpt {
+      position: relative;
+      z-index: 10;
+    }
 
     .host {
       font-size: $base-font-size;
@@ -33,21 +48,24 @@
     .excerpt {
       margin-top: 10px;
     }
-    &:hover, &:focus {
+    &:hover, &:focus, &:visited:hover {
+      .bg {
+        background-color: $hover;
+      }
+      .name {
+        color: $hover;
+      }
       text-decoration: none;
       border-color: $hover;
-      background-color: mix(white, $hover, 92);
     }
     &:visited {
+      .bg {
+        background-color: $visited;
+      }
+      .name {
+        color: $visited;
+      }
       border-color: $visited;
-      background-color: mix(white, $visited, 92);
-    }
-    &:hover .name,
-    &:focus .name {
-      color: $hover;
-    }
-    &:visited .name {
-      color: $visited;
     }
   }
 }
